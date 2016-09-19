@@ -1,4 +1,4 @@
-export default class Expectation<T> {
+abstract class Expectation<T> {
 	protected actual: T;
 
 	public constructor(actual: T) {
@@ -21,3 +21,5 @@ export default class Expectation<T> {
 		}
 	}
 }
+
+export default Expectation;
