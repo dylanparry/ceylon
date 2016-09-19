@@ -74,4 +74,38 @@ Asserts that the `object` does not exist (is `undefined`).
 
 Outputs optional `message` in case of a failed assertion.
 
+### toThrow
+
+```typescript
+expect(function: Function).toThrow(error?: string | Error, message?: string): void;
+```
+
+Asserts that the `function` throws an error when called.
+
+The `error` will be matched against the `error.message` or the type of error (using `instanceof`).
+
+Outputs optional `message` in case of a failed assertion.
+
+#### Example
+
+```typescript
+expect(() => { throw new Error('Oh noes!') }).toThrow('Oh noes!', 'Did not throw "Oh noes!"');
+```
+
+### toNotThrow
+
+```typescript
+expect(function: Function).toNotThrow(message?: string): void;
+```
+
+Asserts that the `function` not not throw an error when called.
+
+Outputs optional `message` in case of a failed assertion.
+
+#### Example
+
+```typescript
+expect(() => true).toNotThrow('Function threw an error!');
+```
+
 ### More coming soon…
