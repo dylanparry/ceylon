@@ -39,4 +39,24 @@ Asserts that `object` is strictly equal to `value` using `===`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toExist
+
+```typescript
+expect(object: Object).toExist(message?: string): void;
+```
+
+Asserts that the `object` exists (is not `undefined`).
+
+Outputs optional `message` in case of a failed assertion.
+
+### toNotExist
+
+```typescript
+expect(object: Object).toNotExist(message?: string): void;
+```
+
+Asserts that the `object` does not exist (is `undefined`).
+
+Outputs optional `message` in case of a failed assertion.
+
 ### More coming soon…

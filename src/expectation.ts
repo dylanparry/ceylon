@@ -9,7 +9,7 @@ abstract class Expectation<T> {
 	 * Assert that the SUT is exactly equal to the expected value (=== comparison)
 	 *
 	 * @param expected The expected value
-	 * @param message The message to output in case of a failed assertion
+	 * @param [message] The message to output in case of a failed assertion
 	 */
 	public toBe(expected: T, message?: string): void {
 		if (this.actual !== expected) {

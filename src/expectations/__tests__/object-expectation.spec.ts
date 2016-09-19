@@ -31,4 +31,54 @@ describe('ObjectExpectation', () => {
 			}
 		});
 	});
+
+	describe('toExist', () => {
+		it('should not throw an error when the object exists', () => {
+			const expect = new Expectation({});
+
+			expect.toExist();
+		});
+
+		it('should throw an error when the object is undefined', () => {
+			const expect = new Expectation(undefined);
+
+			let threwAnError = false;
+
+			try {
+				expect.toExist()
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+	});
+
+	describe('toNotExist', () => {
+		it('should not throw an error when the object is undefined', () => {
+			const expect = new Expectation(undefined);
+
+			expect.toNotExist();
+		});
+
+		it('should throw an error when the object is undefined', () => {
+			const expect = new Expectation({});
+
+			let threwAnError = false;
+
+			try {
+				expect.toNotExist()
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+	});
 });
