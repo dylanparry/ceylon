@@ -1,4 +1,10 @@
-# Ceylon
+# Ceylon [![Travis][build-badge]][build] [![npm package][npm-badge]][npm]
+
+[build-badge]: https://img.shields.io/travis/dylanparry/ceylon/master.svg?style=flat-square
+[build]: https://travis-ci.org/dylanparry/ceylon
+
+[npm-badge]: https://img.shields.io/npm/v/ceylon.svg?style=flat-square
+[npm]: https://www.npmjs.org/package/ceylon
 
 **This library is currently in development and should not be used (yet)**
 
