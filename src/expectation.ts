@@ -9,10 +9,11 @@ abstract class Expectation<T> {
 	 * Assert that the SUT is exactly equal to the expected value (=== comparison)
 	 *
 	 * @param expected The expected value
+	 * @param message The message to output in case of a failed assertion
 	 */
-	public toBe(expected: T): void {
+	public toBe(expected: T, message?: string): void {
 		if (this.actual !== expected) {
-			const error = new Error(`Expected "${this.actual}" to be "${expected}"`);
+			const error = new Error(message || `Expected "${this.actual}" to be "${expected}"`);
 			error['actual'] = this.actual;
 			error['expected'] = expected;
 			error['showDiff'] = true;
