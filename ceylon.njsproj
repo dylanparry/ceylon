@@ -29,11 +29,13 @@
     <TypeScriptCompile Include="src\expectation.ts" />
     <TypeScriptCompile Include="src\expectations\array-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\boolean-expectation.ts" />
+    <TypeScriptCompile Include="src\expectations\function-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\number-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\object-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\string-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\array-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\boolean-expectation.spec.ts" />
+    <TypeScriptCompile Include="src\expectations\__tests__\function-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\number-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\object-expectation.spec.ts" />
     <TypeScriptCompile Include="src\index.ts" />

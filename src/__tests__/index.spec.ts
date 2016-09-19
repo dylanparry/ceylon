@@ -1,6 +1,7 @@
 import expect from '../';
 import ArrayExpectation from '../expectations/array-expectation';
 import BooleanExpectation from '../expectations/boolean-expectation';
+import FunctionExpectation from '../expectations/function-expectation';
 import NumberExpectation from '../expectations/number-expectation';
 import StringExpectation from '../expectations/string-expectation';
 import ObjectExpectation from '../expectations/object-expectation';
@@ -27,6 +28,12 @@ describe('expect', () => {
 		const sut = expect(true);
 
 		checkType(sut, BooleanExpectation);
+	});
+
+	it('should return a new FunctionExpectation object when passed a function', () => {
+		const sut = expect(() => { });
+
+		checkType(sut, FunctionExpectation);
 	});
 
 	it('should return a new NumberExpection object when passed a string', () => {
