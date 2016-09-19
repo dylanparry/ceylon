@@ -12,7 +12,7 @@ Ceylon aims to simplify unit testing in Typescript by making it easy to write as
 
 Using [npm](https://www.npmjs.com/package/ceylon):
 
-    npm install --save ceylon
+    npm install --save-dev ceylon
 
 Then import into your Typescript code like so:
 
