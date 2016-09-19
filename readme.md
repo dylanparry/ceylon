@@ -12,9 +12,7 @@ Ceylon aims to simplify unit testing in Typescript by making it easy to write as
 
 Using [npm](https://www.npmjs.com/package/ceylon):
 
-```
-npm install --save ceylon
-```
+    npm install --save ceylon
 
 Then import into your Typescript code like so:
 
@@ -24,7 +22,21 @@ import expect from 'ceylon';
 
 There is no need to reference a Typescript definition file as the source code for Ceylon is all written in Typescript.
 
-## assertions
+## Assertions
 
-Coming soon…
+### toBe
 
+```typescript
+expect(object: boolean).toBe(value: boolean, message?: string): void;
+expect(object: number).toBe(value: number, message?: string): void;
+expect(object: string).toBe(value: string, message?: string): void;
+expect(object: any[]).toBe(value: any[], message?: string): void;
+expect(object: Function).toBe(value: Function, message?: string): void;
+expect(object: Object).toBe(value: Object, message?: string): void;
+```
+
+Asserts that `object` is strictly equal to `value` using `===`.
+
+Outputs optional `message` in case of a failed assertion.
+
+### More coming soon…
