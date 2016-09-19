@@ -11,7 +11,7 @@ describe('ObjectExpectation', () => {
 			expect.toBe(expected);
 		});
 
-		it('should throw an error when strings do share the same reference', () => {
+		it('should throw an error when strings do not share the same reference', () => {
 			const actual = { value: 1 };   // Two different objects
 			const expected = { value: 1 }; // containing the same values
 
@@ -21,6 +21,37 @@ describe('ObjectExpectation', () => {
 
 			try {
 				expect.toBe(expected);
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+	});
+
+	describe('toNotBe()', () => {
+		it('should not throw an error when objects do not share the same reference', () => {
+			const actual = { value: 1 };
+			const expected = { value: 1 };
+
+			const expect = new Expectation(actual);
+
+			expect.toNotBe(expected);
+		});
+
+		it('should throw an error when strings share the same reference', () => {
+			const actual = { value: 1 };
+			const expected = actual;
+
+			const expect = new Expectation(actual);
+
+			let threwAnError = false;
+
+			try {
+				expect.toNotBe(expected);
 			}
 			catch (e) {
 				threwAnError = true;

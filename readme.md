@@ -39,6 +39,21 @@ Asserts that `object` is strictly equal to `value` using `===`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toNotBe
+
+```typescript
+expect(object: boolean).toNotBe(value: boolean, message?: string): void;
+expect(object: number).toNotBe(value: number, message?: string): void;
+expect(object: string).toNotBe(value: string, message?: string): void;
+expect(object: any[]).toNotBe(value: any[], message?: string): void;
+expect(object: Function).toNotBe(value: Function, message?: string): void;
+expect(object: Object).toNotBe(value: Object, message?: string): void;
+```
+
+Asserts that `object` is not strictly equal to `value` using `!==`.
+
+Outputs optional `message` in case of a failed assertion.
+
 ### toExist
 
 ```typescript

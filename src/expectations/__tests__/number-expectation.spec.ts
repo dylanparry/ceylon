@@ -25,4 +25,29 @@ describe('NumberExpectation', () => {
 			}
 		});
 	});
+
+	describe('toNotBe()', () => {
+		it('should not throw an error when numbers do not match', () => {
+			const expect = new Expectation(100);
+
+			expect.toNotBe(90);
+		});
+
+		it('should throw an error when numbers match', () => {
+			const expect = new Expectation(100);
+
+			let threwAnError = false;
+
+			try {
+				expect.toNotBe(100);
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+	});
 });

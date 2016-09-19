@@ -2,7 +2,7 @@
 
 describe('FunctionExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when boolean values match', () => {
+		it('should not throw an error when functions reference the same object', () => {
 			const actual = () => { };
 			const expected = actual;
 
@@ -11,7 +11,7 @@ describe('FunctionExpectation', () => {
 			expect.toBe(expected);
 		});
 
-		it('should throw an error when boolean values do not match', () => {
+		it('should throw an error when functions do not reference the same object', () => {
 			const actual = () => { };
 			const expected = () => { };
 
@@ -21,6 +21,37 @@ describe('FunctionExpectation', () => {
 
 			try {
 				expect.toBe(expected);
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+	});
+
+	describe('toNotBe()', () => {
+		it('should not throw an error when functions do not refence the same object', () => {
+			const actual = () => { };
+			const expected = () => { };
+
+			const expect = new Expectation(actual);
+
+			expect.toNotBe(expected);
+		});
+
+		it('should throw an error when functions reference the same object', () => {
+			const actual = () => { };
+			const expected = actual
+
+			const expect = new Expectation(actual);
+
+			let threwAnError = false;
+
+			try {
+				expect.toNotBe(expected);
 			}
 			catch (e) {
 				threwAnError = true;

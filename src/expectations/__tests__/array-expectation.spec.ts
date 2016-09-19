@@ -2,25 +2,25 @@
 
 describe('ArrayExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when arrays share the same reference', () => {
-			const actual = [1, 2, 3];
-			const expected = actual;
+		it('should not throw an error when arrays do not share the same reference', () => {
+			const actual = [1, 2, 3];   // Two different arrays
+			const expected = [1, 2, 3]; // containing the same values
 
 			const expect = new Expectation(actual);
 
-			expect.toBe(expected);
+			expect.toNotBe(expected);
 		});
 
-		it('should throw an error when strings do share the same reference', () => {
-			const actual = [1, 2, 3];   // Two different arrays
-			const expected = [1, 2, 3]; // containing the same values
+		it('should throw an error when arrays share the same reference', () => {
+			const actual = [1, 2, 3];
+			const expected = actual;
 
 			const expect = new Expectation(actual);
 
 			let threwAnError = false;
 
 			try {
-				expect.toBe(expected);
+				expect.toNotBe(expected);
 			}
 			catch (e) {
 				threwAnError = true;
@@ -29,6 +29,37 @@ describe('ArrayExpectation', () => {
 			if (!threwAnError) {
 				throw new Error('Expected an error to be thrown');
 			}
+		});
+	});
+
+	describe('toNotBe()', () => {
+		it('should throw an error when arrays share the same reference', () => {
+			const actual = [1, 2, 3];
+			const expected = actual;
+
+			const expect = new Expectation(actual);
+
+			let threwAnError = false;
+
+			try {
+				expect.toNotBe(expected);
+			}
+			catch (e) {
+				threwAnError = true;
+			}
+
+			if (!threwAnError) {
+				throw new Error('Expected an error to be thrown');
+			}
+		});
+
+		it('should not throw an error when array do not share the same reference', () => {
+			const actual = [1, 2, 3];   // Two different arrays
+			const expected = [1, 2, 3]; // containing the same values
+
+			const expect = new Expectation(actual);
+
+			expect.toNotBe(expected);
 		});
 	});
 });
