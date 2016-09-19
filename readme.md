@@ -90,6 +90,7 @@ Outputs optional `message` in case of a failed assertion.
 
 ```typescript
 expect(() => { throw new Error('Oh noes!') }).toThrow('Oh noes!', 'Did not throw "Oh noes!"');
+expect(() => { throw new ReferenceError() }).toThrow(ReferenceError, 'Did not throw a ReferenceError!');
 ```
 
 ### toNotThrow
