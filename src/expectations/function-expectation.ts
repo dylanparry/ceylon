@@ -8,9 +8,10 @@ export default class FunctionExpectation extends Expectation<Function> {
 	/**
 	 * Asserts that the SUT throws an error
 	 *
+	 * @param error The error that should be thrown or the error type (eg. ReferenceError)
 	 * @param [message] The message to output in case of a failed assertion
 	 */
-	public toThrow(error?: string | Error, message?: string) {
+	public toThrow(error?: string | Function, message?: string) {
 		let functionThrew = false;
 
 		try {
