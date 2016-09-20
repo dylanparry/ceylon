@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{316563d1-131d-4108-8849-7c79ddb48b3b}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ProjectFiles</ProjectView>
+    <ProjectView>ShowAllFiles</ProjectView>
     <StartupFile>
     </StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,7 +26,7 @@
     <Content Include="tslint.json" />
     <Content Include="typings.json" />
     <Content Include="readme.md" />
-    <Content Include="src\tsconfig.json" />
+    <Content Include="tsconfig.json" />
     <TypeScriptCompile Include="src\expectation.ts" />
     <TypeScriptCompile Include="src\expectations\array-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\boolean-expectation.ts" />
@@ -34,28 +34,28 @@
     <TypeScriptCompile Include="src\expectations\number-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\object-expectation.ts" />
     <TypeScriptCompile Include="src\expectations\string-expectation.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\array-expectation.spec.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\boolean-expectation.spec.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\function-expectation.spec.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\helpers.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\number-expectation.spec.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\object-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\array-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\boolean-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\function-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\helpers.ts" />
+    <TypeScriptCompile Include="tests\expectations\number-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\object-expectation.spec.ts" />
     <TypeScriptCompile Include="src\index.ts" />
-    <TypeScriptCompile Include="src\expectations\__tests__\string-expectation.spec.ts" />
+    <TypeScriptCompile Include="tests\expectations\string-expectation.spec.ts" />
     <TypeScriptCompile Include="src\typings.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\rimraf\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\typescript\index.d.ts" />
     <TypeScriptCompile Include="typings\index.d.ts" />
-    <TypeScriptCompile Include="src\__tests__\index.spec.ts" />
+    <TypeScriptCompile Include="tests\index.spec.ts" />
     <Content Include="typings\globals\mocha\typings.json" />
     <TypeScriptCompile Include="typings\globals\mocha\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src" />
     <Folder Include="src\expectations\" />
-    <Folder Include="src\expectations\__tests__\" />
-    <Folder Include="src\__tests__\" />
+    <Folder Include="tests\" />
+    <Folder Include="tests\expectations\" />
     <Folder Include="typings" />
     <Folder Include="typings\globals" />
     <Folder Include="typings\globals\mocha" />

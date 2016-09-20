@@ -8,12 +8,10 @@
 	return {
 		files: [
 			{ pattern: 'src/**/*.ts', load: false },
-			{ pattern: 'src/**/*.spec.ts', ignore: true },
 		],
 
 		tests: [
-			{ pattern: 'src/**/*.spec.ts' },
-			{ pattern: 'src/**/*.spec.tsx' },
+			{ pattern: 'tests/**/*.ts' },
 		],
 
 		compilers: {

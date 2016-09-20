@@ -1,5 +1,5 @@
 ﻿import { throwsError } from './helpers';
-import Expectation from '../function-expectation';
+import Expectation from '../../src/expectations/function-expectation';
 
 describe('FunctionExpectation', () => {
 	describe('toThrow', () => {

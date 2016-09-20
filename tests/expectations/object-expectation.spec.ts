@@ -1,5 +1,5 @@
 ﻿import { throwsError } from './helpers';
-import Expectation from '../object-expectation';
+import Expectation from '../../src/expectations/object-expectation';
 
 describe('ObjectExpectation', () => {
 	describe('toBe()', () => {
