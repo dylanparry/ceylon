@@ -1,8 +1,10 @@
 ﻿import Expectation from '../expectation';
 
-export default class FunctionExpectation extends Expectation<Function> {
+export default class FunctionExpectation {
+	private actual: Function;
+
 	public constructor(actual: Function) {
-		super(actual);
+		this.actual = actual;
 	}
 
 	/**
@@ -19,7 +21,6 @@ export default class FunctionExpectation extends Expectation<Function> {
 		}
 		catch (e) {
 			if (typeof error !== 'undefined') {
-				console.log(typeof error);
 				switch (typeof error) {
 					// If the error is an instance of the error param
 					case 'function':

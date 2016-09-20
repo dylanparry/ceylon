@@ -37,7 +37,6 @@ expect(object: boolean).toBe(value: boolean, message?: string): void;
 expect(object: number).toBe(value: number, message?: string): void;
 expect(object: string).toBe(value: string, message?: string): void;
 expect(object: any[]).toBe(value: any[], message?: string): void;
-expect(object: Function).toBe(value: Function, message?: string): void;
 expect(object: Object).toBe(value: Object, message?: string): void;
 ```
 
@@ -52,7 +51,6 @@ expect(object: boolean).toNotBe(value: boolean, message?: string): void;
 expect(object: number).toNotBe(value: number, message?: string): void;
 expect(object: string).toNotBe(value: string, message?: string): void;
 expect(object: any[]).toNotBe(value: any[], message?: string): void;
-expect(object: Function).toNotBe(value: Function, message?: string): void;
 expect(object: Object).toNotBe(value: Object, message?: string): void;
 ```
 
