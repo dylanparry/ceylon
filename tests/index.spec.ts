@@ -49,11 +49,9 @@ describe('expect', () => {
 		checkType(sut, ObjectExpectation, 'Expected a new ObjectExpectation object');
 	});
 
-	it('should return undefined when passed an unsupported object', () => {
+	it('should return a new ObjectExpectation when passed an undefined value', () => {
 		const sut = expect(undefined);
 
-		if (typeof sut !== 'undefined') {
-			throw new Error('expected undefined');
-		}
+		checkType(sut, ObjectExpectation, 'Expected a new ObjectExpectation object');
 	}); 
 });

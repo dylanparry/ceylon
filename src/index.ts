@@ -51,7 +51,7 @@ function expect(sut: IExpectParameterTypes): IExpectationReturnTypes {
 		return new ObjectExpectation(sut);
 	}
 
-	return undefined;
+	return new ObjectExpectation(undefined);
 };
 
 export default expect;
