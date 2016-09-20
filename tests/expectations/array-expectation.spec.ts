@@ -71,4 +71,32 @@ describe('ArrayExpectation', () => {
 			throwsError(() => expect.toNotExist());
 		});
 	});
+
+	describe('toEqual', () => {
+		it('should not throw an error when the two arrays are equal', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			expect.toEqual([1, 2, 3]);
+		});
+
+		it('should throw an error when the two arrays are not equal', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			throwsError(() => expect.toEqual([1, 2, 3, 4]));
+		});
+	});
+
+	describe('toNotEqual', () => {
+		it('should not throw an error when the two arrays are different', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			expect.toNotEqual([1, 2, 3, 4]);
+		});
+
+		it('should throw an error when the two arrays are equal', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			throwsError(() => expect.toNotEqual([1, 2, 3]));
+		});
+	});
 });

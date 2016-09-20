@@ -61,6 +61,7 @@ Outputs optional `message` in case of a failed assertion.
 ### toEqual
 
 ```typescript
+expect(object: any[]).toEqual(value: any[], message?: string): void;
 expect(object: Object).toEqual(value: Object, message?: string): void;
 ```
 
@@ -71,6 +72,7 @@ Outputs optional `message` in case of a failed assertion.
 ### toNotEqual
 
 ```typescript
+expect(object: any[]).toNotEqual(value: any[], message?: string): void;
 expect(object: Object).toNotEqual(value: Object, message?: string): void;
 ```
 
