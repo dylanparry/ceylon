@@ -51,7 +51,8 @@ describe('ObjectExpectation', () => {
 		});
 
 		it('should throw an error when the object is undefined', () => {
-			const expect = new Expectation(undefined);
+			let object: Object;
+			const expect = new Expectation(object);
 
 			throwsError(() => expect.toExist());
 		});
@@ -59,12 +60,13 @@ describe('ObjectExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw an error when the object is undefined', () => {
-			const expect = new Expectation(undefined);
+			let object: Object;
+			const expect = new Expectation(object);
 
 			expect.toNotExist();
 		});
 
-		it('should throw an error when the object is undefined', () => {
+		it('should throw an error when the object exists', () => {
 			const expect = new Expectation({});
 
 			throwsError(() => expect.toNotExist());

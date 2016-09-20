@@ -41,4 +41,34 @@ describe('ArrayExpectation', () => {
 			expect.toNotBe(expected);
 		});
 	});
+
+	describe('toExist', () => {
+		it('should not throw an error when the array exists', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			expect.toExist();
+		});
+
+		it('should throw an error when the array is undefined', () => {
+			let array: Array<number>;
+			const expect = new Expectation(array);
+
+			throwsError(() => expect.toExist());
+		});
+	});
+
+	describe('toNotExist', () => {
+		it('should not throw an error when the array is undefined', () => {
+			let array: Array<number>;
+			const expect = new Expectation(array);
+
+			expect.toNotExist();
+		});
+
+		it('should throw an error when the array exists', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			throwsError(() => expect.toNotExist());
+		});
+	});
 });

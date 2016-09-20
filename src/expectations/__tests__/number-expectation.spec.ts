@@ -29,4 +29,34 @@ describe('NumberExpectation', () => {
 			throwsError(() => expect.toNotBe(100));
 		});
 	});
+
+	describe('toExist', () => {
+		it('should not throw an error when the number exists', () => {
+			const expect = new Expectation(100);
+
+			expect.toExist();
+		});
+
+		it('should throw an error when the number is undefined', () => {
+			let num: number;
+			const expect = new Expectation(num);
+
+			throwsError(() => expect.toExist());
+		});
+	});
+
+	describe('toNotExist', () => {
+		it('should not throw an error when the number is undefined', () => {
+			let num: number;
+			const expect = new Expectation(num);
+
+			expect.toNotExist();
+		});
+
+		it('should throw an error when the number exists', () => {
+			const expect = new Expectation(100);
+
+			throwsError(() => expect.toNotExist());
+		});
+	});
 });

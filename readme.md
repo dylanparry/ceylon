@@ -61,6 +61,10 @@ Outputs optional `message` in case of a failed assertion.
 ### toExist
 
 ```typescript
+expect(object: any[]).toExist(message?: string): void;
+expect(object: boolean).toExist(message?: string): void;
+expect(object: number).toExist(message?: string): void;
+expect(object: string).toExist(message?: string): void;
 expect(object: Object).toExist(message?: string): void;
 ```
 
@@ -71,6 +75,10 @@ Outputs optional `message` in case of a failed assertion.
 ### toNotExist
 
 ```typescript
+expect(object: any[]).toNotExist(message?: string): void;
+expect(object: boolean).toNotExist(message?: string): void;
+expect(object: number).toNotExist(message?: string): void;
+expect(object: string).toNotExist(message?: string): void;
 expect(object: Object).toNotExist(message?: string): void;
 ```
 
