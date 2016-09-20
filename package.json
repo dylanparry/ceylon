@@ -36,7 +36,7 @@
   },
   "scripts": {
     "pretest": "rimraf ./temp && typings install && tsc --target ES5 --outDir ./temp",
-    "test": "mocha ./temp/tests/**/*.spec.js",
+    "test": "mocha ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js",
     "posttest": "rimraf ./temp",
     "prepublish": "rimraf ./lib && typings install && tsc --target ES5 --outDir ./lib --declaration ./src/index.ts ./typings/index.d.ts"
   },
