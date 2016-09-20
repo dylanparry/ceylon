@@ -8,11 +8,6 @@ import StringExpectation from './expectations/string-expectation';
 type IExpectParameterTypes = Array<any> | boolean | Function | number | string | Object;
 type IExpectationReturnTypes = ArrayExpectation | BooleanExpectation | FunctionExpectation | NumberExpectation | StringExpectation | ObjectExpectation;
 
-/**
- * Create a new Expectation
- *
- * @param sut The system under test
- */
 function expect(sut: Array<any>): ArrayExpectation;
 function expect(sut: boolean): BooleanExpectation;
 function expect(sut: Function): FunctionExpectation;

@@ -25,7 +25,7 @@
     <Content Include="package.json" />
     <Content Include="tslint.json" />
     <Content Include="typings.json" />
-    <Content Include="readme.md" />
+    <Content Include="README.md" />
     <Content Include="tsconfig.json" />
     <TypeScriptCompile Include="src\expectation.ts" />
     <TypeScriptCompile Include="src\expectations\array-expectation.ts" />

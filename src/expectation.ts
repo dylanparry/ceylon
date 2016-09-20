@@ -1,3 +1,5 @@
+import * as deepEqual from 'deep-equal';
+
 abstract class Expectation<T> {
 	protected actual: T;
 
@@ -5,13 +7,7 @@ abstract class Expectation<T> {
 		this.actual = actual;
 	}
 
-	/**
-	 * Assert that the SUT is strictly equal to the expected value (=== comparison)
-	 *
-	 * @param value The expected value
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toBe(value: T, message?: string): void {
+	protected toBe(value: T, message?: string): void {
 		if (this.actual !== value) {
 			const error = new Error(message || `Expected "${this.actual}" to be "${value}"`);
 			error['actual'] = this.actual;
@@ -22,39 +18,91 @@ abstract class Expectation<T> {
 		}
 	}
 
-	/**
-	 * Assert that the SUT is not strictly equal to the expected value (!== comparison)
-	 *
-	 * @param value The value that should not match
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toNotBe(value: T, message?: string): void {
+	protected toNotBe(value: T, message?: string): void {
 		if (this.actual === value) {
 			throw new Error(message || `Expected "${this.actual}" to not be "${value}"`);
 		}
 	}
 
-	/**
-	 * Assert that the SUT is not undefined
-	 *
-	 * @param [message] The message to output in case of a failed assertion
-	 *
-	 */
-	public toExist(message?: string) {
+	protected toEqual(expected: Object, message?: string): void {
+		if (!deepEqual(this.actual, expected, { strict: true })) {
+			const error = new Error(message || 'Expected objects to be equal');
+			error['actual'] = this.actual;
+			error['expected'] = expected;
+			error['showDiff'] = true;
+
+			throw error;
+		}
+	}
+
+	protected toNotEqual(expected: Object, message?: string): void {
+		if (deepEqual(this.actual, expected, { strict: true })) {
+			throw new Error(message || 'Expected objects to be not equal');
+		}
+	}
+
+	protected toExist(message?: string): void {
 		if (typeof this.actual === 'undefined') {
 			throw new Error(message || `Expected object to exist"`);
 		}
 	}
 
-	/**
-	 * Assert that the SUT is undefined
-	 *
-	 * @param [message] The message to output in case of a failed assertion
-	 *
-	 */
-	public toNotExist(message?: string) {
+	protected toNotExist(message?: string): void {
 		if (typeof this.actual !== 'undefined') {
 			throw new Error(message || `Expected object to not exist"`);
+		}
+	}
+
+	protected toThrow(error?: Function | string, message?: string): void {
+		let functionThrew = false;
+
+		try {
+			if (typeof this.actual === 'function') {
+				(this.actual as any)();
+			}
+		}
+		catch (e) {
+			if (typeof error !== 'undefined') {
+				switch (typeof error) {
+					// If the error is an instance of the error param
+					case 'function':
+						if (e instanceof <any>error) {
+							functionThrew = true;
+						}
+						break;
+
+					// If the error message matches the error param
+					case 'string':
+						if (e !== error) {
+							functionThrew = true;
+						}
+						break;
+				}
+			}
+			else {
+				functionThrew = true;
+			}
+		}
+
+		if (!functionThrew) {
+			throw new Error(message || 'Expected function to throw an error');
+		}
+	}
+
+	protected toNotThrow(message?: string): void {
+		let functionThrew = false;
+
+		try {
+			if (typeof this.actual === 'function') {
+				(this.actual as any)();
+			}
+		}
+		catch (e) {
+			functionThrew = true;
+		}
+
+		if (functionThrew) {
+			throw new Error(message || 'Expected function to not throw an error');
 		}
 	}
 }

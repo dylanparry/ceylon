@@ -7,32 +7,27 @@ export default class ObjectExpectation extends Expectation<Object> {
 		super(actual);
 	}
 
-	/**
-	 * Asserts that the SUT is deeply equal to the expected object
-	 *
-	 * @param expected The expected object
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toEqual(expected: Object, message?: string): void {
-		if (!deepEqual(this.actual, expected, { strict: true })) {
-			const error = new Error(message || 'Expected objects to be equal');
-			error['actual'] = this.actual;
-			error['expected'] = expected;
-			error['showDiff'] = true;
-
-			throw error;
-		}
+	public toBe(object: Object, message?: string): void {
+		super.toBe(object, message);
 	}
 
-	/**
-	 * Asserts that the SUT is not deeply equal to the expected object
-	 *
-	 * @param expected The expected object
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toNotEqual(expected: Object, message?: string): void {
-		if (deepEqual(this.actual, expected, { strict: true })) {
-			throw new Error(message || 'Expected objects to be not equal');
-		}
+	public toNotBe(object: Object, message?: string): void {
+		super.toNotBe(object, message);
+	}
+
+	public toEqual(object: Object, message?: string): void {
+		super.toEqual(object, message);
+	}
+
+	public toNotEqual(object: Object, message?: string): void {
+		super.toNotEqual(object, message);
+	}
+
+	public toExist(message?: string): void {
+		super.toExist(message);
+	}
+
+	public toNotExist(message?: string): void {
+		super.toNotExist(message);
 	}
 }

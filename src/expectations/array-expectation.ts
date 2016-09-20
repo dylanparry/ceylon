@@ -2,37 +2,32 @@
 
 import Expectation from '../expectation';
 
-export default class ArrayExpectation extends Expectation<Array<any>> {
-	public constructor(actual: Array<any>) {
+export default class ArrayExpectation extends Expectation<any[]> {
+	public constructor(actual: any[]) {
 		super(actual);
 	}
 
-	/**
-	 * Asserts that the SUT is deeply equal to the expected object
-	 *
-	 * @param expected The expected object
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toEqual(expected: Array<any>, message?: string): void {
-		if (!deepEqual(this.actual, expected, { strict: true })) {
-			const error = new Error(message || 'Expected arrays to be equal');
-			error['actual'] = this.actual;
-			error['expected'] = expected;
-			error['showDiff'] = true;
-
-			throw error;
-		}
+	public toBe(array: any[], message?: string): void {
+		super.toBe(array, message);
 	}
 
-	/**
-	 * Asserts that the SUT is not deeply equal to the expected object
-	 *
-	 * @param expected The expected object
-	 * @param [message] The message to output in case of a failed assertion
-	 */
-	public toNotEqual(expected: Array<any>, message?: string): void {
-		if (deepEqual(this.actual, expected, { strict: true })) {
-			throw new Error(message || 'Expected arrays to be not equal');
-		}
+	public toNotBe(array: any[], message?: string): void {
+		super.toNotBe(array, message);
+	}
+
+	public toEqual(array: any[], message?: string): void {
+		super.toEqual(array, message);
+	}
+
+	public toNotEqual(array: any[], message?: string): void {
+		super.toNotEqual(array, message);
+	}
+
+	public toExist(message?: string): void {
+		super.toExist(message);
+	}
+
+	public toNotExist(message?: string): void {
+		super.toNotExist(message);
 	}
 }

@@ -3,22 +3,22 @@ import Expectation from '../../src/expectations/array-expectation';
 
 describe('ArrayExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when arrays do not share the same reference', () => {
+		it('should not throw an error when arrays share the same reference', () => {
 			const actual = [1, 2, 3];   // Two different arrays
-			const expected = [1, 2, 3]; // containing the same values
+			const expected = actual; // containing the same values
 
 			const expect = new Expectation(actual);
 
-			expect.toNotBe(expected);
+			expect.toBe(expected);
 		});
 
-		it('should throw an error when arrays share the same reference', () => {
+		it('should throw an error when arrays do not share the same reference', () => {
 			const actual = [1, 2, 3];
-			const expected = actual;
+			const expected = [1, 2, 3];
 
 			const expect = new Expectation(actual);
 
-			throwsError(() => expect.toNotBe(expected));
+			throwsError(() => expect.toBe(expected));
 		});
 	});
 
