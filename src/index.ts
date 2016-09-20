@@ -1,12 +1,10 @@
+import Expectation from './expectation';
 import ArrayExpectation from './expectations/array-expectation';
 import BooleanExpectation from './expectations/boolean-expectation';
 import FunctionExpectation from './expectations/function-expectation';
 import NumberExpectation from './expectations/number-expectation';
 import ObjectExpectation from './expectations/object-expectation';
 import StringExpectation from './expectations/string-expectation';
-
-type IExpectParameterTypes = Array<any> | boolean | Function | number | string | Object;
-type IExpectationReturnTypes = ArrayExpectation | BooleanExpectation | FunctionExpectation | NumberExpectation | StringExpectation | ObjectExpectation;
 
 function expect(sut: Array<any>): ArrayExpectation;
 function expect(sut: boolean): BooleanExpectation;
@@ -15,7 +13,7 @@ function expect(sut: number): NumberExpectation;
 function expect(sut: string): StringExpectation;
 function expect(sut: Object): ObjectExpectation;
 
-function expect(sut: IExpectParameterTypes): IExpectationReturnTypes {
+function expect(sut: Object): Expectation<Object> {
 	// Check for Array
 	if (sut instanceof Array) {
 		return new ArrayExpectation(sut);
