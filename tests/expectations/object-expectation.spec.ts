@@ -10,7 +10,6 @@ describe('ObjectExpectation', () => {
 			const expect = new Expectation(actual);
 
 			expect.toBe(expected);
-
 		});
 
 		it('should throw an error when strings do not share the same reference', () => {
@@ -70,6 +69,34 @@ describe('ObjectExpectation', () => {
 			const expect = new Expectation({});
 
 			throwsError(() => expect.toNotExist());
+		});
+	});
+
+	describe('toEqual', () => {
+		it('should not throw an error when the two objects are equal', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			expect.toEqual({ name: 'Object', value: 1 });
+		});
+
+		it('should throw an error when the two objects are not equal', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			throwsError(() => expect.toEqual({ name: 'Object', value: 2 }));
+		});
+	});
+
+	describe('toNotEqual', () => {
+		it('should not throw an error when the two objects are different', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			expect.toNotEqual({ name: 'Object', value: '1' });
+		});
+
+		it('should throw an error when the two objects are equal', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			throwsError(() => expect.toNotEqual({ name: 'Object', value: 1 }));
 		});
 	});
 });

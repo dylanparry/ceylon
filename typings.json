@@ -1,5 +1,6 @@
 {
   "globalDevDependencies": {
+    "deep-equal": "registry:dt/deep-equal#0.0.0+20160316155526",
     "mocha": "registry:dt/mocha#2.2.5+20160720003353"
   }
 }

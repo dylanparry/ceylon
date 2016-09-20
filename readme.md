@@ -58,6 +58,26 @@ Asserts that `object` is not strictly equal to `value` using `!==`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toEqual
+
+```typescript
+expect(object: Object).toEqual(value: Object, message?: string): void;
+```
+
+Asserts that the `object` is deeply equal to `value`. This allows comparison of objects that do not share the same reference, but are otherwise equal.
+
+Outputs optional `message` in case of a failed assertion.
+
+### toNotEqual
+
+```typescript
+expect(object: Object).toNotEqual(value: Object, message?: string): void;
+```
+
+Asserts that the `object` is not deeply equal to `value`.
+
+Outputs optional `message` in case of a failed assertion.
+
 ### toExist
 
 ```typescript
