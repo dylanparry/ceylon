@@ -4,19 +4,19 @@ import Expectation from '../../src/expectations/function-expectation';
 describe('FunctionExpectation', () => {
 	describe('toThrow', () => {
 		it('should not throw when the tested function throws', () => {
-			const expect = new Expectation(() => { throw new Error() });
+			const expect = new Expectation(() => { throw new Error(); });
 
 			expect.toThrow();
 		});
 
 		it('should not throw when the tested function throws the specified message', () => {
-			const expect = new Expectation(() => { throw new Error('An Error') });
+			const expect = new Expectation(() => { throw new Error('An Error'); });
 
 			expect.toThrow('An Error');
 		});
 
 		it('should not throw when the tested function throws the specified type', () => {
-			const expect = new Expectation(() => { throw new ReferenceError() });
+			const expect = new Expectation(() => { throw new ReferenceError(); });
 
 			expect.toThrow(ReferenceError);
 		});
@@ -36,7 +36,7 @@ describe('FunctionExpectation', () => {
 		});
 
 		it('should throw when the tested function throws', () => {
-			const expect = new Expectation(() => { throw new Error() });
+			const expect = new Expectation(() => { throw new Error(); });
 
 			throwsError(() => expect.toNotThrow());
 		});

@@ -1,25 +1,23 @@
-﻿import * as deepEqual from 'deep-equal';
+﻿import Expectation from '../expectation';
 
-import Expectation from '../expectation';
-
-export default class ArrayExpectation extends Expectation<any[]> {
-	public constructor(actual: any[]) {
+export default class ArrayExpectation extends Expectation<Object[]> {
+	public constructor(actual: Object[]) {
 		super(actual);
 	}
 
-	public toBe(array: any[], message?: string): void {
+	public toBe(array: Object[], message?: string): void {
 		super.toBe(array, message);
 	}
 
-	public toNotBe(array: any[], message?: string): void {
+	public toNotBe(array: Object[], message?: string): void {
 		super.toNotBe(array, message);
 	}
 
-	public toEqual(array: any[], message?: string): void {
+	public toEqual(array: Object[], message?: string): void {
 		super.toEqual(array, message);
 	}
 
-	public toNotEqual(array: any[], message?: string): void {
+	public toNotEqual(array: Object[], message?: string): void {
 		super.toNotEqual(array, message);
 	}
 

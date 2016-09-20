@@ -10,11 +10,13 @@ const checkType = (sut: Object, expected: Function, message: string): void => {
 	if (sut instanceof expected === false) {
 		throw new Error(message);
 	}
-}
+};
+
+type IDataType = number[] | boolean | number | string | Function | Object;
 
 interface IExpectationTest {
-	data: any;
-	expected: any;
+	data: IDataType;
+	expected: any; // tslint:disable-line
 }
 
 const tests: IExpectationTest[] = [
@@ -27,7 +29,7 @@ const tests: IExpectationTest[] = [
 		expected: BooleanExpectation,
 	},
 	{
-		data: function () { return true; },
+		data: function (): boolean { return true; },
 		expected: FunctionExpectation,
 	},
 	{

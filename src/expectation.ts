@@ -66,7 +66,7 @@ abstract class Expectation<T> {
 				switch (typeof error) {
 					// If the error is an instance of the error param
 					case 'function':
-						if (e instanceof <any>error) {
+						if (e instanceof <Function> error) {
 							functionThrew = true;
 						}
 						break;
@@ -77,6 +77,9 @@ abstract class Expectation<T> {
 							functionThrew = true;
 						}
 						break;
+
+					default:
+						return;
 				}
 			}
 			else {

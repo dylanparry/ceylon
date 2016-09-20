@@ -1,6 +1,4 @@
-﻿import * as deepEqual from 'deep-equal';
-
-import Expectation from '../expectation';
+﻿import Expectation from '../expectation';
 
 export default class ObjectExpectation extends Expectation<Object> {
 	public constructor(actual: Object) {

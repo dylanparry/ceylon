@@ -37,8 +37,8 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		booleans.forEach((boolean: boolean) => {
-			it(`should not throw when the value is ${boolean}`, () => {
+		booleans.forEach((bool: boolean) => {
+			it(`should not throw when the value is ${bool}`, () => {
 				const expect = new Expectation(true);
 
 				expect.toExist();
@@ -61,8 +61,8 @@ describe('BooleanExpectation', () => {
 			expect.toNotExist();
 		});
 
-		booleans.forEach((boolean: boolean) => {
-			it(`should throw when the value is ${boolean}`, () => {
+		booleans.forEach((bool: boolean) => {
+			it(`should throw when the value is ${bool}`, () => {
 				const expect = new Expectation(true);
 
 				throwsError(() => expect.toNotExist());

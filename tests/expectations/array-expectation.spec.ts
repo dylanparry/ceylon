@@ -1,7 +1,7 @@
 ﻿import { throwsError } from './helpers';
 import Expectation from '../../src/expectations/array-expectation';
 
-const arrays: any[] = [
+const arrays: number[][] = [
 	[1, 2, 3],
 	[],
 	null,
@@ -39,8 +39,8 @@ describe('ArrayExpectation', () => {
 		});
 
 		it('should not throw when arrays are the same object', () => {
-			const actual = [1, 2, 3];   // Two different arrays
-			const expected = [1, 2, 3]; // containing the same values
+			const actual = [1, 2, 3];
+			const expected = [1, 2, 3];
 
 			const expect = new Expectation(actual);
 
@@ -49,7 +49,7 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		arrays.forEach((array: any[]) => {
+		arrays.forEach((array: number[]) => {
 			it(`should not throw when array is ${JSON.stringify(array)}`, () => {
 				const expect = new Expectation(array);
 
@@ -58,7 +58,7 @@ describe('ArrayExpectation', () => {
 		});
 
 		it('should throw when array is undefined', () => {
-			let array: Array<number>;
+			let array: number[];
 			const expect = new Expectation(array);
 
 			throwsError(() => expect.toExist());
@@ -67,13 +67,13 @@ describe('ArrayExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw when array is undefined', () => {
-			let array: Array<number>;
+			let array: number[];
 			const expect = new Expectation(array);
 
 			expect.toNotExist();
 		});
 
-		arrays.forEach((array: any[]) => {
+		arrays.forEach((array: number[]) => {
 			it(`should throw array is ${JSON.stringify(array)}`, () => {
 				const expect = new Expectation(array);
 

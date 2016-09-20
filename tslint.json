@@ -75,7 +75,7 @@
     "radix": false,
     "semicolon": [
       true,
-      "never"
+      "always"
     ],
     "switch-default": true,
     "trailing-comma": [
@@ -114,9 +114,7 @@
       }
     ],
     "use-strict": [
-      true,
-      "check-function",
-      "check-module"
+      false
     ],
     "variable-name": [
       true,
