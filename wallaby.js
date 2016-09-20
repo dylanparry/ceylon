@@ -1,7 +1,7 @@
 ﻿module.exports = function (wallaby) {
 	var typescriptOptions = {
 		module: 'commonjs',
-		target: 'es6',
+		target: 'es5',
 		transpileOnly: true,
 	};
 

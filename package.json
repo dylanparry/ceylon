@@ -31,7 +31,7 @@
     "typings": "^1.3.3"
   },
   "scripts": {
-    "pretest": "typings install && tsc --outDir ./temp --project ./src",
+    "pretest": "typings install && tsc --target ES5 --outDir ./temp --project ./src",
     "test": "mocha ./temp/**/*.spec.js ./temp/**/**/*.spec.js",
     "posttest": "rimraf ./temp"
   }
