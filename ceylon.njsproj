@@ -42,7 +42,6 @@
     <TypeScriptCompile Include="tests\expectations\object-expectation.spec.ts" />
     <TypeScriptCompile Include="src\index.ts" />
     <TypeScriptCompile Include="tests\expectations\string-expectation.spec.ts" />
-    <TypeScriptCompile Include="src\typings.d.ts" />
     <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\rimraf\index.d.ts" />
     <TypeScriptCompile Include="typings\globals\typescript\index.d.ts" />
