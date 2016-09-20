@@ -24,19 +24,19 @@ abstract class Expectation<T> {
 		}
 	}
 
-	protected toEqual(expected: Object, message?: string): void {
-		if (!deepEqual(this.actual, expected, { strict: true })) {
+	protected toEqual(object: Object, message?: string): void {
+		if (!deepEqual(this.actual, object, { strict: true })) {
 			const error = new Error(message || 'Expected objects to be equal');
 			error['actual'] = this.actual;
-			error['expected'] = expected;
+			error['expected'] = object;
 			error['showDiff'] = true;
 
 			throw error;
 		}
 	}
 
-	protected toNotEqual(expected: Object, message?: string): void {
-		if (deepEqual(this.actual, expected, { strict: true })) {
+	protected toNotEqual(object: Object, message?: string): void {
+		if (deepEqual(this.actual, object, { strict: true })) {
 			throw new Error(message || 'Expected objects to be not equal');
 		}
 	}
