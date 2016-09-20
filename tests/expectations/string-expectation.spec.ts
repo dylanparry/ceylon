@@ -46,8 +46,8 @@ describe('StringExpectation', () => {
 		});
 
 		it('should throw when value is undefined', () => {
-			let string: string;
-			const expect = new Expectation(string);
+			let str: string;
+			const expect = new Expectation(str);
 
 			throwsError(() => expect.toExist());
 		});

@@ -29,7 +29,7 @@ const tests: IExpectationTest[] = [
 		expected: BooleanExpectation,
 	},
 	{
-		data: function (): boolean { return true; },
+		data: Math.random,
 		expected: FunctionExpectation,
 	},
 	{
