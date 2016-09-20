@@ -58,28 +58,23 @@ abstract class Expectation<T> {
 
 		try {
 			if (typeof this.actual === 'function') {
-				(this.actual as any)();
+				(this.actual as any)(); // tslint:disable-line
 			}
 		}
 		catch (e) {
 			if (typeof error !== 'undefined') {
-				switch (typeof error) {
+				// If the error param in an Error type
+				if (typeof error === 'function') {
 					// If the error is an instance of the error param
-					case 'function':
-						if (e instanceof <Function> error) {
+					if (e instanceof <Function> error) {
 							functionThrew = true;
 						}
-						break;
-
-					// If the error message matches the error param
-					case 'string':
-						if (e !== error) {
-							functionThrew = true;
-						}
-						break;
-
-					default:
-						return;
+				}
+				// If the error param is a string
+				else if (typeof error === 'string') {
+					if (e !== error) {
+						functionThrew = true;
+					}
 				}
 			}
 			else {
@@ -97,7 +92,7 @@ abstract class Expectation<T> {
 
 		try {
 			if (typeof this.actual === 'function') {
-				(this.actual as any)();
+				(this.actual as any)(); // tslint:disable-line
 			}
 		}
 		catch (e) {
