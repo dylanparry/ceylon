@@ -4,6 +4,7 @@
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "readmeFilename": "readme.md",
+  "main": "src/index.ts",
   "author": {
     "name": "Dylan Parry",
     "email": "me@dylanparry.com"
