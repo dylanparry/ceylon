@@ -49,13 +49,13 @@ const tests: IExpectationTest[] = [
 ];
 
 describe('expect', () => {
-	tests.forEach((test: IExpectationTest) => {
-		describe(`expect(${typeof test.data === 'function' ? 'Function' : JSON.stringify(test.data)})`, () => {
-			it(`should create ${test.expected.name}`, () => {
-				const sut = expect(test.data);
+	tests.forEach(({data, expected}: IExpectationTest) => {
+		const dataType = data instanceof Array ? 'array' : typeof data;
 
-				checkType(sut, test.expected, `Expected ${test.expected.name}`);
-			});
+		it(`should create ${expected.name} when passed ${dataType}`, () => {
+			const sut = expect(data);
+
+			checkType(sut, expected, `Expected ${expected.name}`);
 		});
 	});
 });
