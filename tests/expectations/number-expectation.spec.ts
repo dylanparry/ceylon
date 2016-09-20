@@ -39,17 +39,17 @@ describe('NumberExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		numbers.forEach((num: number) => {
-			it(`should not throw when value is ${num}`, () => {
-				const expect = new Expectation(num);
+		numbers.forEach((sut: number) => {
+			it(`should not throw when value is ${sut}`, () => {
+				const expect = new Expectation(sut);
 
 				expect.toExist();
 			});
 		});
 
 		it('should throw when value is undefined', () => {
-			let num: number;
-			const expect = new Expectation(num);
+			let sut: number;
+			const expect = new Expectation(sut);
 
 			throwsError(() => expect.toExist());
 		});
@@ -57,15 +57,15 @@ describe('NumberExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw when value is undefined', () => {
-			let num: number;
-			const expect = new Expectation(num);
+			let sut: number;
+			const expect = new Expectation(sut);
 
 			expect.toNotExist();
 		});
 
-		numbers.forEach((num: number) => {
-			it(`should throw when value is ${num}`, () => {
-				const expect = new Expectation(num);
+		numbers.forEach((sut: number) => {
+			it(`should throw when value is ${sut}`, () => {
+				const expect = new Expectation(sut);
 
 				throwsError(() => expect.toNotExist());
 			});

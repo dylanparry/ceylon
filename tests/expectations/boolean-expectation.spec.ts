@@ -37,8 +37,8 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		booleans.forEach((bool: boolean) => {
-			it(`should not throw when the value is ${bool}`, () => {
+		booleans.forEach((sut: boolean) => {
+			it(`should not throw when the value is ${sut}`, () => {
 				const expect = new Expectation(true);
 
 				expect.toExist();
@@ -46,8 +46,8 @@ describe('BooleanExpectation', () => {
 		});
 
 		it('should throw when the value is undefined', () => {
-			let bool: boolean;
-			const expect = new Expectation(bool);
+			let sut: boolean;
+			const expect = new Expectation(sut);
 
 			throwsError(() => expect.toExist());
 		});
@@ -55,14 +55,14 @@ describe('BooleanExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw when the value is undefined', () => {
-			let bool: boolean;
-			const expect = new Expectation(bool);
+			let sut: boolean;
+			const expect = new Expectation(sut);
 
 			expect.toNotExist();
 		});
 
-		booleans.forEach((bool: boolean) => {
-			it(`should throw when the value is ${bool}`, () => {
+		booleans.forEach((sut: boolean) => {
+			it(`should throw when the value is ${sut}`, () => {
 				const expect = new Expectation(true);
 
 				throwsError(() => expect.toNotExist());

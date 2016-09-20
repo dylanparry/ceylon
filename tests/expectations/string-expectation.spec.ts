@@ -37,17 +37,17 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		strings.forEach((str: string) => {
-			it(`should not throw when value is ${JSON.stringify(str)}`, () => {
-				const expect = new Expectation(str);
+		strings.forEach((sut: string) => {
+			it(`should not throw when value is ${JSON.stringify(sut)}`, () => {
+				const expect = new Expectation(sut);
 
 				expect.toExist();
 			});
 		});
 
 		it('should throw when value is undefined', () => {
-			let str: string;
-			const expect = new Expectation(str);
+			let sut: string;
+			const expect = new Expectation(sut);
 
 			throwsError(() => expect.toExist());
 		});
@@ -55,15 +55,15 @@ describe('StringExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw when value is undefined', () => {
-			let str: string;
-			const expect = new Expectation(str);
+			let sut: string;
+			const expect = new Expectation(sut);
 
 			expect.toNotExist();
 		});
 
-		strings.forEach((str: string) => {
-			it(`should throw when value is is ${JSON.stringify(str)}`, () => {
-				const expect = new Expectation(str);
+		strings.forEach((sut: string) => {
+			it(`should throw when value is is ${JSON.stringify(sut)}`, () => {
+				const expect = new Expectation(sut);
 
 				throwsError(() => expect.toNotExist());
 			});

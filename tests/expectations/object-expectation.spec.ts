@@ -10,56 +10,56 @@ const objects: Object[] = [
 describe('ObjectExpectation', () => {
 	describe('toBe()', () => {
 		it('should not throw when objects are the same object', () => {
-			const actual = { value: 1 };
-			const expected = actual;
+			const sut = { value: 1 };
+			const object = sut;
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			expect.toBe(expected);
+			expect.toBe(object);
 		});
 
 		it('should throw when objects are different objects', () => {
-			const actual = { value: 1 };
-			const expected = { value: 1 };
+			const sut = { value: 1 };
+			const object = { value: 1 };
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toBe(expected));
+			throwsError(() => expect.toBe(object));
 		});
 	});
 
 	describe('toNotBe()', () => {
 		it('should not throw when objects are different objects', () => {
-			const actual = { value: 1 };
-			const expected = { value: 1 };
+			const sut = { value: 1 };
+			const object = { value: 1 };
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			expect.toNotBe(expected);
+			expect.toNotBe(object);
 		});
 
 		it('should throw when objects are the same object', () => {
-			const actual = { value: 1 };
-			const expected = actual;
+			const sut = { value: 1 };
+			const object = sut;
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toNotBe(expected));
+			throwsError(() => expect.toNotBe(object));
 		});
 	});
 
 	describe('toExist', () => {
-		objects.forEach((object: Object) => {
-			it(`should not throw when object is ${JSON.stringify(object)}`, () => {
-				const expect = new Expectation(true);
+		objects.forEach((sut: Object) => {
+			it(`should not throw when object is ${JSON.stringify(sut)}`, () => {
+				const expect = new Expectation(sut);
 
 				expect.toExist();
 			});
 		});
 
 		it('should throw when object is undefined', () => {
-			let object: Object;
-			const expect = new Expectation(object);
+			let sut: Object;
+			const expect = new Expectation(sut);
 
 			throwsError(() => expect.toExist());
 		});
@@ -67,15 +67,15 @@ describe('ObjectExpectation', () => {
 
 	describe('toNotExist', () => {
 		it('should not throw when object is undefined', () => {
-			let object: Object;
-			const expect = new Expectation(object);
+			let sut: Object;
+			const expect = new Expectation(sut);
 
 			expect.toNotExist();
 		});
 
-		objects.forEach((object: Object) => {
-			it(`should throw when object is ${JSON.stringify(object)}`, () => {
-				const expect = new Expectation(true);
+		objects.forEach((sut: Object) => {
+			it(`should throw when object is ${JSON.stringify(sut)}`, () => {
+				const expect = new Expectation(sut);
 
 				throwsError(() => expect.toNotExist());
 			});

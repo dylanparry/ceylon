@@ -10,41 +10,41 @@ const arrays: number[][] = [
 describe('ArrayExpectation', () => {
 	describe('toBe()', () => {
 		it('should not throw when arrays are the same object', () => {
-			const actual = [1, 2, 3];
-			const expected = actual;
+			const sut = [1, 2, 3];
+			const array = sut;
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			expect.toBe(expected);
+			expect.toBe(array);
 		});
 
 		it('should throw when arrays are different objects', () => {
-			const actual = [1, 2, 3];
-			const expected = [1, 2, 3];
+			const sut = [1, 2, 3];
+			const array = [1, 2, 3];
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toBe(expected));
+			throwsError(() => expect.toBe(array));
 		});
 	});
 
 	describe('toNotBe()', () => {
 		it('should throw when arrays are different objects', () => {
-			const actual = [1, 2, 3];
-			const expected = actual;
+			const sut = [1, 2, 3];
+			const array = sut;
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toNotBe(expected));
+			throwsError(() => expect.toNotBe(array));
 		});
 
 		it('should not throw when arrays are the same object', () => {
-			const actual = [1, 2, 3];
-			const expected = [1, 2, 3];
+			const sut = [1, 2, 3];
+			const array = [1, 2, 3];
 
-			const expect = new Expectation(actual);
+			const expect = new Expectation(sut);
 
-			expect.toNotBe(expected);
+			expect.toNotBe(array);
 		});
 	});
 
