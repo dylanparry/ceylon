@@ -1,0 +1,6 @@
+language: node_js
+node_js:
+- 'node'
+matrix:
+  fast_finish: true
+sudo: false
