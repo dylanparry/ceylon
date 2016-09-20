@@ -7,10 +7,10 @@ indent_size = 4
 indent_style = tab
 insert_final_newline = true
 trim_trailing_whitespace = true
-quote_type = 'single'
 
 [*.{xml,json}]
 indent_size = 2
+quote_type = 'single'
 
 [.travis.yml]
 indent_size = 2
