@@ -1,4 +1,5 @@
-﻿import Expectation from '../boolean-expectation';
+﻿import { throwsError } from './helpers';
+import Expectation from '../boolean-expectation';
 
 describe('BooleanExpectation', () => {
 	describe('toBe()', () => {
@@ -11,18 +12,7 @@ describe('BooleanExpectation', () => {
 		it('should throw an error when boolean values do not match', () => {
 			const expect = new Expectation(true);
 
-			let threwAnError = false;
-
-			try {
-				expect.toBe(false);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toBe(false));
 		});
 	});
 
@@ -36,18 +26,7 @@ describe('BooleanExpectation', () => {
 		it('should throw an error when boolean values match', () => {
 			const expect = new Expectation(true);
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotBe(true);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotBe(true));
 		});
 	});
 });

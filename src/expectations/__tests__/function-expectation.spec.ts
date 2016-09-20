@@ -1,4 +1,5 @@
-﻿import Expectation from '../function-expectation';
+﻿import { throwsError } from './helpers';
+import Expectation from '../function-expectation';
 
 describe('FunctionExpectation', () => {
 	describe('toThrow', () => {
@@ -23,18 +24,7 @@ describe('FunctionExpectation', () => {
 		it('should throw an error when the tested function does not throw an error', () => {
 			const expect = new Expectation(() => true);
 
-			let threwAnError = false;
-
-			try {
-				expect.toThrow();
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toThrow());
 		});
 	});
 
@@ -48,18 +38,7 @@ describe('FunctionExpectation', () => {
 		it('should throw an error when the tested function throws an error', () => {
 			const expect = new Expectation(() => { throw new Error() });
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotThrow();
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotThrow());
 		});
 	});
 });

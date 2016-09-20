@@ -1,4 +1,5 @@
-﻿import Expectation from '../string-expectation';
+﻿import { throwsError } from './helpers';
+import Expectation from '../string-expectation';
 
 describe('StringExpectation', () => {
 	describe('toBe()', () => {
@@ -11,18 +12,7 @@ describe('StringExpectation', () => {
 		it('should throw an error when strings do not match', () => {
 			const expect = new Expectation('string');
 
-			let threwAnError = false;
-
-			try {
-				expect.toBe('not the same');
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toBe('Not the same'));
 		});
 	});
 
@@ -36,18 +26,7 @@ describe('StringExpectation', () => {
 		it('should throw an error when strings match', () => {
 			const expect = new Expectation('string');
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotBe('string');
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotBe('string'));
 		});
 	});
 });

@@ -1,4 +1,5 @@
-﻿import Expectation from '../array-expectation';
+﻿import { throwsError } from './helpers';
+import Expectation from '../array-expectation';
 
 describe('ArrayExpectation', () => {
 	describe('toBe()', () => {
@@ -17,18 +18,7 @@ describe('ArrayExpectation', () => {
 
 			const expect = new Expectation(actual);
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotBe(expected);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotBe(expected));
 		});
 	});
 
@@ -39,18 +29,7 @@ describe('ArrayExpectation', () => {
 
 			const expect = new Expectation(actual);
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotBe(expected);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotBe(expected));
 		});
 
 		it('should not throw an error when array do not share the same reference', () => {

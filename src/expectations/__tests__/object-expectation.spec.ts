@@ -1,4 +1,5 @@
-﻿import Expectation from '../object-expectation';
+﻿import { throwsError } from './helpers';
+import Expectation from '../object-expectation';
 
 describe('ObjectExpectation', () => {
 	describe('toBe()', () => {
@@ -9,6 +10,7 @@ describe('ObjectExpectation', () => {
 			const expect = new Expectation(actual);
 
 			expect.toBe(expected);
+
 		});
 
 		it('should throw an error when strings do not share the same reference', () => {
@@ -17,18 +19,7 @@ describe('ObjectExpectation', () => {
 
 			const expect = new Expectation(actual);
 
-			let threwAnError = false;
-
-			try {
-				expect.toBe(expected);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toBe(expected));
 		});
 	});
 
@@ -48,18 +39,7 @@ describe('ObjectExpectation', () => {
 
 			const expect = new Expectation(actual);
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotBe(expected);
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotBe(expected));
 		});
 	});
 
@@ -73,18 +53,7 @@ describe('ObjectExpectation', () => {
 		it('should throw an error when the object is undefined', () => {
 			const expect = new Expectation(undefined);
 
-			let threwAnError = false;
-
-			try {
-				expect.toExist()
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toExist());
 		});
 	});
 
@@ -98,18 +67,7 @@ describe('ObjectExpectation', () => {
 		it('should throw an error when the object is undefined', () => {
 			const expect = new Expectation({});
 
-			let threwAnError = false;
-
-			try {
-				expect.toNotExist()
-			}
-			catch (e) {
-				threwAnError = true;
-			}
-
-			if (!threwAnError) {
-				throw new Error('Expected an error to be thrown');
-			}
+			throwsError(() => expect.toNotExist());
 		});
 	});
 });
