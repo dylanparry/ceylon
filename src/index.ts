@@ -41,11 +41,7 @@ function expect(sut: IExpectParameterTypes): IExpectationReturnTypes {
 		return new StringExpectation(sut);
 	}
 
-	// Lastly check for Object, important this is last!
-	if (typeof sut === 'object') {
-		return new ObjectExpectation(sut);
-	}
-
+	// Finally, if none of the above match use the generic ObjectExpectation
 	return new ObjectExpectation(undefined);
 };
 
