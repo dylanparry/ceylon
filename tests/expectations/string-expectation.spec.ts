@@ -1,15 +1,21 @@
 ﻿import { throwsError } from './helpers';
 import Expectation from '../../src/expectations/string-expectation';
 
+const strings: string[] = [
+	'I am a string',
+	'',
+	null,
+];
+
 describe('StringExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when strings match', () => {
+		it('should not throw when values are equal', () => {
 			const expect = new Expectation('string');
 
 			expect.toBe('string');
 		});
 
-		it('should throw an error when strings do not match', () => {
+		it('should throw when values are different', () => {
 			const expect = new Expectation('string');
 
 			throwsError(() => expect.toBe('Not the same'));
@@ -17,13 +23,13 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toNotBe()', () => {
-		it('should not throw an error when strings do not match', () => {
+		it('should not throw when values are different', () => {
 			const expect = new Expectation('string');
 
 			expect.toNotBe('different');
 		});
 
-		it('should throw an error when strings match', () => {
+		it('should throw when values are equal', () => {
 			const expect = new Expectation('string');
 
 			throwsError(() => expect.toNotBe('string'));
@@ -31,13 +37,15 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		it('should not throw an error when the string exists', () => {
-			const expect = new Expectation('string');
+		strings.forEach((string: string) => {
+			it(`should not throw when value is ${JSON.stringify(string)}`, () => {
+				const expect = new Expectation(string);
 
-			expect.toExist();
+				expect.toExist();
+			});
 		});
 
-		it('should throw an error when the string is undefined', () => {
+		it('should throw when value is undefined', () => {
 			let string: string;
 			const expect = new Expectation(string);
 
@@ -46,17 +54,19 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('should not throw an error when the string is undefined', () => {
+		it('should not throw when value is undefined', () => {
 			let string: string;
 			const expect = new Expectation(string);
 
 			expect.toNotExist();
 		});
 
-		it('should throw an error when the string exists', () => {
-			const expect = new Expectation('string');
+		strings.forEach((string: string) => {
+			it(`should throw when value is is ${JSON.stringify(string)}`, () => {
+				const expect = new Expectation(string);
 
-			throwsError(() => expect.toNotExist());
+				throwsError(() => expect.toNotExist());
+			});
 		});
 	});
 });

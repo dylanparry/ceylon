@@ -1,9 +1,15 @@
 ﻿import { throwsError } from './helpers';
 import Expectation from '../../src/expectations/object-expectation';
 
+const objects: Object[] = [
+	{},
+	{ name: 'Object' },
+	null,
+];
+
 describe('ObjectExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when objects share the same reference', () => {
+		it('should not throw when objects are the same object', () => {
 			const actual = { value: 1 };
 			const expected = actual;
 
@@ -12,9 +18,9 @@ describe('ObjectExpectation', () => {
 			expect.toBe(expected);
 		});
 
-		it('should throw an error when strings do not share the same reference', () => {
-			const actual = { value: 1 };   // Two different objects
-			const expected = { value: 1 }; // containing the same values
+		it('should throw when objects are different objects', () => {
+			const actual = { value: 1 };
+			const expected = { value: 1 };
 
 			const expect = new Expectation(actual);
 
@@ -23,7 +29,7 @@ describe('ObjectExpectation', () => {
 	});
 
 	describe('toNotBe()', () => {
-		it('should not throw an error when objects do not share the same reference', () => {
+		it('should not throw when objects are different objects', () => {
 			const actual = { value: 1 };
 			const expected = { value: 1 };
 
@@ -32,7 +38,7 @@ describe('ObjectExpectation', () => {
 			expect.toNotBe(expected);
 		});
 
-		it('should throw an error when strings share the same reference', () => {
+		it('should throw when objects are the same object', () => {
 			const actual = { value: 1 };
 			const expected = actual;
 
@@ -43,13 +49,15 @@ describe('ObjectExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		it('should not throw an error when the object exists', () => {
-			const expect = new Expectation({});
+		objects.forEach((object: Object) => {
+			it(`should not throw when object is ${JSON.stringify(object)}`, () => {
+				const expect = new Expectation(true);
 
-			expect.toExist();
+				expect.toExist();
+			});
 		});
 
-		it('should throw an error when the object is undefined', () => {
+		it('should throw when object is undefined', () => {
 			let object: Object;
 			const expect = new Expectation(object);
 
@@ -58,28 +66,30 @@ describe('ObjectExpectation', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('should not throw an error when the object is undefined', () => {
+		it('should not throw when object is undefined', () => {
 			let object: Object;
 			const expect = new Expectation(object);
 
 			expect.toNotExist();
 		});
 
-		it('should throw an error when the object exists', () => {
-			const expect = new Expectation({});
+		objects.forEach((object: Object) => {
+			it(`should throw when object is ${JSON.stringify(object)}`, () => {
+				const expect = new Expectation(true);
 
-			throwsError(() => expect.toNotExist());
+				throwsError(() => expect.toNotExist());
+			});
 		});
 	});
 
 	describe('toEqual', () => {
-		it('should not throw an error when the two objects are equal', () => {
+		it('should not throw when objects are deep equal', () => {
 			const expect = new Expectation({ name: 'Object', value: 1 });
 
 			expect.toEqual({ name: 'Object', value: 1 });
 		});
 
-		it('should throw an error when the two objects are not equal', () => {
+		it('should throw when objects are different', () => {
 			const expect = new Expectation({ name: 'Object', value: 1 });
 
 			throwsError(() => expect.toEqual({ name: 'Object', value: 2 }));
@@ -87,13 +97,13 @@ describe('ObjectExpectation', () => {
 	});
 
 	describe('toNotEqual', () => {
-		it('should not throw an error when the two objects are different', () => {
+		it('should not throw when objects are different', () => {
 			const expect = new Expectation({ name: 'Object', value: 1 });
 
 			expect.toNotEqual({ name: 'Object', value: '1' });
 		});
 
-		it('should throw an error when the two objects are equal', () => {
+		it('should throw when objects are deep equal', () => {
 			const expect = new Expectation({ name: 'Object', value: 1 });
 
 			throwsError(() => expect.toNotEqual({ name: 'Object', value: 1 }));

@@ -1,18 +1,24 @@
 ﻿import { throwsError } from './helpers';
 import Expectation from '../../src/expectations/array-expectation';
 
+const arrays: any[] = [
+	[1, 2, 3],
+	[],
+	null,
+];
+
 describe('ArrayExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when arrays share the same reference', () => {
-			const actual = [1, 2, 3];   // Two different arrays
-			const expected = actual; // containing the same values
+		it('should not throw when arrays are the same object', () => {
+			const actual = [1, 2, 3];
+			const expected = actual;
 
 			const expect = new Expectation(actual);
 
 			expect.toBe(expected);
 		});
 
-		it('should throw an error when arrays do not share the same reference', () => {
+		it('should throw when arrays are different objects', () => {
 			const actual = [1, 2, 3];
 			const expected = [1, 2, 3];
 
@@ -23,7 +29,7 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toNotBe()', () => {
-		it('should throw an error when arrays share the same reference', () => {
+		it('should throw when arrays are different objects', () => {
 			const actual = [1, 2, 3];
 			const expected = actual;
 
@@ -32,7 +38,7 @@ describe('ArrayExpectation', () => {
 			throwsError(() => expect.toNotBe(expected));
 		});
 
-		it('should not throw an error when array do not share the same reference', () => {
+		it('should not throw when arrays are the same object', () => {
 			const actual = [1, 2, 3];   // Two different arrays
 			const expected = [1, 2, 3]; // containing the same values
 
@@ -43,13 +49,15 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		it('should not throw an error when the array exists', () => {
-			const expect = new Expectation([1, 2, 3]);
+		arrays.forEach((array: any[]) => {
+			it(`should not throw when array is ${JSON.stringify(array)}`, () => {
+				const expect = new Expectation(array);
 
-			expect.toExist();
+				expect.toExist();
+			});
 		});
 
-		it('should throw an error when the array is undefined', () => {
+		it('should throw when array is undefined', () => {
 			let array: Array<number>;
 			const expect = new Expectation(array);
 
@@ -58,28 +66,30 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('should not throw an error when the array is undefined', () => {
+		it('should not throw when array is undefined', () => {
 			let array: Array<number>;
 			const expect = new Expectation(array);
 
 			expect.toNotExist();
 		});
 
-		it('should throw an error when the array exists', () => {
-			const expect = new Expectation([1, 2, 3]);
+		arrays.forEach((array: any[]) => {
+			it(`should throw array is ${JSON.stringify(array)}`, () => {
+				const expect = new Expectation(array);
 
-			throwsError(() => expect.toNotExist());
+				throwsError(() => expect.toNotExist());
+			});
 		});
 	});
 
 	describe('toEqual', () => {
-		it('should not throw an error when the two arrays are equal', () => {
+		it('should not throw when arrays are deep equal', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			expect.toEqual([1, 2, 3]);
 		});
 
-		it('should throw an error when the two arrays are not equal', () => {
+		it('should throw when arrays are different', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			throwsError(() => expect.toEqual([1, 2, 3, 4]));
@@ -87,13 +97,13 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toNotEqual', () => {
-		it('should not throw an error when the two arrays are different', () => {
+		it('should not throw when arrays are different', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			expect.toNotEqual([1, 2, 3, 4]);
 		});
 
-		it('should throw an error when the two arrays are equal', () => {
+		it('should throw when arrays are deep equal', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			throwsError(() => expect.toNotEqual([1, 2, 3]));

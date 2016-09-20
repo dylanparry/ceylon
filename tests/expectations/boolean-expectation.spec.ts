@@ -1,15 +1,21 @@
 ﻿import { throwsError } from './helpers';
 import Expectation from '../../src/expectations/boolean-expectation';
 
+const booleans: boolean[] = [
+	true,
+	false,
+	null,
+];
+
 describe('BooleanExpectation', () => {
 	describe('toBe()', () => {
-		it('should not throw an error when boolean values match', () => {
+		it('should not throw when values are equal', () => {
 			const expect = new Expectation(true);
 
 			expect.toBe(true);
 		});
 
-		it('should throw an error when boolean values do not match', () => {
+		it('should throw when values are different', () => {
 			const expect = new Expectation(true);
 
 			throwsError(() => expect.toBe(false));
@@ -17,13 +23,13 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toNotBe()', () => {
-		it('should not throw an error when boolean values do not match', () => {
+		it('should not throw when values are different', () => {
 			const expect = new Expectation(true);
 
 			expect.toNotBe(false);
 		});
 
-		it('should throw an error when boolean values match', () => {
+		it('should throw when values are equal', () => {
 			const expect = new Expectation(true);
 
 			throwsError(() => expect.toNotBe(true));
@@ -31,13 +37,15 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toExist', () => {
-		it('should not throw an error when the boolean value exists', () => {
-			const expect = new Expectation(true);
+		booleans.forEach((boolean: boolean) => {
+			it(`should not throw when the value is ${boolean}`, () => {
+				const expect = new Expectation(true);
 
-			expect.toExist();
+				expect.toExist();
+			});
 		});
 
-		it('should throw an error when the boolean value is undefined', () => {
+		it('should throw when the value is undefined', () => {
 			let bool: boolean;
 			const expect = new Expectation(bool);
 
@@ -46,17 +54,19 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('should not throw an error when the boolean value is undefined', () => {
+		it('should not throw when the value is undefined', () => {
 			let bool: boolean;
 			const expect = new Expectation(bool);
 
 			expect.toNotExist();
 		});
 
-		it('should throw an error when the boolean value exists', () => {
-			const expect = new Expectation(true);
+		booleans.forEach((boolean: boolean) => {
+			it(`should throw when the value is ${boolean}`, () => {
+				const expect = new Expectation(true);
 
-			throwsError(() => expect.toNotExist());
+				throwsError(() => expect.toNotExist());
+			});
 		});
 	});
 });

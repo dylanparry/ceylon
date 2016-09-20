@@ -12,46 +12,50 @@ const checkType = (sut: Object, expected: Function, message: string): void => {
 	}
 }
 
+interface IExpectationTest {
+	data: any;
+	expected: any;
+}
+
+const tests: IExpectationTest[] = [
+	{
+		data: [1, 2, 3],
+		expected: ArrayExpectation,
+	},
+	{
+		data: true,
+		expected: BooleanExpectation,
+	},
+	{
+		data: function () { return true; },
+		expected: FunctionExpectation,
+	},
+	{
+		data: 100,
+		expected: NumberExpectation,
+	},
+	{
+		data: 'string',
+		expected: StringExpectation,
+	},
+	{
+		data: { name: 'Object' },
+		expected: ObjectExpectation,
+	},
+	{
+		data: undefined,
+		expected: ObjectExpectation,
+	},
+];
+
 describe('expect', () => {
-	it('should return a new ArrayExpectation object when passed an array', () => {
-		const sut = expect([1, 2, 3]);
+	tests.forEach((test: IExpectationTest) => {
+		describe(`expect(${typeof test.data === 'function' ? 'Function' : JSON.stringify(test.data)})`, () => {
+			it(`should create ${test.expected.name}`, () => {
+				const sut = expect(test.data);
 
-		checkType(sut, ArrayExpectation, 'Expected a new ArrayExpectation object');
+				checkType(sut, test.expected, `Expected ${test.expected.name}`);
+			});
+		});
 	});
-
-	it('should return a new BooleanExpectation object when passed a boolean', () => {
-		const sut = expect(true);
-
-		checkType(sut, BooleanExpectation, 'Expected a new BooleanExpectation object');
-	});
-
-	it('should return a new FunctionExpectation object when passed a function', () => {
-		const sut = expect(() => { });
-
-		checkType(sut, FunctionExpectation, 'Expected a new FunctionExpectation object');
-	});
-
-	it('should return a new NumberExpection object when passed a string', () => {
-		const sut = expect(100);
-
-		checkType(sut, NumberExpectation, 'Expected a new NumberExpectation object');
-	});
-
-	it('should return a new StringExpection object when passed a string', () => {
-		const sut = expect('test');
-
-		checkType(sut, StringExpectation, 'Expected a new StringExpectation object');
-	});
-
-	it('should return a new ObjectExpectation object when passed an object', () => {
-		const sut = expect({ value: 1 });
-
-		checkType(sut, ObjectExpectation, 'Expected a new ObjectExpectation object');
-	});
-
-	it('should return a new ObjectExpectation when passed an undefined value', () => {
-		const sut = expect(undefined);
-
-		checkType(sut, ObjectExpectation, 'Expected a new ObjectExpectation object');
-	}); 
 });
