@@ -32,7 +32,7 @@
   },
   "scripts": {
     "pretest": "typings install && tsc --outDir ./temp --project ./src",
-    "test": "mocha ./temp/**/*.spec.js",
+    "test": "mocha ./temp/**/*.spec.js ./temp/**/**/*.spec.js",
     "posttest": "rimraf ./temp"
   }
 }
