@@ -1,4 +1,4 @@
-﻿import { throwsError } from './helpers';
+﻿import { throwsError } from '../helpers';
 import Expectation from '../../src/expectations/boolean-expectation';
 
 const booleans: boolean[] = [

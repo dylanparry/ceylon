@@ -1,16 +1,12 @@
 import expect from '../src';
+import { checkType } from './helpers';
+
 import ArrayExpectation from '../src/expectations/array-expectation';
 import BooleanExpectation from '../src/expectations/boolean-expectation';
 import FunctionExpectation from '../src/expectations/function-expectation';
 import NumberExpectation from '../src/expectations/number-expectation';
 import StringExpectation from '../src/expectations/string-expectation';
 import ObjectExpectation from '../src/expectations/object-expectation';
-
-const checkType = (sut: Object, expected: Function, message: string): void => {
-	if (sut instanceof expected === false) {
-		throw new Error(message);
-	}
-};
 
 type IDataType = number[] | boolean | number | string | Function | Object;
 
