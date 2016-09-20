@@ -1,6 +1,6 @@
-﻿language: node_js
+language: node_js
 node_js:
-  - "6"
+- "node"
+matrix:
+  fast_finish: true
 sudo: false
-before_install:
-  - npm i -g npm@latest

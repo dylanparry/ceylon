@@ -1,3 +1,5 @@
 typings
 node_modules
 temp
+.DS_Store
+.idea
