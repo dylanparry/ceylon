@@ -21,6 +21,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
     <Content Include=".eslintrc" />
+    <Content Include=".travis.yml" />
     <Content Include="package.json" />
     <Content Include="tslint.json" />
     <Content Include="typings.json" />
@@ -36,6 +37,7 @@
     <TypeScriptCompile Include="src\expectations\__tests__\array-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\boolean-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\function-expectation.spec.ts" />
+    <TypeScriptCompile Include="src\expectations\__tests__\helpers.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\number-expectation.spec.ts" />
     <TypeScriptCompile Include="src\expectations\__tests__\object-expectation.spec.ts" />
     <TypeScriptCompile Include="src\index.ts" />
