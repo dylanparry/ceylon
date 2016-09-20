@@ -3,7 +3,6 @@
   "version": "0.0.9",
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
-  "readmeFilename": "readme.md",
   "main": "lib/index.js",
   "typings": "lib/index",
   "files": [
