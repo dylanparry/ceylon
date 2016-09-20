@@ -42,7 +42,7 @@ function expect(sut: IExpectParameterTypes): IExpectationReturnTypes {
 	}
 
 	// Finally, if none of the above match use the generic ObjectExpectation
-	return new ObjectExpectation(undefined);
+	return new ObjectExpectation(sut);
 };
 
 export default expect;
