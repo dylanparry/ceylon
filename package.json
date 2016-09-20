@@ -34,5 +34,9 @@
     "pretest": "rimraf ./temp && typings install && tsc --target ES5 --outDir ./temp --project ./src",
     "test": "mocha ./temp/**/*.spec.js ./temp/**/**/*.spec.js",
     "posttest": "rimraf ./temp"
+  },
+  "engines": {
+    "node": ">=0.10.46",
+    "iojs": "3.3.1"
   }
 }
