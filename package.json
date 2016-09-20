@@ -4,7 +4,11 @@
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "readmeFilename": "readme.md",
-  "main": "src/index.ts",
+  "main": "lib/",
+  "typings": "lib/",
+  "files": [
+    "lib/"
+  ],
   "author": {
     "name": "Dylan Parry",
     "email": "me@dylanparry.com"
@@ -34,7 +38,8 @@
   "scripts": {
     "pretest": "rimraf ./temp && typings install && tsc --target ES5 --outDir ./temp",
     "test": "mocha ./temp/tests/**/*.spec.js",
-    "posttest": "rimraf ./temp"
+    "posttest": "rimraf ./temp",
+    "prepublish": "rimraf ./lib && typings install && tsc --target ES5 --outDir ./lib --declaration ./src/index.ts"
   },
   "engines": {
     "node": ">=0.10.46",
