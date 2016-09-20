@@ -1,6 +1,6 @@
 {
   "name": "ceylon",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "readmeFilename": "readme.md",
