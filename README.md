@@ -33,88 +33,89 @@ There is no need to reference a Typescript definition file as the source code fo
 ### toBe
 
 ```typescript
-expect(object: boolean).toBe(value: boolean, message?: string): void;
-expect(object: number).toBe(value: number, message?: string): void;
-expect(object: string).toBe(value: string, message?: string): void;
-expect(object: any[]).toBe(value: any[], message?: string): void;
-expect(object: Object).toBe(value: Object, message?: string): void;
+expect(item: boolean).toBe(value: boolean, message?: string): void;
+expect(item: number).toBe(value: number, message?: string): void;
+expect(item: string).toBe(value: string, message?: string): void;
+expect(item: any[]).toBe(value: any[], message?: string): void;
+expect(item: Object).toBe(value: Object, message?: string): void;
 ```
 
-Asserts that `object` is strictly equal to `value` using `===`.
+Asserts that tested `item` is strictly equal to `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toNotBe
 
 ```typescript
-expect(object: boolean).toNotBe(value: boolean, message?: string): void;
-expect(object: number).toNotBe(value: number, message?: string): void;
-expect(object: string).toNotBe(value: string, message?: string): void;
-expect(object: any[]).toNotBe(value: any[], message?: string): void;
-expect(object: Object).toNotBe(value: Object, message?: string): void;
+expect(item: boolean).toNotBe(value: boolean, message?: string): void;
+expect(item: number).toNotBe(value: number, message?: string): void;
+expect(item: string).toNotBe(value: string, message?: string): void;
+expect(item: any[]).toNotBe(value: any[], message?: string): void;
+expect(item: Object).toNotBe(value: Object, message?: string): void;
 ```
 
-Asserts that `object` is not strictly equal to `value` using `!==`.
+Asserts that tested `item` is not strictly equal to `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toEqual
 
 ```typescript
-expect(object: any[]).toEqual(value: any[], message?: string): void;
-expect(object: Object).toEqual(value: Object, message?: string): void;
+expect(item: any[]).toEqual(value: any[], message?: string): void;
+expect(item: Object).toEqual(value: Object, message?: string): void;
 ```
 
-Asserts that the `object` is deeply equal to `value`. This allows comparison of objects that do not share the same reference, but are otherwise equal.
+Asserts that the tested `item` is deeply equal to `value`. This allows comparison of items that do not share the same reference, but are otherwise equal.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toNotEqual
 
 ```typescript
-expect(object: any[]).toNotEqual(value: any[], message?: string): void;
-expect(object: Object).toNotEqual(value: Object, message?: string): void;
+expect(item: any[]).toNotEqual(value: any[], message?: string): void;
+expect(item: Object).toNotEqual(value: Object, message?: string): void;
 ```
 
-Asserts that the `object` is not deeply equal to `value`.
+Asserts that the tested `item` is not deeply equal to `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toExist
 
 ```typescript
-expect(object: any[]).toExist(message?: string): void;
-expect(object: boolean).toExist(message?: string): void;
-expect(object: number).toExist(message?: string): void;
-expect(object: string).toExist(message?: string): void;
-expect(object: Object).toExist(message?: string): void;
+expect(item: any[]).toExist(message?: string): void;
+expect(item: boolean).toExist(message?: string): void;
+expect(item: number).toExist(message?: string): void;
+expect(item: string).toExist(message?: string): void;
+expect(item: Object).toExist(message?: string): void;
 ```
 
-Asserts that the `object` exists (is not `undefined`).
+Asserts that the tested `item` exists (is not `undefined`).
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toNotExist
 
 ```typescript
-expect(object: any[]).toNotExist(message?: string): void;
-expect(object: boolean).toNotExist(message?: string): void;
-expect(object: number).toNotExist(message?: string): void;
-expect(object: string).toNotExist(message?: string): void;
-expect(object: Object).toNotExist(message?: string): void;
+expect(item: any[]).toNotExist(message?: string): void;
+expect(item: boolean).toNotExist(message?: string): void;
+expect(item: number).toNotExist(message?: string): void;
+expect(item: string).toNotExist(message?: string): void;
+expect(item: Object).toNotExist(message?: string): void;
 ```
 
-Asserts that the `object` does not exist (is `undefined`).
+Asserts that the tested `item` does not exist (is `undefined`).
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toThrow
 
 ```typescript
-expect(func: Function).toThrow(error?: string | Error, message?: string): void;
+expect(item: Function).toThrow(error?: string, message?: string): void;
+expect(item: Function).toThrow(error?: Function, message?: string): void
 ```
 
-Asserts that the `func` throws an error when called.
+Asserts that the tested `item` throws an error when called.
 
 The `error` will be matched against the `error.message` or the type of error (using `instanceof`).
 
@@ -130,10 +131,10 @@ expect(() => { throw new ReferenceError() }).toThrow(ReferenceError, 'Did not th
 ### toNotThrow
 
 ```typescript
-expect(func: Function).toNotThrow(message?: string): void;
+expect(item: Function).toNotThrow(message?: string): void;
 ```
 
-Asserts that the `func` not not throw an error when called.
+Asserts that the tested `item` not not throw an error when called.
 
 Outputs optional `message` in case of a failed assertion.
 
@@ -146,40 +147,40 @@ expect(() => true).toNotThrow('Function threw an error!');
 ### toBeLessThan
 
 ```typescript
-expect(object: number).toBeLessThan(value: number, message?: string): void;
+expect(item: number).toBeLessThan(value: number, message?: string): void;
 ```
 
-Asserts that the `object` is less than the `value`.
+Asserts that the tested `item` is less than the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toBeLessThanOrEqualTo
 
 ```typescript
-expect(object: number).toBeLessThan(value: number, message?: string): void;
+expect(item: number).toBeLessThan(value: number, message?: string): void;
 ```
 
-Asserts that the `object` is less than or equal to the `value`.
+Asserts that the tested `item` is less than or equal to the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toBeGreaterThan
 
 ```typescript
-expect(object: number).toBeGreaterThan(value: number, message?: string): void;
+expect(item: number).toBeGreaterThan(value: number, message?: string): void;
 ```
 
-Asserts that the `object` is greater than the `value`.
+Asserts that the tested `item` is greater than the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
 ### toBeGreaterThanOrEqualTo
 
 ```typescript
-expect(object: number).toBeGreaterThan(value: number, message?: string): void;
+expect(item: number).toBeGreaterThan(value: number, message?: string): void;
 ```
 
-Asserts that the `object` is greater than or equal to the `value`.
+Asserts that the tested `item` is greater than or equal to the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
