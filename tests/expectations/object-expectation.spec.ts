@@ -170,19 +170,19 @@ describe('ObjectExpectation', () => {
 		});
 
 		it('should not throw an error when constructor is of type', () => {
-			const sut = new Map();
+			const sut = new TypeError();
 			const expect = new Expectation(sut);
 
-			expect.toBeA(Map);
-			expect.toBeAn(Map);
+			expect.toBeA(TypeError);
+			expect.toBeAn(TypeError);
 		});
 
 		it('should throw an error when constructor is not of type', () => {
-			const sut = new Map;
+			const sut = new TypeError;
 			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toBeA(Function));
-			throwsError(() => expect.toBeAn(Error));
+			throwsError(() => expect.toBeA(SyntaxError));
+			throwsError(() => expect.toBeAn(EvalError));
 		});
 
 		it('should be chainable', () => {
@@ -209,19 +209,19 @@ describe('ObjectExpectation', () => {
 		});
 
 		it('should not throw an error when constructor is not of type', () => {
-			const sut = new Map();
+			const sut = new TypeError();
 			const expect = new Expectation(sut);
 
 			expect.toNotBeA(Function);
-			expect.toNotBeAn(Error);
+			expect.toNotBeAn(EvalError);
 		});
 
 		it('should throw an error when constructor is of type', () => {
-			const sut = new Map();
+			const sut = new TypeError();
 			const expect = new Expectation(sut);
 
-			throwsError(() => expect.toNotBeA(Map));
-			throwsError(() => expect.toNotBeAn(Map));
+			throwsError(() => expect.toNotBeA(TypeError));
+			throwsError(() => expect.toNotBeAn(TypeError));
 		});
 
 		it('should be chainable', () => {

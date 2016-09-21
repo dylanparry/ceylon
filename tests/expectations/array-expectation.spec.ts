@@ -214,8 +214,8 @@ describe('ArrayExpectation', () => {
 			const sut = [1, 2, 3];
 			const expect = new Expectation(sut);
 
-			expect.toNotBeA(Function);
-			expect.toNotBeAn(Error);
+			expect.toNotBeA(TypeError);
+			expect.toNotBeAn(EvalError);
 		});
 
 		it('should throw an error when constructor is of type', () => {

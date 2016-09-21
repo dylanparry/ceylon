@@ -51,7 +51,7 @@ export default class ObjectExpectation extends Expectation<Object> {
 		else {
 			if (!(this.actual instanceof (type as Function))) {
 				throw AssertionError({
-					message: message || `Expected object to be instance of ${(type as Function).name}`,
+					message: message || `Expected object to be instance of ${(type as Function).constructor.toString()}`,
 				});
 			}
 		}
@@ -74,7 +74,7 @@ export default class ObjectExpectation extends Expectation<Object> {
 		else {
 			if (this.actual instanceof (type as Function)) {
 				throw AssertionError({
-					message: message || `Expected object to not be instance of ${(type as Function).name}`,
+					message: message || `Expected object to not be instance of ${(type as Function).constructor.toString()}`,
 				});
 			}
 		}
