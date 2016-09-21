@@ -1,11 +1,9 @@
-interface IAssertionErrorOptions {
+export default function ({ message, expected, actual, showDiff }: {
 	message: string;
 	expected?: Object;
 	actual?: Object;
 	showDiff?: boolean;
-}
-
-export default function ({ message, expected, actual, showDiff }: IAssertionErrorOptions): Error {
+}): Error {
 	const error = new Error(message);
 
 	// Properties used by Mocha and other frameworks to show errors
