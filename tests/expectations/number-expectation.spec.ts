@@ -71,4 +71,84 @@ describe('NumberExpectation', () => {
 			});
 		});
 	});
+
+	describe('toBeLessThan', () => {
+		it('should not throw when value is greater', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeLessThan(20);
+		});
+
+		it('should throw when value is equal', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeLessThan(10));
+		});
+
+		it('should throw when value is lower', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeLessThan(5));
+		});
+	});
+
+	describe('toBeLessThanOrEqualTo', () => {
+		it('should not throw when value is greater', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeLessThanOrEqualTo(20);
+		});
+
+		it('should not throw when value is equal', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeLessThanOrEqualTo(10);
+		});
+
+		it('should throw when value is lower', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeLessThanOrEqualTo(5));
+		});
+	});
+
+	describe('toBeGreaterThan', () => {
+		it('should not throw when value is lower', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeGreaterThan(5);
+		});
+
+		it('should throw when value is equal', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeGreaterThan(10));
+		});
+
+		it('should throw when value is greater', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeGreaterThan(20));
+		});
+	});
+
+	describe('toBeGreaterThanOrEqualTo', () => {
+		it('should not throw when value is lower', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeGreaterThanOrEqualTo(5);
+		});
+
+		it('should not throw when value is equal', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeGreaterThanOrEqualTo(10);
+		});
+
+		it('should throw when value is greater', () => {
+			const expect = new Expectation(10);
+
+			throwsError(() => expect.toBeGreaterThanOrEqualTo(20));
+		});
+	});
 });

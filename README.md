@@ -28,7 +28,7 @@ import expect from 'ceylon';
 
 There is no need to reference a Typescript definition file as the source code for Ceylon is all written in Typescript.
 
-## Assertions
+## Using Assertions
 
 ### toBe
 
@@ -111,10 +111,10 @@ Outputs optional `message` in case of a failed assertion.
 ### toThrow
 
 ```typescript
-expect(function: Function).toThrow(error?: string | Error, message?: string): void;
+expect(func: Function).toThrow(error?: string | Error, message?: string): void;
 ```
 
-Asserts that the `function` throws an error when called.
+Asserts that the `func` throws an error when called.
 
 The `error` will be matched against the `error.message` or the type of error (using `instanceof`).
 
@@ -130,10 +130,10 @@ expect(() => { throw new ReferenceError() }).toThrow(ReferenceError, 'Did not th
 ### toNotThrow
 
 ```typescript
-expect(function: Function).toNotThrow(message?: string): void;
+expect(func: Function).toNotThrow(message?: string): void;
 ```
 
-Asserts that the `function` not not throw an error when called.
+Asserts that the `func` not not throw an error when called.
 
 Outputs optional `message` in case of a failed assertion.
 
@@ -142,5 +142,45 @@ Outputs optional `message` in case of a failed assertion.
 ```typescript
 expect(() => true).toNotThrow('Function threw an error!');
 ```
+
+### toBeLessThan
+
+```typescript
+expect(object: number).toBeLessThan(value: number, message?: string): void;
+```
+
+Asserts that the `object` is less than the `value`.
+
+Outputs optional `message` in case of a failed assertion.
+
+### toBeLessThanOrEqualTo
+
+```typescript
+expect(object: number).toBeLessThan(value: number, message?: string): void;
+```
+
+Asserts that the `object` is less than or equal to the `value`.
+
+Outputs optional `message` in case of a failed assertion.
+
+### toBeGreaterThan
+
+```typescript
+expect(object: number).toBeGreaterThan(value: number, message?: string): void;
+```
+
+Asserts that the `object` is greater than the `value`.
+
+Outputs optional `message` in case of a failed assertion.
+
+### toBeGreaterThanOrEqualTo
+
+```typescript
+expect(object: number).toBeGreaterThan(value: number, message?: string): void;
+```
+
+Asserts that the `object` is greater than or equal to the `value`.
+
+Outputs optional `message` in case of a failed assertion.
 
 ### More coming soon…
