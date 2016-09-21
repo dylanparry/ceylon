@@ -195,6 +195,7 @@ expect(item: any[]).toBeA(type: string, message?: string): ArrayExpectation;
 expect(item: boolean).toBeA(type: string, message?: string): BooleanExpectation;
 expect(item: number).toBeA(type: string, message?: string): NumberExpectation;
 expect(item: string).toBeA(type: string, message?: string): StringExpectation;
+expect(item: Function).toBeA(type: string, message?: string): FunctionExpectation;
 expect(item: Object).toBeA(type: string, message?: string): ObjectExpectation;
 ```
 
