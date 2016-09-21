@@ -96,14 +96,14 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toBeA / toBeAn', () => {
-		it('should not throw when value is a boolean', () => {
+		it('should not throw when type is a boolean', () => {
 			const expect = new Expectation(true);
 
 			expect.toBeA('boolean');
 			expect.toBeAn('boolean');
 		});
 
-		it('should throw when value is not a boolean', () => {
+		it('should throw when type is not a boolean', () => {
 			const expect = new Expectation(true);
 
 			throwsError(() => expect.toBeA('string'));
@@ -119,14 +119,14 @@ describe('BooleanExpectation', () => {
 	});
 
 	describe('toNotBeA / toNotBeAn', () => {
-		it('should not throw when value is not a boolean', () => {
+		it('should not throw when type is not a boolean', () => {
 			const expect = new Expectation(true);
 
 			expect.toNotBeA('string');
 			expect.toNotBeAn('string');
 		});
 
-		it('should throw when value is a boolean', () => {
+		it('should throw when type is a boolean', () => {
 			const expect = new Expectation(true);
 
 			throwsError(() => expect.toNotBeA('boolean'));

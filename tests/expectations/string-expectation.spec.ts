@@ -96,14 +96,14 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toBeA / toBeAn', () => {
-		it('should not throw when value is a string', () => {
+		it('should not throw when type is a string', () => {
 			const expect = new Expectation('I am a string');
 
 			expect.toBeA('string');
 			expect.toBeAn('string');
 		});
 
-		it('should throw when value is not a string', () => {
+		it('should throw when type is not a string', () => {
 			const expect = new Expectation('I am a string');
 
 			throwsError(() => expect.toBeA('number'));
@@ -119,14 +119,14 @@ describe('StringExpectation', () => {
 	});
 
 	describe('toNotBeA / toNotBeAn', () => {
-		it('should not throw when value is not a string', () => {
+		it('should not throw when type is not a string', () => {
 			const expect = new Expectation('I am a string');
 
 			expect.toNotBeA('number');
 			expect.toNotBeAn('object');
 		});
 
-		it('should throw when value is a string', () => {
+		it('should throw when type is a string', () => {
 			const expect = new Expectation('I am a string');
 
 			throwsError(() => expect.toNotBeA('string'));

@@ -157,14 +157,14 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toBeA / toBeAn', () => {
-		it('should not throw when value is an object', () => {
+		it('should not throw when type is an object', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			expect.toBeA('object');
 			expect.toBeAn('object');
 		});
 
-		it('should throw when value is not an object', () => {
+		it('should throw when type is not an object', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			throwsError(() => expect.toBeA('string'));
@@ -180,14 +180,14 @@ describe('ArrayExpectation', () => {
 	});
 
 	describe('toNotBeA / toNotBeAn', () => {
-		it('should not throw when value is not an object', () => {
+		it('should not throw when type is not an object', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			expect.toNotBeA('string');
 			expect.toNotBeAn('string');
 		});
 
-		it('should throw when value is an object', () => {
+		it('should throw when type is an object', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			throwsError(() => expect.toNotBeA('object'));
