@@ -1,4 +1,5 @@
-﻿import Expectation from '../expectation';
+﻿import AssertionError from '../assertion-error';
+import Expectation from '../expectation';
 
 export default class NumberExpectation extends Expectation<number> {
 	public constructor(actual: number) {
@@ -31,7 +32,9 @@ export default class NumberExpectation extends Expectation<number> {
 
 	public toBeLessThan(value: number, message?: string): NumberExpectation {
 		if (this.actual >= value) {
-			throw new Error(message || `Expected ${this.actual} to be less than ${value}`);
+			throw AssertionError({
+				message: message || `Expected ${this.actual} to be less than ${value}`,
+			});
 		}
 
 		return this;
@@ -39,7 +42,9 @@ export default class NumberExpectation extends Expectation<number> {
 
 	public toBeLessThanOrEqualTo(value: number, message?: string): NumberExpectation {
 		if (this.actual > value) {
-			throw new Error(message || `Expected ${this.actual} to be less than or equal to ${value}`);
+			throw AssertionError({
+				message: message || `Expected ${this.actual} to be less than or equal to ${value}`,
+			});
 		}
 
 		return this;
@@ -47,7 +52,9 @@ export default class NumberExpectation extends Expectation<number> {
 
 	public toBeGreaterThan(value: number, message?: string): NumberExpectation {
 		if (this.actual <= value) {
-			throw new Error(message || `Expected ${this.actual} to be greater than ${value}`);
+			throw AssertionError({
+				message: message || `Expected ${this.actual} to be greater than ${value}`,
+			});
 		}
 
 		return this;
@@ -55,7 +62,9 @@ export default class NumberExpectation extends Expectation<number> {
 
 	public toBeGreaterThanOrEqualTo(value: number, message?: string): NumberExpectation {
 		if (this.actual < value) {
-			throw new Error(message || `Expected ${this.actual} to be greater than or equal to ${value}`);
+			throw AssertionError({
+				message: message || `Expected ${this.actual} to be greater than or equal to ${value}`,
+			});
 		}
 
 		return this;

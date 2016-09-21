@@ -5,6 +5,10 @@
 		func();
 	}
 	catch (e) {
+		if (e.name !== 'AssertionError') {
+			throw new TypeError('Thrown error is not an AssertionError');
+		}
+
 		threw = true;
 	}
 

@@ -1,4 +1,5 @@
-﻿import Expectation from '../expectation';
+﻿import AssertionError from '../assertion-error';
+import Expectation from '../expectation';
 
 export default class FunctionExpectation extends Expectation<Function> {
 	public constructor(actual: Function) {
@@ -38,7 +39,9 @@ export default class FunctionExpectation extends Expectation<Function> {
 		}
 
 		if (!functionThrew) {
-			throw new Error(message || 'Expected function to throw an error');
+			throw AssertionError({
+				message: message || 'Expected function to throw an error',
+			});
 		}
 
 		return this;
@@ -57,7 +60,9 @@ export default class FunctionExpectation extends Expectation<Function> {
 		}
 
 		if (functionThrew) {
-			throw new Error(message || 'Expected function to not throw an error');
+			throw AssertionError({
+				message: message || 'Expected function to not throw an error',
+			});
 		}
 
 		return this;

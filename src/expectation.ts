@@ -1,5 +1,7 @@
 import * as deepEqual from 'deep-equal';
 
+import AssertionError from './assertion-error';
+
 abstract class Expectation<T> {
 	protected actual: T;
 
@@ -9,47 +11,55 @@ abstract class Expectation<T> {
 
 	protected toBe(value: T, message?: string): void {
 		if (this.actual !== value) {
-			const error = new Error(message || `Expected "${this.actual}" to be "${value}"`);
-			error['actual'] = this.actual;
-			error['expected'] = value;
-			error['showDiff'] = true;
-
-			throw error;
+			throw AssertionError({
+				actual: this.actual,
+				expected: value,
+				message: message || `Expected "${this.actual}" to be "${value}"`,
+				showDiff: true,
+			});
 		}
 	}
 
 	protected toNotBe(value: T, message?: string): void {
 		if (this.actual === value) {
-			throw new Error(message || `Expected "${this.actual}" to not be "${value}"`);
+			throw AssertionError({
+				message: message || `Expected "${this.actual}" to not be "${value}"`,
+			});
 		}
 	}
 
 	protected toEqual(object: Object, message?: string): void {
 		if (!deepEqual(this.actual, object, { strict: true })) {
-			const error = new Error(message || 'Expected objects to be equal');
-			error['actual'] = this.actual;
-			error['expected'] = object;
-			error['showDiff'] = true;
-
-			throw error;
+			throw AssertionError({
+				actual: this.actual,
+				expected: object,
+				message: message || 'Expected objects to be equal',
+				showDiff: true,
+			});
 		}
 	}
 
 	protected toNotEqual(object: Object, message?: string): void {
 		if (deepEqual(this.actual, object, { strict: true })) {
-			throw new Error(message || 'Expected objects to be not equal');
+			throw AssertionError({
+				message: message || 'Expected objects to be not equal',
+			});
 		}
 	}
 
 	protected toExist(message?: string): void {
 		if (typeof this.actual === 'undefined') {
-			throw new Error(message || `Expected object to exist"`);
+			throw AssertionError({
+				message: message || 'Expected object to exist',
+			});
 		}
 	}
 
 	protected toNotExist(message?: string): void {
 		if (typeof this.actual !== 'undefined') {
-			throw new Error(message || `Expected object to not exist"`);
+			throw AssertionError({
+				message: message || 'Expected object to not exist',
+			});
 		}
 	}
 }
