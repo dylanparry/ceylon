@@ -6,14 +6,12 @@ import NumberExpectation from './expectations/number-expectation';
 import ObjectExpectation from './expectations/object-expectation';
 import StringExpectation from './expectations/string-expectation';
 
-/* tslint:disable:no-unused-variable */
 function expect(sut: Array<Object>): ArrayExpectation;
 function expect(sut: boolean): BooleanExpectation;
 function expect(sut: Function): FunctionExpectation;
 function expect(sut: number): NumberExpectation;
 function expect(sut: string): StringExpectation;
 function expect(sut: Object): ObjectExpectation;
-/* tslint:enable:no-unused-variable */
 
 function expect(sut: Object): Expectation<Object> {
 	// Check for Array
