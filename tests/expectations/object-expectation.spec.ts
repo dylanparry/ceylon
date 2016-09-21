@@ -169,6 +169,22 @@ describe('ObjectExpectation', () => {
 			throwsError(() => expect.toBeAn('string'));
 		});
 
+		it('should not throw an error when constructor is of type', () => {
+			const sut = new Map();
+			const expect = new Expectation(sut);
+
+			expect.toBeA(Map);
+			expect.toBeAn(Map);
+		});
+
+		it('should throw an error when constructor is not of type', () => {
+			const sut = new Map;
+			const expect = new Expectation(sut);
+
+			throwsError(() => expect.toBeA(Function));
+			throwsError(() => expect.toBeAn(Error));
+		});
+
 		it('should be chainable', () => {
 			const expect = new Expectation({ name: 'Object' });
 
@@ -190,6 +206,22 @@ describe('ObjectExpectation', () => {
 
 			throwsError(() => expect.toNotBeA('object'));
 			throwsError(() => expect.toNotBeAn('object'));
+		});
+
+		it('should not throw an error when constructor is not of type', () => {
+			const sut = new Map();
+			const expect = new Expectation(sut);
+
+			expect.toNotBeA(Function);
+			expect.toNotBeAn(Error);
+		});
+
+		it('should throw an error when constructor is of type', () => {
+			const sut = new Map();
+			const expect = new Expectation(sut);
+
+			throwsError(() => expect.toNotBeA(Map));
+			throwsError(() => expect.toNotBeAn(Map));
 		});
 
 		it('should be chainable', () => {

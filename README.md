@@ -188,6 +188,21 @@ Asserts that the tested `item` is greater than or equal to the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toBeA(constructor)
+
+```typescript
+expect(item: any[]).toBeA(type: Function, message?: string): ArrayExpectation;
+expect(item: Object).toBeA(type: Function, message?: string): ObjectExpectation;
+```
+
+Asserts that the tested `item` is an `instanceof type`.
+
+Outputs optional `message` in case of a failed assertion.
+
+#### Aliases:
+
+- toBeAn
+
 ### toBeA(string)
 
 ```typescript
@@ -203,9 +218,39 @@ Asserts that the `typeof` the tested `item` is `type`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toNotBeA(constructor)
+
+```typescript
+expect(item: any[]).toNotBeA(type: Function, message?: string): ArrayExpectation;
+expect(item: Object).toNotBeA(type: Function, message?: string): ObjectExpectation;
+```
+
+Asserts that the tested `item` is not an `instanceof type`.
+
+Outputs optional `message` in case of a failed assertion.
+
 #### Aliases:
 
-- toBeAn
+- toNotBeAn
+
+### toNotBeA(string)
+
+```typescript
+expect(item: any[]).toNotBeA(type: string, message?: string): ArrayExpectation;
+expect(item: boolean).toNotBeA(type: string, message?: string): BooleanExpectation;
+expect(item: number).toNotBeA(type: string, message?: string): NumberExpectation;
+expect(item: string).toNotBeA(type: string, message?: string): StringExpectation;
+expect(item: Function).toNotBeA(type: string, message?: string): FunctionExpectation;
+expect(item: Object).toNotBeA(type: string, message?: string): ObjectExpectation;
+```
+
+Asserts that the `typeof` the tested `item` is not `type`.
+
+Outputs optional `message` in case of a failed assertion.
+
+#### Aliases:
+
+- toNotBeAn
 
 ### More coming soon…
 

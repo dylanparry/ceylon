@@ -171,6 +171,22 @@ describe('ArrayExpectation', () => {
 			throwsError(() => expect.toBeAn('string'));
 		});
 
+		it('should not throw an error when constructor is of type', () => {
+			const sut = [1, 2, 3];
+			const expect = new Expectation(sut);
+
+			expect.toBeA(Array);
+			expect.toBeAn(Array);
+		});
+
+		it('should throw an error when constructor is not of type', () => {
+			const sut = [1, 2, 3];
+			const expect = new Expectation(sut);
+
+			throwsError(() => expect.toBeA(Function));
+			throwsError(() => expect.toBeAn(Error));
+		});
+
 		it('should be chainable', () => {
 			const expect = new Expectation([1, 2, 3]);
 
@@ -192,6 +208,22 @@ describe('ArrayExpectation', () => {
 
 			throwsError(() => expect.toNotBeA('object'));
 			throwsError(() => expect.toNotBeAn('object'));
+		});
+
+		it('should not throw an error when constructor is not of type', () => {
+			const sut = [1, 2, 3];
+			const expect = new Expectation(sut);
+
+			expect.toNotBeA(Function);
+			expect.toNotBeAn(Error);
+		});
+
+		it('should throw an error when constructor is of type', () => {
+			const sut = [1, 2, 3];
+			const expect = new Expectation(sut);
+
+			throwsError(() => expect.toNotBeA(Array));
+			throwsError(() => expect.toNotBeAn(Array));
 		});
 
 		it('should be chainable', () => {

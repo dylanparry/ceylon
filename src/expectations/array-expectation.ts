@@ -1,4 +1,5 @@
-﻿import Expectation from '../expectation';
+﻿import AssertionError from '../assertion-error';
+import Expectation from '../expectation';
 
 export default class ArrayExpectation extends Expectation<Object[]> {
 	public constructor(actual: Object[]) {
@@ -41,27 +42,49 @@ export default class ArrayExpectation extends Expectation<Object[]> {
 		return this;
 	}
 
-	public toBeA(type: string, message?: string): ArrayExpectation {
-		super.toBeA(type, message);
+	public toBeA(type: Function, message?: string): ArrayExpectation;
+	public toBeA(type: string, message?: string): ArrayExpectation;
+	public toBeA(type: Object, message?: string): ArrayExpectation {
+		if (typeof type === 'string') {
+			super.toBeA(type, message);
+		}
+		else {
+			if (!(this.actual instanceof (type as Function))) {
+				throw AssertionError({
+					message: message || `Expected array to be instance of ${(type as Function).name}`,
+				});
+			}
+		}
 
 		return this;
 	}
 
-	public toBeAn(type: string, message?: string): ArrayExpectation {
-		super.toBeA(type, message);
+	public toBeAn(type: Function, message?: string): ArrayExpectation;
+	public toBeAn(type: string, message?: string): ArrayExpectation;
+	public toBeAn(type: Object, message?: string): ArrayExpectation {
+		return this.toBeA(type as any, message); // tslint:disable-line:no-any
+	}
+
+	public toNotBeA(type: Function, message?: string): ArrayExpectation;
+	public toNotBeA(type: string, message?: string): ArrayExpectation;
+	public toNotBeA(type: Object, message?: string): ArrayExpectation {
+		if (typeof type === 'string') {
+			super.toNotBeA(type, message);
+		}
+		else {
+			if (this.actual instanceof (type as Function)) {
+				throw AssertionError({
+					message: message || `Expected array to not be instance of ${(type as Function).name}`,
+				});
+			}
+		}
 
 		return this;
 	}
 
-	public toNotBeA(type: string, message?: string): ArrayExpectation {
-		super.toNotBeA(type, message);
-
-		return this;
-	}
-
-	public toNotBeAn(type: string, message?: string): ArrayExpectation {
-		super.toNotBeA(type, message);
-
-		return this;
+	public toNotBeAn(type: Function, message?: string): ArrayExpectation;
+	public toNotBeAn(type: string, message?: string): ArrayExpectation;
+	public toNotBeAn(type: Object, message?: string): ArrayExpectation {
+		return this.toNotBeA(type as any, message); // tslint:disable-line:no-any
 	}
 }
