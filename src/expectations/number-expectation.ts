@@ -69,4 +69,28 @@ export default class NumberExpectation extends Expectation<number> {
 
 		return this;
 	}
+
+	public toBeA(type: string, message?: string): NumberExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toBeAn(type: string, message?: string): NumberExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeA(type: string, message?: string): NumberExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeAn(type: string, message?: string): NumberExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
 }

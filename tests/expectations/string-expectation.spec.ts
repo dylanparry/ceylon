@@ -94,4 +94,50 @@ describe('StringExpectation', () => {
 			expect.toNotExist().toNotExist();
 		});
 	});
+
+	describe('toBeA / toBeAn', () => {
+		it('should not throw when value is a string', () => {
+			const expect = new Expectation('I am a string');
+
+			expect.toBeA('string');
+			expect.toBeAn('string');
+		});
+
+		it('should throw when value is not a string', () => {
+			const expect = new Expectation('I am a string');
+
+			throwsError(() => expect.toBeA('number'));
+			throwsError(() => expect.toBeAn('object'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation('I am a string');
+
+			expect.toBeA('string').toBeA('string');
+			expect.toBeAn('string').toBeAn('string');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('should not throw when value is not a string', () => {
+			const expect = new Expectation('I am a string');
+
+			expect.toNotBeA('number');
+			expect.toNotBeAn('object');
+		});
+
+		it('should throw when value is a string', () => {
+			const expect = new Expectation('I am a string');
+
+			throwsError(() => expect.toNotBeA('string'));
+			throwsError(() => expect.toNotBeAn('string'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation('I am a string');
+
+			expect.toNotBeA('number').toNotBeA('number');
+			expect.toNotBeAn('object').toNotBeAn('object');
+		});
+	});
 });

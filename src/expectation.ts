@@ -62,6 +62,24 @@ abstract class Expectation<T> {
 			});
 		}
 	}
+
+	protected toBeA(type: string, message?: string): void {
+		if (typeof this.actual !== type) {
+			throw AssertionError({
+				actual: typeof this.actual,
+				expected: type,
+				message: `Expected object to be of type "${type}", not "${typeof this.actual}"`,
+			});
+		}
+	}
+
+	protected toNotBeA(type: string, message?: string): void {
+		if (typeof this.actual === type) {
+			throw AssertionError({
+				message: `Expected object to not be of type "${type}"`,
+			});
+		}
+	}
 }
 
 export default Expectation;

@@ -200,4 +200,50 @@ describe('NumberExpectation', () => {
 			expect.toBeGreaterThanOrEqualTo(5).toBeGreaterThanOrEqualTo(5);
 		});
 	});
+
+	describe('toBeA / toBeAn', () => {
+		it('should not throw when value is a number', () => {
+			const expect = new Expectation(100);
+
+			expect.toBeA('number');
+			expect.toBeAn('number');
+		});
+
+		it('should throw when value is not a number', () => {
+			const expect = new Expectation(100);
+
+			throwsError(() => expect.toBeA('string'));
+			throwsError(() => expect.toBeAn('object'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(100);
+
+			expect.toBeA('number').toBeA('number');
+			expect.toBeAn('number').toBeAn('number');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('should not throw when value is not a number', () => {
+			const expect = new Expectation(100);
+
+			expect.toNotBeA('string');
+			expect.toNotBeAn('object');
+		});
+
+		it('should throw when value is a number', () => {
+			const expect = new Expectation(100);
+
+			throwsError(() => expect.toNotBeA('number'));
+			throwsError(() => expect.toNotBeAn('number'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(100);
+
+			expect.toNotBeA('string').toNotBeA('string');
+			expect.toNotBeAn('object').toNotBeAn('object');
+		});
+	});
 });

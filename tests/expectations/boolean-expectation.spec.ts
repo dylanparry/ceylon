@@ -94,4 +94,50 @@ describe('BooleanExpectation', () => {
 			expect.toNotExist().toNotExist();
 		});
 	});
+
+	describe('toBeA / toBeAn', () => {
+		it('should not throw when value is a boolean', () => {
+			const expect = new Expectation(true);
+
+			expect.toBeA('boolean');
+			expect.toBeAn('boolean');
+		});
+
+		it('should throw when value is not a boolean', () => {
+			const expect = new Expectation(true);
+
+			throwsError(() => expect.toBeA('string'));
+			throwsError(() => expect.toBeAn('object'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(true);
+
+			expect.toBeA('boolean').toBeA('boolean');
+			expect.toBeAn('boolean').toBeAn('boolean');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('should not throw when value is not a boolean', () => {
+			const expect = new Expectation(true);
+
+			expect.toNotBeA('string');
+			expect.toNotBeAn('string');
+		});
+
+		it('should throw when value is a boolean', () => {
+			const expect = new Expectation(true);
+
+			throwsError(() => expect.toNotBeA('boolean'));
+			throwsError(() => expect.toNotBeAn('boolean'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(true);
+
+			expect.toNotBeA('string').toNotBeA('string');
+			expect.toNotBeAn('object').toNotBeAn('object');
+		});
+	});
 });

@@ -28,4 +28,28 @@ export default class BooleanExpectation extends Expectation<boolean> {
 
 		return this;
 	}
+
+	public toBeA(type: string, message?: string): BooleanExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toBeAn(type: string, message?: string): BooleanExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeA(type: string, message?: string): BooleanExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeAn(type: string, message?: string): BooleanExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
 }

@@ -188,6 +188,24 @@ Asserts that the tested `item` is greater than or equal to the `value`.
 
 Outputs optional `message` in case of a failed assertion.
 
+### toBeA(string)
+
+```typescript
+expect(item: any[]).toBeA(type: string, message?: string): ArrayExpectation;
+expect(item: boolean).toBeA(type: string, message?: string): BooleanExpectation;
+expect(item: number).toBeA(type: string, message?: string): NumberExpectation;
+expect(item: string).toBeA(type: string, message?: string): StringExpectation;
+expect(item: Object).toBeA(type: string, message?: string): ObjectExpectation;
+```
+
+Asserts that the `typeof` the tested `item` is `type`.
+
+Outputs optional `message` in case of a failed assertion.
+
+#### Aliases:
+
+- toBeAn
+
 ### More coming soon…
 
 ## Chaining Assertions

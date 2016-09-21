@@ -40,4 +40,28 @@ export default class ArrayExpectation extends Expectation<Object[]> {
 
 		return this;
 	}
+
+	public toBeA(type: string, message?: string): ArrayExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toBeAn(type: string, message?: string): ArrayExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeA(type: string, message?: string): ArrayExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeAn(type: string, message?: string): ArrayExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
 }
