@@ -67,4 +67,28 @@ export default class FunctionExpectation extends Expectation<Function> {
 
 		return this;
 	}
+
+	public toBeA(type: string, message?: string): FunctionExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toBeAn(type: string, message?: string): FunctionExpectation {
+		super.toBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeA(type: string, message?: string): FunctionExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
+
+	public toNotBeAn(type: string, message?: string): FunctionExpectation {
+		super.toNotBeA(type, message);
+
+		return this;
+	}
 }

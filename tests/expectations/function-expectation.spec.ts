@@ -53,4 +53,50 @@ describe('FunctionExpectation', () => {
 			expect.toNotThrow().toNotThrow();
 		});
 	});
+
+	describe('toBeA / toBeAn', () => {
+		it('should not throw when type is a function', () => {
+			const expect = new Expectation(Math.random);
+
+			expect.toBeA('function');
+			expect.toBeAn('function');
+		});
+
+		it('should throw when type is not a function', () => {
+			const expect = new Expectation(Math.random);
+
+			throwsError(() => expect.toBeA('string'));
+			throwsError(() => expect.toBeAn('object'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(Math.random);
+
+			expect.toBeA('function').toBeA('function');
+			expect.toBeAn('function').toBeAn('function');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('should not throw when type is not a function', () => {
+			const expect = new Expectation(Math.random);
+
+			expect.toNotBeA('string');
+			expect.toNotBeAn('object');
+		});
+
+		it('should throw when type is a function', () => {
+			const expect = new Expectation(Math.random);
+
+			throwsError(() => expect.toNotBeA('function'));
+			throwsError(() => expect.toNotBeAn('function'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(Math.random);
+
+			expect.toNotBeA('string').toNotBeA('string');
+			expect.toNotBeAn('object').toNotBeAn('object');
+		});
+	});
 });
