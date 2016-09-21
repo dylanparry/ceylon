@@ -5,10 +5,10 @@ export default class FunctionExpectation extends Expectation<Function> {
 		super(actual);
 	}
 
-	public toThrow(error?: string, message?: string): void;
-	public toThrow(error?: Function, message?: string): void;
+	public toThrow(error?: string, message?: string): FunctionExpectation;
+	public toThrow(error?: Function, message?: string): FunctionExpectation;
 
-	public toThrow(error?: Object, message?: string): void {
+	public toThrow(error?: Object, message?: string): FunctionExpectation {
 		let functionThrew = false;
 
 		try {
@@ -40,9 +40,11 @@ export default class FunctionExpectation extends Expectation<Function> {
 		if (!functionThrew) {
 			throw new Error(message || 'Expected function to throw an error');
 		}
+
+		return this;
 	}
 
-	public toNotThrow(message?: string): void {
+	public toNotThrow(message?: string): FunctionExpectation {
 		let functionThrew = false;
 
 		try {
@@ -57,5 +59,7 @@ export default class FunctionExpectation extends Expectation<Function> {
 		if (functionThrew) {
 			throw new Error(message || 'Expected function to not throw an error');
 		}
+
+		return this;
 	}
 }

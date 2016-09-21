@@ -26,6 +26,12 @@ describe('FunctionExpectation', () => {
 
 			throwsError(() => expect.toThrow());
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(() => { throw new Error() });
+
+			expect.toThrow().toThrow();
+		});
 	});
 
 	describe('toNotThrow', () => {
@@ -39,6 +45,12 @@ describe('FunctionExpectation', () => {
 			const expect = new Expectation(() => { throw new Error(); });
 
 			throwsError(() => expect.toNotThrow());
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(() => true);
+
+			expect.toNotThrow().toNotThrow();
 		});
 	});
 });

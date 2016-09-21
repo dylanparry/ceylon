@@ -26,6 +26,15 @@ describe('ObjectExpectation', () => {
 
 			throwsError(() => expect.toBe(object));
 		});
+
+		it('should be chainable', () => {
+			const sut = { value: 1 };
+			const object = sut;
+
+			const expect = new Expectation(sut);
+
+			expect.toBe(object).toBe(object);
+		});
 	});
 
 	describe('toNotBe()', () => {
@@ -46,6 +55,15 @@ describe('ObjectExpectation', () => {
 
 			throwsError(() => expect.toNotBe(object));
 		});
+
+		it('should be chainable', () => {
+			const sut = { value: 1 };
+			const object = { value: 1 };
+
+			const expect = new Expectation(sut);
+
+			expect.toNotBe(object).toNotBe(object);
+		});
 	});
 
 	describe('toExist', () => {
@@ -62,6 +80,12 @@ describe('ObjectExpectation', () => {
 			const expect = new Expectation(sut);
 
 			throwsError(() => expect.toExist());
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation({});
+
+			expect.toExist().toExist();
 		});
 	});
 
@@ -80,6 +104,14 @@ describe('ObjectExpectation', () => {
 				throwsError(() => expect.toNotExist());
 			});
 		});
+
+		it('should be chainable', () => {
+			let sut: Object;
+
+			const expect = new Expectation(sut);
+
+			expect.toNotExist().toNotExist();
+		});
 	});
 
 	describe('toEqual', () => {
@@ -94,6 +126,12 @@ describe('ObjectExpectation', () => {
 
 			throwsError(() => expect.toEqual({ name: 'Object', value: 2 }));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			expect.toEqual({ name: 'Object', value: 1 }).toEqual({ name: 'Object', value: 1 });
+		});
 	});
 
 	describe('toNotEqual', () => {
@@ -107,6 +145,12 @@ describe('ObjectExpectation', () => {
 			const expect = new Expectation({ name: 'Object', value: 1 });
 
 			throwsError(() => expect.toNotEqual({ name: 'Object', value: 1 }));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation({ name: 'Object', value: 1 });
+
+			expect.toNotEqual({ name: 'Object' }).toNotEqual({ name: 'Object' });
 		});
 	});
 });

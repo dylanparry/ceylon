@@ -26,10 +26,19 @@ describe('ArrayExpectation', () => {
 
 			throwsError(() => expect.toBe(array));
 		});
+
+		it('should be chainable', () => {
+			const sut = [1, 2, 3];
+			const array = sut;
+
+			const expect = new Expectation(sut);
+
+			expect.toBe(array).toBe(array);
+		});
 	});
 
 	describe('toNotBe()', () => {
-		it('should throw when arrays are different objects', () => {
+		it('should throw when arrays are the same object', () => {
 			const sut = [1, 2, 3];
 			const array = sut;
 
@@ -38,13 +47,22 @@ describe('ArrayExpectation', () => {
 			throwsError(() => expect.toNotBe(array));
 		});
 
-		it('should not throw when arrays are the same object', () => {
+		it('should not throw when arrays are the different objects', () => {
 			const sut = [1, 2, 3];
 			const array = [1, 2, 3];
 
 			const expect = new Expectation(sut);
 
 			expect.toNotBe(array);
+		});
+
+		it('should be chainable', () => {
+			const sut = [1, 2, 3];
+			const array = [1, 2, 3];
+
+			const expect = new Expectation(sut);
+
+			expect.toNotBe(array).toNotBe(array);
 		});
 	});
 
@@ -63,6 +81,14 @@ describe('ArrayExpectation', () => {
 
 			throwsError(() => expect.toExist());
 		});
+
+		it('should be chainable', () => {
+			const sut = [1, 2, 3];
+
+			const expect = new Expectation(sut);
+
+			expect.toExist().toExist();
+		});
 	});
 
 	describe('toNotExist', () => {
@@ -80,6 +106,14 @@ describe('ArrayExpectation', () => {
 				throwsError(() => expect.toNotExist());
 			});
 		});
+
+		it('should be chainable', () => {
+			let array: number[];
+
+			const expect = new Expectation(array);
+
+			expect.toNotExist().toNotExist();
+		});
 	});
 
 	describe('toEqual', () => {
@@ -94,6 +128,12 @@ describe('ArrayExpectation', () => {
 
 			throwsError(() => expect.toEqual([1, 2, 3, 4]));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			expect.toEqual([1, 2, 3]).toEqual([1, 2, 3]);
+		});
 	});
 
 	describe('toNotEqual', () => {
@@ -107,6 +147,12 @@ describe('ArrayExpectation', () => {
 			const expect = new Expectation([1, 2, 3]);
 
 			throwsError(() => expect.toNotEqual([1, 2, 3]));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation([1, 2, 3]);
+
+			expect.toNotEqual([1, 2, 3, 4]).toNotEqual([1, 2, 3, 4]);
 		});
 	});
 });

@@ -20,6 +20,12 @@ describe('StringExpectation', () => {
 
 			throwsError(() => expect.toBe('Not the same'));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation('string');
+
+			expect.toBe('string').toBe('string');
+		});
 	});
 
 	describe('toNotBe()', () => {
@@ -33,6 +39,12 @@ describe('StringExpectation', () => {
 			const expect = new Expectation('string');
 
 			throwsError(() => expect.toNotBe('string'));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation('string');
+
+			expect.toNotBe('different').toNotBe('different');
 		});
 	});
 
@@ -51,6 +63,12 @@ describe('StringExpectation', () => {
 
 			throwsError(() => expect.toExist());
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation('string');
+
+			expect.toExist().toExist();
+		});
 	});
 
 	describe('toNotExist', () => {
@@ -67,6 +85,13 @@ describe('StringExpectation', () => {
 
 				throwsError(() => expect.toNotExist());
 			});
+		});
+
+		it('should be chainable', () => {
+			let sut: string;
+			const expect = new Expectation(sut);
+
+			expect.toNotExist().toNotExist();
 		});
 	});
 });

@@ -20,6 +20,12 @@ describe('BooleanExpectation', () => {
 
 			throwsError(() => expect.toBe(false));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(true);
+
+			expect.toBe(true).toBe(true);
+		});
 	});
 
 	describe('toNotBe()', () => {
@@ -33,6 +39,12 @@ describe('BooleanExpectation', () => {
 			const expect = new Expectation(true);
 
 			throwsError(() => expect.toNotBe(true));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(true);
+
+			expect.toNotBe(false).toNotBe(false);
 		});
 	});
 
@@ -51,6 +63,12 @@ describe('BooleanExpectation', () => {
 
 			throwsError(() => expect.toExist());
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(true);
+
+			expect.toExist().toExist();
+		});
 	});
 
 	describe('toNotExist', () => {
@@ -67,6 +85,13 @@ describe('BooleanExpectation', () => {
 
 				throwsError(() => expect.toNotExist());
 			});
+		});
+
+		it('should be chainable', () => {
+			let sut: boolean;
+			const expect = new Expectation(sut);
+
+			expect.toNotExist().toNotExist();
 		});
 	});
 });

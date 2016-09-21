@@ -22,6 +22,12 @@ describe('NumberExpectation', () => {
 
 			throwsError(() => expect.toBe(90));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(100);
+
+			expect.toBe(100).toBe(100);
+		});
 	});
 
 	describe('toNotBe()', () => {
@@ -35,6 +41,12 @@ describe('NumberExpectation', () => {
 			const expect = new Expectation(100);
 
 			throwsError(() => expect.toNotBe(100));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(100);
+
+			expect.toNotBe(90).toNotBe(90);
 		});
 	});
 
@@ -53,6 +65,12 @@ describe('NumberExpectation', () => {
 
 			throwsError(() => expect.toExist());
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(100);
+
+			expect.toExist().toExist();
+		});
 	});
 
 	describe('toNotExist', () => {
@@ -69,6 +87,13 @@ describe('NumberExpectation', () => {
 
 				throwsError(() => expect.toNotExist());
 			});
+		});
+
+		it('should be chainable', () => {
+			let sut: number;
+			const expect = new Expectation(sut);
+
+			expect.toNotExist().toNotExist();
 		});
 	});
 
@@ -90,6 +115,12 @@ describe('NumberExpectation', () => {
 
 			throwsError(() => expect.toBeLessThan(5));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeLessThan(20).toBeLessThan(20);
+		});
 	});
 
 	describe('toBeLessThanOrEqualTo', () => {
@@ -109,6 +140,12 @@ describe('NumberExpectation', () => {
 			const expect = new Expectation(10);
 
 			throwsError(() => expect.toBeLessThanOrEqualTo(5));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeLessThanOrEqualTo(20).toBeLessThanOrEqualTo(20);
 		});
 	});
 
@@ -130,6 +167,12 @@ describe('NumberExpectation', () => {
 
 			throwsError(() => expect.toBeGreaterThan(20));
 		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeGreaterThan(5).toBeGreaterThan(5);
+		});
 	});
 
 	describe('toBeGreaterThanOrEqualTo', () => {
@@ -149,6 +192,12 @@ describe('NumberExpectation', () => {
 			const expect = new Expectation(10);
 
 			throwsError(() => expect.toBeGreaterThanOrEqualTo(20));
+		});
+
+		it('should be chainable', () => {
+			const expect = new Expectation(10);
+
+			expect.toBeGreaterThanOrEqualTo(5).toBeGreaterThanOrEqualTo(5);
 		});
 	});
 });
