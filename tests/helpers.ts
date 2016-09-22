@@ -1,4 +1,10 @@
-﻿export const throwsError = (func: Function): void => {
+﻿const functionName = (func: Function) => {
+	const result = /^function\s+([\w\$]+)\s*\(/.exec(func.toString());
+
+	return result ? result[1] : '';
+};
+
+export const checkThrows = (func: Function): void => {
 	let threw = false;
 
 	try {
@@ -17,8 +23,20 @@
 	}
 };
 
-export const checkType = (sut: Object, expected: Function, message: string): void => {
+export const checkExists = <T>(sut: T): void => {
+	if (typeof sut === 'undefined') {
+		throw new Error('Object does not exist');
+	}
+};
+
+export const checkType = <T>(sut: T, expected: Function): void => {
 	if (sut instanceof expected === false) {
-		throw new Error(message);
+		throw new Error(`Expected object to be an instance of ${functionName(expected)}`);
+	}
+};
+
+export const checkEqual = <T>(sut: T, expected: T): void => {
+	if (sut !== expected) {
+		throw new Error('Objects are not equal');
 	}
 };

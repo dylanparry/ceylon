@@ -1,46 +1,8 @@
+import IExpect from './interfaces/expect';
 import Expectation from './expectation';
-import ArrayExpectation from './expectations/array-expectation';
-import BooleanExpectation from './expectations/boolean-expectation';
-import FunctionExpectation from './expectations/function-expectation';
-import NumberExpectation from './expectations/number-expectation';
-import ObjectExpectation from './expectations/object-expectation';
-import StringExpectation from './expectations/string-expectation';
 
-function expect(sut: Array<Object>): ArrayExpectation;
-function expect(sut: boolean): BooleanExpectation;
-function expect(sut: Function): FunctionExpectation;
-function expect(sut: number): NumberExpectation;
-function expect(sut: string): StringExpectation;
-function expect(sut: Object): ObjectExpectation;
-
-function expect(sut: Object): Expectation<Object> {
-	// Check for Array
-	if (sut instanceof Array) {
-		return new ArrayExpectation(sut);
-	}
-
-	// Check for Boolean
-	if (typeof sut === 'boolean') {
-		return new BooleanExpectation(sut);
-	}
-
-	// Check for Function
-	if (typeof sut === 'function') {
-		return new FunctionExpectation(sut as Function);
-	}
-
-	// Check for Number
-	if (typeof sut === 'number') {
-		return new NumberExpectation(sut);
-	}
-
-	// Check for String
-	if (typeof sut === 'string') {
-		return new StringExpectation(sut);
-	}
-
-	// Finally, if none of the above match use the generic ObjectExpectation
-	return new ObjectExpectation(sut);
+const expect: IExpect = <T>(actual: T): Expectation<T> => {
+	return new Expectation(actual);
 };
 
 export default expect;

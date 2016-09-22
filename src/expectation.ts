@@ -1,85 +1,220 @@
-import * as deepEqual from 'deep-equal';
+import IExpectation from './interfaces/expectation';
+import IBooleanExpectation from './interfaces/boolean-expectation';
+import INumberExpectation from './interfaces/number-expectation';
+import IStringExpectation from './interfaces/string-expectation';
+import IArrayExpectation from './interfaces/array-expectation';
+import IFunctionExpectatation from './interfaces/function-expectation';
+import IObjectExpectation from './interfaces/object-expectation';
 
-import AssertionError from './assertion-error';
-
-abstract class Expectation<T> {
-	protected actual: T;
+export default class Expectation<T> implements IExpectation<T>, IBooleanExpectation, INumberExpectation, IStringExpectation, IFunctionExpectatation, IArrayExpectation<T>, IObjectExpectation<T> {
+	private actual: T;
 
 	public constructor(actual: T) {
 		this.actual = actual;
 	}
 
-	protected toBe(value: T, message?: string): void {
-		if (this.actual !== value) {
-			throw AssertionError({
-				actual: this.actual,
-				expected: value,
-				message: message || `Expected "${this.actual}" to be "${value}"`,
-				showDiff: true,
-			});
-		}
+	public toExist(message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toNotBe(value: T, message?: string): void {
-		if (this.actual === value) {
-			throw AssertionError({
-				message: message || `Expected "${this.actual}" to not be "${value}"`,
-			});
-		}
+	public toNotExist(message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toEqual(object: Object, message?: string): void {
-		if (!deepEqual(this.actual, object, { strict: true })) {
-			throw AssertionError({
-				actual: this.actual,
-				expected: object,
-				message: message || 'Expected objects to be equal',
-				showDiff: true,
-			});
-		}
+	public toBe(value: boolean, message?: string): this;
+	public toBe(value: number, message?: string): this;
+	public toBe(value: string, message?: string): this;
+	public toBe(value: Function, message?: string): this;
+	public toBe(value: T[], message?: string): this;
+	public toBe(value: T, message?: string): this;
+	public toBe(value: any, message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toNotEqual(object: Object, message?: string): void {
-		if (deepEqual(this.actual, object, { strict: true })) {
-			throw AssertionError({
-				message: message || 'Expected objects to be not equal',
-			});
-		}
+	public toNotBe(value: boolean, message?: string): this;
+	public toNotBe(value: number, message?: string): this;
+	public toNotBe(value: string, message?: string): this;
+	public toNotBe(value: Function, message?: string): this;
+	public toNotBe(value: T[], message?: string): this;
+	public toNotBe(value: T, message?: string): this;
+	public toNotBe(value: any, message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toExist(message?: string): void {
-		if (typeof this.actual === 'undefined') {
-			throw AssertionError({
-				message: message || 'Expected object to exist',
-			});
-		}
+	public toEqual(value: boolean, message?: string): this;
+	public toEqual(value: number, message?: string): this;
+	public toEqual(value: string, message?: string): this;
+	public toEqual(value: Function, message?: string): this;
+	public toEqual(value: T[], message?: string): this;
+	public toEqual(value: T, message?: string): this;
+	public toEqual(value: any, message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toNotExist(message?: string): void {
-		if (typeof this.actual !== 'undefined') {
-			throw AssertionError({
-				message: message || 'Expected object to not exist',
-			});
-		}
+	public toNotEqual(value: boolean, message?: string): this;
+	public toNotEqual(value: number, message?: string): this;
+	public toNotEqual(value: string, message?: string): this;
+	public toNotEqual(value: Function, message?: string): this;
+	public toNotEqual(value: T[], message?: string): this;
+	public toNotEqual(value: T, message?: string): this;
+	public toNotEqual(value: any, message?: string): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toBeA(type: string, message?: string): void {
-		if (typeof this.actual !== type) {
-			throw AssertionError({
-				actual: typeof this.actual,
-				expected: type,
-				message: `Expected object to be of type "${type}", not "${typeof this.actual}"`,
-			});
-		}
+	public toBeTrue(): this {
+		throw new Error('Not implemented');
 	}
 
-	protected toNotBeA(type: string, message?: string): void {
-		if (typeof this.actual === type) {
-			throw AssertionError({
-				message: `Expected object to not be of type "${type}"`,
-			});
-		}
+	public toBeFalse(): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeLessThan(value: number, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeLessThanOrEqualTo(value: number, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeGreaterThan(value: number, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeGreaterThanOrEqualTo(value: number, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toMatch(value: RegExp, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotMatch(value: RegExp, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toInclude(value: string, message?: string): this;
+	public toInclude(value: T, message?: string): this;
+	public toInclude(value: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toContain(value: string, message?: string): this;
+	public toContain(value: T, message?: string): this;
+	public toContain(value: any, message?: string): this {
+		return this.toInclude(value, message);
+	}
+
+	public toExclude(value: string, message?: string): this;
+	public toExclude(value: T, message?: string): this;
+	public toExclude(value: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotInclude(value: string, message?: string): this;
+	public toNotInclude(value: T, message?: string): this;
+	public toNotInclude(value: any, message?: string): this {
+		return this.toExclude(value, message);
+	}
+
+	public toNotContain(value: string, message?: string): this;
+	public toNotContain(value: T, message?: string): this;
+	public toNotContain(value: any, message?: string): this {
+		return this.toExclude(value, message);
+	}
+
+	public toThrow(error?: string, message?: string): this;
+	public toThrow(error?: RegExp, message?: string): this;
+	public toThrow(error?: Function, message?: string): this;
+	public toThrow(error?: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotThrow(message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeA(constructor: Function, message?: string): this;
+	public toBeA(constructor: string, message?: string): this;
+	public toBeA(constructor: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toBeAn(constructor: Function, message?: string): this;
+	public toBeAn(constructor: string, message?: string): this;
+	public toBeAn(constructor: any, message?: string): this {
+		return this.toBeA(constructor as any, message);
+	}
+
+	public toNotBeA(constructor: Function, message?: string): this;
+	public toNotBeA(constructor: string, message?: string): this;
+	public toNotBeA(constructor: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotBeAn(constructor: Function, message?: string): this;
+	public toNotBeAn(constructor: string, message?: string): this;
+	public toNotBeAn(constructor: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toIncludeKey(key: number, message?: string): this;
+	public toIncludeKey(key: string, message?: string): this;
+	public toIncludeKey(key: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toContainKey(key: number, message?: string): this;
+	public toContainKey(key: string, message?: string): this;
+	public toContainKey(key: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toIncludeKeys(keys: number[], message?: string): this;
+	public toIncludeKeys(keys: string[], message?: string): this;
+	public toIncludeKeys(key: any[], message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toContainKeys(keys: number[], message?: string): this;
+	public toContainKeys(keys: string[], message?: string): this;
+	public toContainKeys(key: any[], message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toExcludeKey(key: number, message?: string): this;
+	public toExcludeKey(key: string, message?: string): this;
+	public toExcludeKey(key: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotIncludeKey(key: number, message?: string): this;
+	public toNotIncludeKey(key: string, message?: string): this;
+	public toNotIncludeKey(key: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotContainKey(key: number, message?: string): this;
+	public toNotContainKey(key: string, message?: string): this;
+	public toNotContainKey(key: any, message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toExcludeKeys(keys: number[], message?: string): this;
+	public toExcludeKeys(keys: string[], message?: string): this;
+	public toExcludeKeys(key: any[], message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotIncludeKeys(keys: number[], message?: string): this;
+	public toNotIncludeKeys(keys: string[], message?: string): this;
+	public toNotIncludeKeys(key: any[], message?: string): this {
+		throw new Error('Not implemented');
+	}
+
+	public toNotContainKeys(keys: number[], message?: string): this;
+	public toNotContainKeys(keys: string[], message?: string): this;
+	public toNotContainKeys(keys: any[], message?: string): this {
+		throw new Error('Not implemented');
 	}
 }
-
-export default Expectation;
