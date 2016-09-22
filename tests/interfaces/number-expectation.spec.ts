@@ -94,63 +94,79 @@ describe('expect(number)', () => {
 		});
 	});
 
-	describe('toBeLessThan', () => {
+	describe('toBeLessThan / toBeFewerThan', () => {
 		it('does not throw when assertion passes', () => {
 			expect(100).toBeLessThan(200);
+			expect(100).toBeFewerThan(200);
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeLessThan(50));
 			checkThrows(() => expect(100).toBeLessThan(100));
+			checkThrows(() => expect(100).toBeFewerThan(50));
+			checkThrows(() => expect(100).toBeFewerThan(100));
 		});
 
 		it('is chainable', () => {
 			expect(100).toBeLessThan(200).toBeLessThan(200);
+			expect(100).toBeFewerThan(200).toBeFewerThan(200);
 		});
 	});
 
-	describe('toBeLessThanOrEqualTo', () => {
+	describe('toBeLessThanOrEqualTo / toBeFewerThanOrEqualTo', () => {
 		it('does not throw when assertion passes', () => {
 			expect(100).toBeLessThanOrEqualTo(200);
 			expect(100).toBeLessThanOrEqualTo(100);
+			expect(100).toBeFewerThanOrEqualTo(200);
+			expect(100).toBeFewerThanOrEqualTo(100);
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeLessThanOrEqualTo(50));
+			checkThrows(() => expect(100).toBeFewerThanOrEqualTo(50));
 		});
 
 		it('is chainable', () => {
 			expect(100).toBeLessThanOrEqualTo(200).toBeLessThanOrEqualTo(200);
+			expect(100).toBeFewerThanOrEqualTo(200).toBeFewerThanOrEqualTo(200);
 		});
 	});
 
-	describe('toBeGreaterThan', () => {
+	describe('toBeGreaterThan / toBeMoreThan', () => {
 		it('does not throw when assertion passes', () => {
 			expect(200).toBeGreaterThan(100);
+			expect(200).toBeMoreThan(100);
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeGreaterThan(200));
 			checkThrows(() => expect(100).toBeGreaterThan(100));
+			checkThrows(() => expect(100).toBeMoreThan(200));
+			checkThrows(() => expect(100).toBeMoreThan(100));
 		});
 
 		it('is chainable', () => {
 			expect(200).toBeGreaterThan(100).toBeGreaterThan(100);
+			expect(200).toBeMoreThan(100).toBeMoreThan(100);
 		});
 	});
 
-	describe('toBeGreaterThanOrEqualTo', () => {
+	describe('toBeGreaterThanOrEqualTo / toBeMoreThanOrEqualTo', () => {
 		it('does not throw when assertion passes', () => {
 			expect(200).toBeGreaterThanOrEqualTo(100);
+			expect(200).toBeMoreThanOrEqualTo(100);
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(200));
 			checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(100));
+			checkThrows(() => expect(100).toBeMoreThanOrEqualTo(200));
+			checkThrows(() => expect(100).toBeMoreThanOrEqualTo(100));
 		});
 
 		it('is chainable', () => {
 			expect(200).toBeGreaterThanOrEqualTo(100).toBeGreaterThanOrEqualTo(100);
+			expect(200).toBeMoreThanOrEqualTo(100).toBeMoreThanOrEqualTo(100);
 		});
 	});
 });

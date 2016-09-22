@@ -73,16 +73,32 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		throw new Error('Not implemented');
 	}
 
+	public toBeFewerThan(value: number, message?: string): this {
+		return this.toBeLessThan(value, message);
+	}
+
 	public toBeLessThanOrEqualTo(value: number, message?: string): this {
 		throw new Error('Not implemented');
+	}
+
+	public toBeFewerThanOrEqualTo(value: number, message?: string): this {
+		return this.toBeLessThanOrEqualTo(value, message);
 	}
 
 	public toBeGreaterThan(value: number, message?: string): this {
 		throw new Error('Not implemented');
 	}
 
+	public toBeMoreThan(value: number, message?: string): this {
+		return this.toBeGreaterThan(value, message);
+	}
+
 	public toBeGreaterThanOrEqualTo(value: number, message?: string): this {
 		throw new Error('Not implemented');
+	}
+
+	public toBeMoreThanOrEqualTo(value: number, message?: string): this {
+		return this.toBeGreaterThanOrEqualTo(value, message);
 	}
 
 	public toMatch(value: RegExp, message?: string): this {
