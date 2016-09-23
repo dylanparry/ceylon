@@ -1,6 +1,6 @@
 import AssertionError from './assertion-error';
 
-interface IAssertOptions {
+export interface IAssertOptions {
 	assertion: boolean;
 	message: string;
 	actual?: any;
