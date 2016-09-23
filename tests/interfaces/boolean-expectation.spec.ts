@@ -107,7 +107,7 @@ describe('expect(boolean)', () => {
 		});
 
 		it('throws when assertion fails', () => {
-			checkThrows(() => expect(true).toBeTrue());
+			checkThrows(() => expect(false).toBeTrue());
 		});
 
 		it('is chainable', () => {

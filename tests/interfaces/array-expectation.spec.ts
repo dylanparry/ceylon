@@ -109,11 +109,33 @@ describe('expect(array)', () => {
 		it('does not thrown when assertion passes', () => {
 			expect([1, 2, 3]).toInclude(2);
 			expect([1, 2, 3]).toContain(2);
+
+			expect([
+				[1, 2, 3],
+				[4, 5, 5],
+				[7, 8, 9],
+			]).toInclude([1, 2, 3]);
+
+			expect([
+				[1, 2, 3],
+				[4, 5, 5],
+				[7, 8, 9],
+			]).toContain([1, 2, 3]);
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect([1, 2, 3]).toInclude(4));
 			checkThrows(() => expect([1, 2, 3]).toContain(4));
+
+			checkThrows(() => expect([
+				[4, 5, 5],
+				[7, 8, 9],
+			]).toInclude([1, 2, 3]));
+
+			checkThrows(() => expect([
+				[4, 5, 5],
+				[7, 8, 9],
+			]).toContain([1, 2, 3]));
 		});
 
 		it('is chainable', () => {

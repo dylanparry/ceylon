@@ -102,29 +102,29 @@ describe('expect(string)', () => {
 
 	describe('toMatch', () => {
 		it('does not throw when assertion passes', () => {
-			expect('I am a string').toMatch(/string/);
+			expect('I am a string').toMatch(/^.*string$/);
 		});
 
 		it('throws when assertion fails', () => {
-			checkThrows(() => expect('I am a string').toMatch(/number/));
+			checkThrows(() => expect('I am a string').toMatch(/^.*number$/));
 		});
 
 		it('is chainable', () => {
-			expect('I am a string').toMatch(/string/).toMatch(/string/);
+			expect('I am a string').toMatch(/^.*string$/).toMatch(/^.*string$/);
 		});
 	});
 
 	describe('toNotMatch', () => {
 		it('does not throw when assertion passes', () => {
-			expect('I am a string').toNotMatch(/number/);
+			expect('I am a string').toNotMatch(/^.*number$/);
 		});
 
 		it('throws when assertion fails', () => {
-			checkThrows(() => expect('I am a string').toNotMatch(/string/));
+			checkThrows(() => expect('I am a string').toNotMatch(/^.*string$/));
 		});
 
 		it('is chainable', () => {
-			expect('I am a string').toNotMatch(/number/).toNotMatch(/number/);
+			expect('I am a string').toNotMatch(/^.*number$/).toNotMatch(/^.*number$/);
 		});
 	});
 

@@ -1,12 +1,6 @@
 ﻿import { checkThrows } from '../helpers';
 import expect from '../../src/index';
 
-// Function for testing keys
-const testFunction = () => {
-	this.id = 1;
-	this.name = 'Test Function';
-};
-
 describe('expect(Function)', () => {
 	describe('toExist', () => {
 		it('does not throw when assertion passes', () => {
@@ -134,74 +128,74 @@ describe('expect(Function)', () => {
 
 	describe('toIncludeKey / toContainKey', () => {
 		it('does not throw when assertion passes', () => {
-			expect(testFunction).toIncludeKey('name');
+			expect(Math.random).toIncludeKey('name');
 		});
 
 		it('throws error when assertion fails', () => {
-			checkThrows(() => expect(testFunction).toIncludeKey('value'));
-			checkThrows(() => expect(testFunction).toContainKey('value'));
+			checkThrows(() => expect(Math.random).toIncludeKey('value'));
+			checkThrows(() => expect(Math.random).toContainKey('value'));
 		});
 
 		it('is chainable', () => {
-			expect(testFunction).toIncludeKey('name').toIncludeKey('name');
-			expect(testFunction).toContainKey('name').toContainKey('name');
+			expect(Math.random).toIncludeKey('name').toIncludeKey('name');
+			expect(Math.random).toContainKey('name').toContainKey('name');
 		});
 	});
 
 	describe('toExcludeKey / toNotIncludeKey / toNotContainKey', () => {
 		it('does not throw when assertion passes', () => {
-			expect(testFunction).toExcludeKey('value');
-			expect(testFunction).toNotIncludeKey('value');
-			expect(testFunction).toNotContainKey('value');
+			expect(Math.random).toExcludeKey('value');
+			expect(Math.random).toNotIncludeKey('value');
+			expect(Math.random).toNotContainKey('value');
 		});
 
 		it('throws error when assertion fails', () => {
-			checkThrows(() => expect(testFunction).toExcludeKey('name'));
-			checkThrows(() => expect(testFunction).toNotIncludeKey('name'));
-			checkThrows(() => expect(testFunction).toNotContainKey('name'));
+			checkThrows(() => expect(Math.random).toExcludeKey('name'));
+			checkThrows(() => expect(Math.random).toNotIncludeKey('name'));
+			checkThrows(() => expect(Math.random).toNotContainKey('name'));
 		});
 
 		it('is chainable', () => {
-			expect(testFunction).toExcludeKey('value').toExcludeKey('value');
-			expect(testFunction).toNotIncludeKey('value').toNotContainKey('value');
-			expect(testFunction).toNotContainKey('value').toNotContainKey('value');
+			expect(Math.random).toExcludeKey('value').toExcludeKey('value');
+			expect(Math.random).toNotIncludeKey('value').toNotContainKey('value');
+			expect(Math.random).toNotContainKey('value').toNotContainKey('value');
 		});
 	});
 
 	describe('toIncludeKeys / toContainKeys', () => {
 		it('does not throw when assertion passes', () => {
-			expect(testFunction).toIncludeKeys(['name', 'id']);
-			expect(testFunction).toContainKeys(['name', 'id']);
+			expect(Math.random).toIncludeKeys(['name', 'length']);
+			expect(Math.random).toContainKeys(['name', 'length']);
 		});
 
 		it('throws error when assertion fails', () => {
-			checkThrows(() => expect(testFunction).toIncludeKeys(['value', 'location']));
-			checkThrows(() => expect(testFunction).toContainKeys(['value', 'location']));
+			checkThrows(() => expect(Math.random).toIncludeKeys(['value', 'location']));
+			checkThrows(() => expect(Math.random).toContainKeys(['value', 'location']));
 		});
 
 		it('is chainable', () => {
-			expect(testFunction).toIncludeKeys(['name', 'id']).toIncludeKeys(['name', 'id']);
-			expect(testFunction).toContainKeys(['name', 'id']).toContainKeys(['name', 'id']);
+			expect(Math.random).toIncludeKeys(['name', 'length']).toIncludeKeys(['name', 'length']);
+			expect(Math.random).toContainKeys(['name', 'length']).toContainKeys(['name', 'length']);
 		});
 	});
 
 	describe('toExcludeKeys / toNotIncludeKeys / toNotContainKeys', () => {
 		it('does not throw when assertion passes', () => {
-			expect(testFunction).toExcludeKeys(['value', 'location']);
-			expect(testFunction).toNotIncludeKeys(['value', 'location']);
-			expect(testFunction).toNotContainKeys(['value', 'location']);
+			expect(Math.random).toExcludeKeys(['value', 'location']);
+			expect(Math.random).toNotIncludeKeys(['value', 'location']);
+			expect(Math.random).toNotContainKeys(['value', 'location']);
 		});
 
 		it('throws error when assertion fails', () => {
-			checkThrows(() => expect(testFunction).toExcludeKeys(['name', 'id']));
-			checkThrows(() => expect(testFunction).toNotIncludeKeys(['name', 'id']));
-			checkThrows(() => expect(testFunction).toNotContainKeys(['name', 'id']));
+			checkThrows(() => expect(Math.random).toExcludeKeys(['name', 'id']));
+			checkThrows(() => expect(Math.random).toNotIncludeKeys(['name', 'id']));
+			checkThrows(() => expect(Math.random).toNotContainKeys(['name', 'id']));
 		});
 
 		it('is chainable', () => {
-			expect(testFunction).toExcludeKeys(['value', 'location']).toExcludeKeys(['value', 'location']);
-			expect(testFunction).toNotIncludeKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
-			expect(testFunction).toNotContainKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
+			expect(Math.random).toExcludeKeys(['value', 'location']).toExcludeKeys(['value', 'location']);
+			expect(Math.random).toNotIncludeKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
+			expect(Math.random).toNotContainKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
 		});
 	});
 });

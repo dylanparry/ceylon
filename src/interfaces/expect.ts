@@ -11,7 +11,7 @@ interface IExpect {
 	(item: number): INumberExpectation;
 	(item: string): IStringExpectation;
 	<T>(array: T[]): IArrayExpectation<T>;
-	<T extends Function>(block: T): IFunctionExpectation;
+	<T>(block: Function): IFunctionExpectation;
 	<T extends Object>(object: T): IObjectExpectation<T>;
 	<T>(item: T): IExpectation<T>;
 }

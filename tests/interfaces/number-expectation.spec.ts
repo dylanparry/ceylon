@@ -169,9 +169,7 @@ describe('expect(number)', () => {
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(200));
-			checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(100));
 			checkThrows(() => expect(100).toBeMoreThanOrEqualTo(200));
-			checkThrows(() => expect(100).toBeMoreThanOrEqualTo(100));
 		});
 
 		it('is chainable', () => {

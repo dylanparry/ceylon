@@ -102,7 +102,7 @@ describe('expect(Object)', () => {
 		});
 
 		it('is chainable', () => {
-			expect({ id: 1 }).toNotEqual({ id: 2 }).toNotEqual({ id: 1 });
+			expect({ id: 1 }).toNotEqual({ id: 2 }).toNotEqual({ id: 2 });
 		});
 	});
 
@@ -110,11 +110,17 @@ describe('expect(Object)', () => {
 		it('does not throw when assertion passes', () => {
 			expect({ id: 1, name: 'Object' }).toInclude({ id: 1 });
 			expect({ id: 1, name: 'Object' }).toContain({ id: 1 });
+			expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toInclude({ complex: { sub: 1 }, id: 1 });
+			expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toContain({ complex: { sub: 1 }, id: 1 });
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect({ id: 1 }).toInclude({ name: 'Object' }));
 			checkThrows(() => expect({ id: 1 }).toContain({ name: 'Object' }));
+			checkThrows(() => expect({ id: 1 }).toInclude({ id: 2 }));
+			checkThrows(() => expect({ id: 1 }).toContain({ id: 2 }));
+			checkThrows(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toInclude({ sub: 1 }));
+			checkThrows(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toContain({ sub: 1 }));
 		});
 
 		it('is chainable', () => {
@@ -128,12 +134,24 @@ describe('expect(Object)', () => {
 			expect({ id: 1 }).toExclude({ name: 'Object' });
 			expect({ id: 1 }).toNotInclude({ name: 'Object' });
 			expect({ id: 1 }).toNotContain({ name: 'Object' });
+
+			expect({ id: 1 }).toExclude({ id: 2 });
+			expect({ id: 1 }).toNotInclude({ id: 2 });
+			expect({ id: 1 }).toNotContain({ id: 2 });
+
+			expect({ complex: { sub: 1 }, id: 1 }).toExclude({ sub: 1 });
+			expect({ complex: { sub: 1 }, id: 1 }).toNotInclude({ sub: 1 });
+			expect({ complex: { sub: 1 }, id: 1 }).toNotContain({ sub: 1 });
 		});
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect({ id: 1 }).toExclude({ id: 1 }));
 			checkThrows(() => expect({ id: 1 }).toNotInclude({ id: 1 }));
 			checkThrows(() => expect({ id: 1 }).toNotContain({ id: 1 }));
+
+			checkThrows(() => expect({complex: { sub: 1 }, id: 1 }).toExclude({ complex: { sub: 1 } }));
+			checkThrows(() => expect({ complex: { sub: 1 }, id: 1 }).toNotInclude({ complex: { sub: 1 } }));
+			checkThrows(() => expect({ complex: { sub: 1 }, id: 1 }).toNotContain({ complex: { sub: 1 } }));
 		});
 
 		it('is chainable', () => {
