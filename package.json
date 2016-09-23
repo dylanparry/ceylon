@@ -33,11 +33,12 @@
     "@types/mocha": "^2.2.32",
     "mocha": "^3.0.2",
     "rimraf": "^2.5.4",
+    "tslint": "^3.15.1",
     "typescript": "^2.0.3"
   },
   "scripts": {
     "pretest": "rimraf ./temp && tsc --target ES5 --outDir ./temp",
-    "test": "mocha ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js",
+    "test": "mocha ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js && tslint  --project ./tsconfig.json",
     "posttest": "rimraf ./temp",
     "prepublish": "npm test && tsc --target ES5 --outDir ./lib --declaration ./src/index.ts",
     "postpublish": "rimraf ./lib"
