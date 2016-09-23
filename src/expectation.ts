@@ -19,7 +19,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toExist(message?: string): this {
 		assert({
 			assertion: typeof this.actual !== 'undefined',
-			message: 'Expected item to exist',
+			message: message || 'Expected item to exist',
 		});
 
 		return this;
@@ -28,7 +28,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toNotExist(message?: string): this {
 		assert({
 			assertion: typeof this.actual === 'undefined',
-			message: 'Expected item to not exist',
+			message: message || 'Expected item to not exist',
 		});
 
 		return this;
@@ -45,7 +45,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			actual: this.actual,
 			assertion: this.actual === value,
 			expected: value,
-			message: `Expected ${JSON.stringify(this.actual)} to be ${JSON.stringify(value)}`,
+			message: message || `Expected ${JSON.stringify(this.actual)} to be ${JSON.stringify(value)}`,
 		});
 
 		return this;
@@ -62,7 +62,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			actual: this.actual,
 			assertion: this.actual !== value,
 			expected: value,
-			message: `Expected ${JSON.stringify(this.actual)} to not be ${JSON.stringify(value)}`,
+			message: message || `Expected ${JSON.stringify(this.actual)} to not be ${JSON.stringify(value)}`,
 		});
 
 		return this;
@@ -79,7 +79,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			actual: this.actual,
 			assertion: deepEqual(this.actual, value),
 			expected: value,
-			message: `Expected ${JSON.stringify(this.actual)} to equal ${JSON.stringify(value)}`,
+			message: message || `Expected ${JSON.stringify(this.actual)} to equal ${JSON.stringify(value)}`,
 		});
 
 		return this;
@@ -96,7 +96,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			actual: this.actual,
 			assertion: !deepEqual(this.actual, value),
 			expected: value,
-			message: `Expected ${JSON.stringify(this.actual)} to not equal ${JSON.stringify(value)}`,
+			message: message || `Expected ${JSON.stringify(this.actual)} to not equal ${JSON.stringify(value)}`,
 		});
 
 		return this;
@@ -117,7 +117,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: this.actual < value,
-			message: `Expected ${this.actual} to be less than ${value}`,
+			message: message || `Expected ${this.actual} to be less than ${value}`,
 		});
 
 		return this;
@@ -134,7 +134,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: this.actual <= value,
-			message: `Expected ${this.actual} to be less than or equal to ${value}`,
+			message: message || `Expected ${this.actual} to be less than or equal to ${value}`,
 		});
 
 		return this;
@@ -151,7 +151,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: this.actual > value,
-			message: `Expected ${this.actual} to be greater than ${value}`,
+			message: message || `Expected ${this.actual} to be greater than ${value}`,
 		});
 
 		return this;
@@ -168,7 +168,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: this.actual >= value,
-			message: `Expected ${this.actual} to be greater than or equal to ${value}`,
+			message: message || `Expected ${this.actual} to be greater than or equal to ${value}`,
 		});
 
 		return this;
@@ -185,7 +185,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: value.test(this.actual),
-			message: `Expected ${this.actual} to match ${value}`,
+			message: message || `Expected ${this.actual} to match ${value}`,
 		});
 
 		return this;
@@ -198,7 +198,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: !value.test(this.actual),
-			message: `Expected ${this.actual} to match ${value}`,
+			message: message || `Expected ${this.actual} to match ${value}`,
 		});
 
 		return this;
@@ -210,7 +210,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).indexOf(value) >= 0,
-				message: `Expected ${this.actual} to contain ${value}`,
+				message: message || `Expected ${this.actual} to contain ${value}`,
 			});
 		}
 		else if (Array.isArray(this.actual)) {
@@ -226,7 +226,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: included,
-				message: `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
+				message: message || `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
 			});
 		}
 		else if (typeof this.actual === 'object') {
@@ -255,7 +255,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: included,
-				message: `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
+				message: message || `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
 			});
 		}
 		else {
@@ -277,7 +277,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).indexOf(value) === -1,
-				message: `Expected ${this.actual} to not contain ${value}`,
+				message: message || `Expected ${this.actual} to not contain ${value}`,
 			});
 		}
 		else if (Array.isArray(this.actual)) {
@@ -293,7 +293,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: !included,
-				message: `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
+				message: message || `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
 			});
 		}
 		else if (typeof this.actual === 'object') {
@@ -316,7 +316,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: !included,
-				message: `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
+				message: message || `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
 			});
 		}
 		else {
@@ -358,7 +358,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: threw,
-				message: 'Expected function to throw',
+				message: message || 'Expected function to throw',
 			});
 		}
 		else if (typeof error === 'string') {
@@ -368,7 +368,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			catch (e) {
 				assert({
 					assertion: e.message === error,
-					message: `Expected error message to be "${error}""`,
+					message: message || `Expected error message to be "${error}""`,
 				});
 			}
 		}
@@ -379,7 +379,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			catch (e) {
 				assert({
 					assertion: error.test(e.message),
-					message: `Expected error message to match ${error}`,
+					message: message || `Expected error message to match ${error}`,
 				});
 			}
 		}
@@ -390,7 +390,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 			catch (e) {
 				assert({
 					assertion: e instanceof error,
-					message: `Expected error to be ${error}`,
+					message: message || `Expected error to be ${error}`,
 				});
 			}
 		}
@@ -414,7 +414,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 		assert({
 			assertion: !threw,
-			message: 'Expected function to not throw',
+			message: message || 'Expected function to not throw',
 		});
 
 		return this;
@@ -428,7 +428,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				actual: typeof this.actual,
 				assertion: typeof this.actual === constructor,
 				expected: constructor,
-				message: `Expected item to be a ${constructor}`,
+				message: message || `Expected item to be a ${constructor}`,
 			});
 		}
 		else if (typeof constructor === 'function') {
@@ -436,7 +436,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				actual: typeof this.actual,
 				assertion: this.actual instanceof constructor,
 				expected: constructor,
-				message: `Expected item to be a ${constructor}`,
+				message: message || `Expected item to be a ${constructor}`,
 			});
 		}
 
@@ -455,13 +455,13 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof constructor === 'string') {
 			assert({
 				assertion: !(typeof this.actual === constructor),
-				message: `Expected item to not be a ${constructor}`,
+				message: message || `Expected item to not be a ${constructor}`,
 			});
 		}
 		else if (typeof constructor === 'function') {
 			assert({
 				assertion: !(this.actual instanceof constructor),
-				message: `Expected item to not be a ${constructor}`,
+				message: message || `Expected item to not be a ${constructor}`,
 			});
 		}
 
@@ -480,19 +480,19 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'function') {
 			assert({
 				assertion: (this.actual as Function).hasOwnProperty(key),
-				message: `Expected function to have key ${key}`,
+				message: message || `Expected function to have key ${key}`,
 			});
 		}
 		else if (Array.isArray(this.actual)) {
 			assert({
 				assertion: (this.actual as any[]).hasOwnProperty(key),
-				message: `Expected array to have key ${key}`,
+				message: message || `Expected array to have key ${key}`,
 			});
 		}
 		else if (typeof this.actual === 'object') {
 			assert({
 				assertion: (this.actual as Object).hasOwnProperty(key),
-				message: `Expected object to have key ${key}`,
+				message: message || `Expected object to have key ${key}`,
 			});
 		}
 		else {
@@ -530,19 +530,19 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'function') {
 			assert({
 				assertion: !((this.actual as Function).hasOwnProperty(key)),
-				message: `Expected function to not have key ${key}`,
+				message: message || `Expected function to not have key ${key}`,
 			});
 		}
 		else if (Array.isArray(this.actual)) {
 			assert({
 				assertion: !((this.actual as any[]).hasOwnProperty(key)),
-				message: `Expected array to not have key ${key}`,
+				message: message || `Expected array to not have key ${key}`,
 			});
 		}
 		else if (typeof this.actual === 'object') {
 			assert({
 				assertion: !((this.actual as Object).hasOwnProperty(key)),
-				message: `Expected object to not have key ${key}`,
+				message: message || `Expected object to not have key ${key}`,
 			});
 		}
 		else {
