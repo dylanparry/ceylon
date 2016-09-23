@@ -1,6 +1,6 @@
 {
   "name": "ceylon",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "main": "lib/index.js",
@@ -43,9 +43,12 @@
     "posttest": "rimraf ./temp",
     "prepublish": "npm test && tsc --target ES5 --outDir ./lib --declaration ./src/index.ts",
     "postpublish": "rimraf ./lib",
-		"pre-commit-message": "echo Testing and Linting Code"
+    "pre-commit-message": "echo Testing and Linting Code"
   },
-	"pre-commit": [ "pre-commit-message", "test" ],
+  "pre-commit": [
+    "pre-commit-message",
+    "test"
+  ],
   "engines": {
     "node": ">=0.10.46",
     "iojs": "3.3.1"
