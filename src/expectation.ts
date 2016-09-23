@@ -316,7 +316,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 			assert({
 				assertion: !included,
-				message: `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
+				message: `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
 			});
 		}
 		else {
