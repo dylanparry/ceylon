@@ -8,11 +8,15 @@ describe('expect(number)', () => {
 			expect(-100).toExist();
 			expect(0).toExist();
 			expect(0.5).toExist();
-			expect(null as number).toExist();
+
+			const data: number | null = null;
+			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
-			checkThrows(() => expect(undefined as number).toExist());
+			let data: number | undefined;
+
+			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -22,7 +26,9 @@ describe('expect(number)', () => {
 
 	describe('toNotExist', () => {
 		it('does not throw when assertion passes', () => {
-			expect(undefined as number).toNotExist();
+			let data: number | undefined;
+
+			expect(data).toNotExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -30,11 +36,15 @@ describe('expect(number)', () => {
 			checkThrows(() => expect(-100).toNotExist());
 			checkThrows(() => expect(0).toNotExist());
 			checkThrows(() => expect(0.5).toNotExist());
-			checkThrows(() => expect(null as number).toNotExist());
+
+			const data: number | null = null;
+			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {
-			expect(undefined as number).toNotExist().toNotExist();
+			let data: number | undefined;
+
+			expect(data).toNotExist().toNotExist();
 		});
 	});
 

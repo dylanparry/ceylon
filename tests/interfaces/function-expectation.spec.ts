@@ -14,7 +14,9 @@ describe('expect(Function)', () => {
 		});
 
 		it('throws when assertion fails', () => {
-			checkThrows(() => expect(undefined as Function).toExist());
+			let data: Function | undefined;
+
+			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -24,7 +26,9 @@ describe('expect(Function)', () => {
 
 	describe('toNotExist', () => {
 		it('does not throw when assertion passes', () => {
-			expect(undefined as Function).toNotExist();
+			let data: Function | undefined;
+
+			expect(data).toNotExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -32,7 +36,9 @@ describe('expect(Function)', () => {
 		});
 
 		it('is chainable', () => {
-			expect(undefined as Function).toNotExist().toNotExist();
+			let data: Function | undefined;
+
+			expect(data).toNotExist().toNotExist();
 		});
 	});
 
