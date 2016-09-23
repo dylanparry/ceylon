@@ -99,6 +99,11 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toContain({ sub: 1 }));
 		});
 
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toInclude']({ id: 1 }));
+			checkThrows(() => expect(undefined)['toContain']({ id: 1 }));
+		});
+
 		it('is chainable', () => {
 			expect({ id: 1, name: 'Object' }).toInclude({ id: 1 }).toInclude({ id: 1 });
 			expect({ id: 1, name: 'Object' }).toContain({ id: 1 }).toContain({ id: 1 });
@@ -130,6 +135,12 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect({ complex: { sub: 1 }, id: 1 }).toNotContain({ complex: { sub: 1 } }));
 		});
 
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toExclude']({ id: 1 }));
+			checkThrows(() => expect(undefined)['toNotInclude']({ id: 1 }));
+			checkThrows(() => expect(undefined)['toNotContain']({ id: 1 }));
+		});
+
 		it('is chainable', () => {
 			expect({ id: 1 }).toExclude({ name: 'Object' }).toExclude({ name: 'Object' });
 			expect({ id: 1 }).toNotInclude({ name: 'Object' }).toNotInclude({ name: 'Object' });
@@ -146,6 +157,11 @@ describe('expect(Object)', () => {
 		it('throws error when assertion fails', () => {
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKey('value'));
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKey('value'));
+		});
+
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toIncludeKey']('name'));
+			checkThrows(() => expect(undefined)['toContainKey']('name'));
 		});
 
 		it('is chainable', () => {
@@ -167,6 +183,12 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toNotContainKey('name'));
 		});
 
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toExcludeKey']('name'));
+			checkThrows(() => expect(undefined)['toNotIncludeKey']('name'));
+			checkThrows(() => expect(undefined)['toNotContainKey']('name'));
+		});
+
 		it('is chainable', () => {
 			expect({ id: 1, name: 'Object' }).toExcludeKey('value').toExcludeKey('value');
 			expect({ id: 1, name: 'Object' }).toNotIncludeKey('value').toNotContainKey('value');
@@ -183,6 +205,11 @@ describe('expect(Object)', () => {
 		it('throws error when assertion fails', () => {
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(['value', 'location']));
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKeys(['value', 'location']));
+		});
+
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toIncludeKeys'](['name', 'age']));
+			checkThrows(() => expect(undefined)['toContainKeys'](['name', 'age']));
 		});
 
 		it('is chainable', () => {
@@ -202,6 +229,12 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toExcludeKeys(['id', 'name']));
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toNotIncludeKeys(['id', 'name']));
 			checkThrows(() => expect({ id: 1, name: 'Object' }).toNotContainKeys(['id', 'name']));
+		});
+
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toExcludeKeys'](['name', 'age']));
+			checkThrows(() => expect(undefined)['toNotIncludeKeys'](['name', 'age']));
+			checkThrows(() => expect(undefined)['toNotContainKeys'](['name', 'age']));
 		});
 
 		it('is chainable', () => {
@@ -226,6 +259,13 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect(new TypeError()).toBeAn('number'));
 		});
 
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toBeA'](Object));
+			checkThrows(() => expect(undefined)['toBeA']('number'));
+			checkThrows(() => expect(undefined)['toBeAn'](Object));
+			checkThrows(() => expect(undefined)['toBeAn']('number'));
+		});
+
 		it('is chainable', () => {
 			expect(new TypeError()).toBeA(TypeError).toBeA(TypeError);
 			expect(new EvalError()).toBeAn(EvalError).toBeAn(EvalError);
@@ -247,6 +287,13 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect(new EvalError()).toNotBeAn(EvalError));
 			checkThrows(() => expect(new TypeError()).toNotBeA('object'));
 			checkThrows(() => expect(new TypeError()).toNotBeAn('object'));
+		});
+
+		it('throws when called on a non-object', () => {
+			checkThrows(() => expect(undefined)['toNotBeA'](Object));
+			checkThrows(() => expect(undefined)['toNotBeA']('number'));
+			checkThrows(() => expect(undefined)['toNotBeAn'](Object));
+			checkThrows(() => expect(undefined)['toNotBeAn']('number'));
 		});
 
 		it('is chainable', () => {

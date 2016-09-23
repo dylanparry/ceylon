@@ -89,6 +89,10 @@ describe('expect(Function)', () => {
 			checkThrows(() => expect(() => { throw new TypeError(); }).toThrow(SyntaxError));
 		});
 
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toThrow']());
+		});
+
 		it('is chainable', () => {
 			expect(() => { throw new Error(); }).toThrow().toThrow();
 		});
@@ -101,6 +105,10 @@ describe('expect(Function)', () => {
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(() => { throw new Error(); }).toNotThrow());
+		});
+
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toNotThrow']());
 		});
 
 		it('is chainable', () => {
@@ -116,6 +124,11 @@ describe('expect(Function)', () => {
 		it('throws error when assertion fails', () => {
 			checkThrows(() => expect(Math.random).toIncludeKey('value'));
 			checkThrows(() => expect(Math.random).toContainKey('value'));
+		});
+
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toIncludeKey']('name'));
+			checkThrows(() => expect(undefined)['toContainKey']('name'));
 		});
 
 		it('is chainable', () => {
@@ -137,6 +150,12 @@ describe('expect(Function)', () => {
 			checkThrows(() => expect(Math.random).toNotContainKey('name'));
 		});
 
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toExcludeKey']('name'));
+			checkThrows(() => expect(undefined)['toNotIncludeKey']('name'));
+			checkThrows(() => expect(undefined)['toNotContainKey']('name'));
+		});
+
 		it('is chainable', () => {
 			expect(Math.random).toExcludeKey('value').toExcludeKey('value');
 			expect(Math.random).toNotIncludeKey('value').toNotContainKey('value');
@@ -153,6 +172,11 @@ describe('expect(Function)', () => {
 		it('throws error when assertion fails', () => {
 			checkThrows(() => expect(Math.random).toIncludeKeys(['value', 'location']));
 			checkThrows(() => expect(Math.random).toContainKeys(['value', 'location']));
+		});
+
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toIncludeKeys'](['name', 'length']));
+			checkThrows(() => expect(undefined)['toContainKeys'](['name', 'length']));
 		});
 
 		it('is chainable', () => {
@@ -172,6 +196,12 @@ describe('expect(Function)', () => {
 			checkThrows(() => expect(Math.random).toExcludeKeys(['name', 'id']));
 			checkThrows(() => expect(Math.random).toNotIncludeKeys(['name', 'id']));
 			checkThrows(() => expect(Math.random).toNotContainKeys(['name', 'id']));
+		});
+
+		it('throws when called on a non-function', () => {
+			checkThrows(() => expect(undefined)['toExcludeKey'](['name', 'length']));
+			checkThrows(() => expect(undefined)['toNotIncludeKeys'](['name', 'length']));
+			checkThrows(() => expect(undefined)['toNotContainKeys'](['name', 'length']));
 		});
 
 		it('is chainable', () => {

@@ -85,6 +85,10 @@ describe('expect(string)', () => {
 			checkThrows(() => expect('I am a string').toMatch(/^.*number$/));
 		});
 
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toMatch'](/^test$/));
+		});
+
 		it('is chainable', () => {
 			expect('I am a string').toMatch(/^.*string$/).toMatch(/^.*string$/);
 		});
@@ -97,6 +101,10 @@ describe('expect(string)', () => {
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect('I am a string').toNotMatch(/^.*string$/));
+		});
+
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toNotMatch'](/^test$/));
 		});
 
 		it('is chainable', () => {
@@ -115,6 +123,11 @@ describe('expect(string)', () => {
 			checkThrows(() => expect('I am a string').toContain('number'));
 		});
 
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toInclude']('test'));
+			checkThrows(() => expect(undefined)['toContain']('test'));
+		});
+
 		it('is chainable', () => {
 			expect('I am a string').toInclude('string').toInclude('string');
 			expect('I am a string').toContain('string').toContain('string');
@@ -130,6 +143,12 @@ describe('expect(string)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect('I am a string').toNotInclude('string'));
 			checkThrows(() => expect('I am a string').toNotContain('string'));
+		});
+
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toExclude']('test'));
+			checkThrows(() => expect(undefined)['toNotInclude']('test'));
+			checkThrows(() => expect(undefined)['toNotContain']('test'));
 		});
 
 		it('is chainable', () => {

@@ -112,11 +112,14 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toBeLessThan(value: number, message?: string): this {
 		if (typeof this.actual !== 'number') {
-			throw new Error('Item being tested should be a number');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a number',
+			});
 		}
 
 		assert({
-			assertion: this.actual < value,
+			assertion: this.actual as number < value,
 			message: message || `Expected ${this.actual} to be less than ${value}`,
 		});
 
@@ -129,7 +132,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toBeLessThanOrEqualTo(value: number, message?: string): this {
 		if (typeof this.actual !== 'number') {
-			throw new Error('Item being tested should be a number');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a number',
+			});
 		}
 
 		assert({
@@ -146,7 +152,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toBeGreaterThan(value: number, message?: string): this {
 		if (typeof this.actual !== 'number') {
-			throw new Error('Item being tested should be a number');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a number',
+			});
 		}
 
 		assert({
@@ -163,7 +172,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toBeGreaterThanOrEqualTo(value: number, message?: string): this {
 		if (typeof this.actual !== 'number') {
-			throw new Error('Item being tested should be a number');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a number',
+			});
 		}
 
 		assert({
@@ -180,7 +192,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toMatch(value: RegExp, message?: string): this {
 		if (typeof this.actual !== 'string') {
-			throw new Error('Item being tested should be a string');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a string',
+			});
 		}
 
 		assert({
@@ -193,7 +208,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toNotMatch(value: RegExp, message?: string): this {
 		if (typeof this.actual !== 'string') {
-			throw new Error('Item being tested should be a string');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a string',
+			});
 		}
 
 		assert({
@@ -207,6 +225,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toInclude(value: string, message?: string): this;
 	public toInclude(value: T, message?: string): this;
 	public toInclude(value: any, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'string' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Item being tested should be a string, array, or object',
+		});
+
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).indexOf(value) >= 0,
@@ -258,9 +281,6 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				message: message || `Expected ${JSON.stringify(this.actual)} to contain ${JSON.stringify(value)}`,
 			});
 		}
-		else {
-			throw new Error('Item being tested should be a string, array, or object');
-		}
 
 		return this;
 	}
@@ -274,6 +294,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toExclude(value: string, message?: string): this;
 	public toExclude(value: T, message?: string): this;
 	public toExclude(value: any, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'string' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Item being tested should be a string, array, or object',
+		});
+
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).indexOf(value) === -1,
@@ -319,9 +344,6 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				message: message || `Expected ${JSON.stringify(this.actual)} to not contain ${JSON.stringify(value)}`,
 			});
 		}
-		else {
-			throw new Error('Item being tested should be a string, array, or object');
-		}
 
 		return this;
 	}
@@ -343,7 +365,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toThrow(error?: Function, message?: string): this;
 	public toThrow(error?: any, message?: string): this {
 		if (typeof this.actual !== 'function') {
-			throw new Error('Item being tested should be a function');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a function',
+			});
 		}
 
 		if (typeof error === 'undefined') {
@@ -400,7 +425,10 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
 	public toNotThrow(message?: string): this {
 		if (typeof this.actual !== 'function') {
-			throw new Error('Item being tested should be a function');
+			throw assert({
+				assertion: false,
+				message: 'Item being tested should be a function',
+			});
 		}
 
 		let threw: boolean = false;
@@ -452,6 +480,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toNotBeA(constructor: Function, message?: string): this;
 	public toNotBeA(constructor: string, message?: string): this;
 	public toNotBeA(constructor: any, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'object',
+			message: 'Item being tested should be an object',
+		});
+
 		if (typeof constructor === 'string') {
 			assert({
 				assertion: !(typeof this.actual === constructor),
@@ -477,6 +510,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toIncludeKey(key: number, message?: string): this;
 	public toIncludeKey(key: string, message?: string): this;
 	public toIncludeKey(key: any, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'function' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Tested item should be a function, array, or object',
+		});
+
 		if (typeof this.actual === 'function') {
 			assert({
 				assertion: (this.actual as Function).hasOwnProperty(key),
@@ -495,9 +533,6 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				message: message || `Expected object to have key ${key}`,
 			});
 		}
-		else {
-			throw new Error('Item being tested should be a function, array, or object');
-		}
 
 		return this;
 	}
@@ -511,6 +546,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toIncludeKeys(keys: number[], message?: string): this;
 	public toIncludeKeys(keys: string[], message?: string): this;
 	public toIncludeKeys(keys: any[], message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'function' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Tested item should be a function, array, or object',
+		});
+
 		for (let i = 0; i < keys.length; i++) {
 			this.toIncludeKey(keys[i], message);
 		}
@@ -527,6 +567,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toExcludeKey(key: number, message?: string): this;
 	public toExcludeKey(key: string, message?: string): this;
 	public toExcludeKey(key: any, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'function' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Tested item should be a function, array, or object',
+		});
+
 		if (typeof this.actual === 'function') {
 			assert({
 				assertion: !((this.actual as Function).hasOwnProperty(key)),
@@ -544,9 +589,6 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 				assertion: !((this.actual as Object).hasOwnProperty(key)),
 				message: message || `Expected object to not have key ${key}`,
 			});
-		}
-		else {
-			throw new Error('Item being tested should be a function, array, or object');
 		}
 
 		return this;
@@ -567,6 +609,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toExcludeKeys(keys: number[], message?: string): this;
 	public toExcludeKeys(keys: string[], message?: string): this;
 	public toExcludeKeys(keys: any[], message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'function' || Array.isArray(this.actual) || typeof this.actual === 'object',
+			message: 'Tested item should be a function, array, or object',
+		});
+
 		for (let i = 0; i < keys.length; i++) {
 			this.toExcludeKey(keys[i], message);
 		}

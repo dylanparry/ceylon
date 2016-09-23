@@ -93,6 +93,11 @@ describe('expect(number)', () => {
 			checkThrows(() => expect(100).toBeFewerThan(100));
 		});
 
+		it('throws when called on a non-number', () => {
+			checkThrows(() => expect(undefined)['toBeLessThan'](1));
+			checkThrows(() => expect(undefined)['toBeFewerThan'](1));
+		});
+
 		it('is chainable', () => {
 			expect(100).toBeLessThan(200).toBeLessThan(200);
 			expect(100).toBeFewerThan(200).toBeFewerThan(200);
@@ -110,6 +115,11 @@ describe('expect(number)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeLessThanOrEqualTo(50));
 			checkThrows(() => expect(100).toBeFewerThanOrEqualTo(50));
+		});
+
+		it('throws when called on a non-number', () => {
+			checkThrows(() => expect(undefined)['toBeLessThanOrEqualTo'](1));
+			checkThrows(() => expect(undefined)['toBeFewerThanOrEqualTo'](1));
 		});
 
 		it('is chainable', () => {
@@ -131,6 +141,11 @@ describe('expect(number)', () => {
 			checkThrows(() => expect(100).toBeMoreThan(100));
 		});
 
+		it('throws when called on a non-number', () => {
+			checkThrows(() => expect(undefined)['toBeGreaterThan'](1));
+			checkThrows(() => expect(undefined)['toBeMoreThan'](1));
+		});
+
 		it('is chainable', () => {
 			expect(200).toBeGreaterThan(100).toBeGreaterThan(100);
 			expect(200).toBeMoreThan(100).toBeMoreThan(100);
@@ -146,6 +161,11 @@ describe('expect(number)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(200));
 			checkThrows(() => expect(100).toBeMoreThanOrEqualTo(200));
+		});
+
+		it('throws when called on a non-number', () => {
+			checkThrows(() => expect(undefined)['toBeGreaterThanOrEqualTo'](1));
+			checkThrows(() => expect(undefined)['toBeMoreThanOrEqualTo'](1));
 		});
 
 		it('is chainable', () => {

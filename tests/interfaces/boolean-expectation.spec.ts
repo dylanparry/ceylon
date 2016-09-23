@@ -86,6 +86,10 @@ describe('expect(boolean)', () => {
 			checkThrows(() => expect(false).toBeTrue());
 		});
 
+		it('throws when called on a non-boolean', () => {
+			checkThrows(() => expect(undefined)['toBeTrue']());
+		});
+
 		it('is chainable', () => {
 			expect(true).toBeTrue().toBeTrue();
 		});
@@ -98,6 +102,10 @@ describe('expect(boolean)', () => {
 
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(true).toBeFalse());
+		});
+
+		it('throws when called on a non-boolean', () => {
+			checkThrows(() => expect(undefined)['toBeFalse']());
 		});
 
 		it('is chainable', () => {
