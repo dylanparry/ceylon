@@ -1,11 +1,15 @@
 language: node_js
 node_js:
-- "node"
-- "5.11"
-- "4.4"
-- "iojs"
-- "0.12"
-- "0.10"
+  - "node"
+  - "5.11"
+  - "4.4"
+  - "iojs"
+  - "0.12"
+  - "0.10"
 matrix:
   fast_finish: true
 sudo: false
+notifications:
+  email:
+    on_success: change
+    on_failure: change
