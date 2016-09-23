@@ -74,6 +74,38 @@ describe('expect(Function)', () => {
 		});
 	});
 
+	describe('toBeA / toBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(Math.random).toBeA('function');
+			expect(Math.random).toBeAn('function');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(Math.random).toBeA('number'));
+			checkThrows(() => expect(Math.random).toBeAn('number'));
+		});
+
+		it('is chainable', () => {
+			expect(Math.random).toBeA('function').toBeA('function');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(Math.random).toNotBeA('number');
+			expect(Math.random).toNotBeAn('number');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(Math.random).toNotBeA('function'));
+			checkThrows(() => expect(Math.random).toNotBeAn('function'));
+		});
+
+		it('is chainable', () => {
+			expect(Math.random).toNotBeA('number').toNotBeA('number');
+		});
+	});
+
 	describe('toThrow', () => {
 		it('does not throw when assertion passes', () => {
 			expect(() => { throw new Error(); }).toThrow();

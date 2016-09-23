@@ -77,6 +77,38 @@ describe('expect(boolean)', () => {
 		});
 	});
 
+	describe('toBeA / toBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(true).toBeA('boolean');
+			expect(true).toBeAn('boolean');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(true).toBeA('number'));
+			checkThrows(() => expect(true).toBeAn('number'));
+		});
+
+		it('is chainable', () => {
+			expect(true).toBeA('boolean').toBeA('boolean');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(true).toNotBeA('number');
+			expect(true).toNotBeAn('number');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(true).toNotBeA('boolean'));
+			checkThrows(() => expect(true).toNotBeAn('boolean'));
+		});
+
+		it('is chainable', () => {
+			expect(true).toNotBeA('number').toNotBeA('number');
+		});
+	});
+
 	describe('toBeTrue', () => {
 		it('does not throw when assertion passes', () => {
 			expect(true).toBeTrue();

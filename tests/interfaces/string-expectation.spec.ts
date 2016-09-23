@@ -76,6 +76,38 @@ describe('expect(string)', () => {
 		});
 	});
 
+	describe('toBeA / toBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect('string').toBeA('string');
+			expect('string').toBeAn('string');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect('string').toBeA('number'));
+			checkThrows(() => expect('string').toBeAn('number'));
+		});
+
+		it('is chainable', () => {
+			expect('string').toBeA('string').toBeA('string');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect('string').toNotBeA('number');
+			expect('string').toNotBeAn('number');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect('string').toNotBeA('string'));
+			checkThrows(() => expect('string').toNotBeAn('string'));
+		});
+
+		it('is chainable', () => {
+			expect('string').toNotBeA('number').toNotBeA('number');
+		});
+	});
+
 	describe('toMatch', () => {
 		it('does not throw when assertion passes', () => {
 			expect('I am a string').toMatch(/^.*string$/);

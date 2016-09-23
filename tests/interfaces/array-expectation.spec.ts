@@ -83,6 +83,38 @@ describe('expect(array)', () => {
 		});
 	});
 
+	describe('toBeA / toBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect([1, 2, 3]).toBeA('object');
+			expect([1, 2, 3]).toBeAn('object');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect([1, 2, 3]).toBeA('number'));
+			checkThrows(() => expect([1, 2, 3]).toBeAn('number'));
+		});
+
+		it('is chainable', () => {
+			expect([1, 2, 3]).toBeA('object').toBeA('object');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect([1, 2, 3]).toNotBeA('number');
+			expect([1, 2, 3]).toNotBeAn('number');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect([1, 2, 3]).toNotBeA('object'));
+			checkThrows(() => expect([1, 2, 3]).toNotBeAn('object'));
+		});
+
+		it('is chainable', () => {
+			expect([1, 2, 3]).toNotBeA('number').toNotBeA('number');
+		});
+	});
+
 	describe('toInclude / toContain', () => {
 		it('does not thrown when assertion passes', () => {
 			expect([1, 2, 3]).toInclude(2);

@@ -80,6 +80,38 @@ describe('expect(number)', () => {
 		});
 	});
 
+	describe('toBeA / toBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(100).toBeA('number');
+			expect(100).toBeAn('number');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(100).toBeA('boolean'));
+			checkThrows(() => expect(100).toBeAn('boolean'));
+		});
+
+		it('is chainable', () => {
+			expect(100).toBeA('number').toBeA('number');
+		});
+	});
+
+	describe('toNotBeA / toNotBeAn', () => {
+		it('does not throw when assertion passes', () => {
+			expect(100).toNotBeA('boolean');
+			expect(100).toNotBeAn('boolean');
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect(100).toNotBeA('number'));
+			checkThrows(() => expect(100).toNotBeAn('number'));
+		});
+
+		it('is chainable', () => {
+			expect(100).toNotBeA('boolean').toNotBeA('boolean');
+		});
+	});
+
 	describe('toBeLessThan / toBeFewerThan', () => {
 		it('does not throw when assertion passes', () => {
 			expect(100).toBeLessThan(200);

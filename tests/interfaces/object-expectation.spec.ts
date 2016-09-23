@@ -259,13 +259,6 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect(new TypeError()).toBeAn('number'));
 		});
 
-		it('throws when called on a non-object', () => {
-			checkThrows(() => expect(undefined)['toBeA'](Object));
-			checkThrows(() => expect(undefined)['toBeA']('number'));
-			checkThrows(() => expect(undefined)['toBeAn'](Object));
-			checkThrows(() => expect(undefined)['toBeAn']('number'));
-		});
-
 		it('is chainable', () => {
 			expect(new TypeError()).toBeA(TypeError).toBeA(TypeError);
 			expect(new EvalError()).toBeAn(EvalError).toBeAn(EvalError);
@@ -287,13 +280,6 @@ describe('expect(Object)', () => {
 			checkThrows(() => expect(new EvalError()).toNotBeAn(EvalError));
 			checkThrows(() => expect(new TypeError()).toNotBeA('object'));
 			checkThrows(() => expect(new TypeError()).toNotBeAn('object'));
-		});
-
-		it('throws when called on a non-object', () => {
-			checkThrows(() => expect(undefined)['toNotBeA'](Object));
-			checkThrows(() => expect(undefined)['toNotBeA']('number'));
-			checkThrows(() => expect(undefined)['toNotBeAn'](Object));
-			checkThrows(() => expect(undefined)['toNotBeAn']('number'));
 		});
 
 		it('is chainable', () => {

@@ -480,11 +480,6 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toNotBeA(constructor: Function, message?: string): this;
 	public toNotBeA(constructor: string, message?: string): this;
 	public toNotBeA(constructor: any, message?: string): this {
-		assert({
-			assertion: typeof this.actual === 'object',
-			message: 'Item being tested should be an object',
-		});
-
 		if (typeof constructor === 'string') {
 			assert({
 				assertion: !(typeof this.actual === constructor),
