@@ -3,17 +3,11 @@ import expect from '../../src/index';
 
 describe('expect(number)', () => {
 	describe('toExist', () => {
-		it('does not throw when assertion passes', () => {
+		it('does not throw', () => {
 			expect(100).toExist();
 			expect(-100).toExist();
 			expect(0).toExist();
 			expect(0.5).toExist();
-		});
-
-		it('throws when assertion fails', () => {
-			let data: number | undefined;
-
-			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -22,23 +16,11 @@ describe('expect(number)', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('does not throw when assertion passes', () => {
-			let data: number | undefined;
-
-			expect(data).toNotExist();
-		});
-
-		it('throws when assertion fails', () => {
+		it('throws', () => {
 			checkThrows(() => expect(100).toNotExist());
 			checkThrows(() => expect(-100).toNotExist());
 			checkThrows(() => expect(0).toNotExist());
 			checkThrows(() => expect(0.5).toNotExist());
-		});
-
-		it('is chainable', () => {
-			let data: number | undefined;
-
-			expect(data).toNotExist().toNotExist();
 		});
 	});
 

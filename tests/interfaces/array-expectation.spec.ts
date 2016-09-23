@@ -4,14 +4,9 @@ import expect from '../../src/index';
 
 describe('expect(array)', () => {
 	describe('toExist', () => {
-		it('does not throw when assertion passes', () => {
+		it('does not throw', () => {
 			expect([1, 2, 3]).toExist();
 			expect([]).toExist();
-		});
-
-		it('throws when assertion fails', () => {
-			let data: any[] | undefined;
-			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -20,20 +15,9 @@ describe('expect(array)', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('does not throw when assertion passes', () => {
-			let data: any[] | undefined;
-			expect(data).toNotExist();
-		});
-
-		it('throws when assertion fails', () => {
+		it('throws', () => {
 			checkThrows(() => expect([1, 2, 3]).toNotExist());
 			checkThrows(() => expect([]).toNotExist());
-		});
-
-		it('is chainable', () => {
-			let data: any[] | undefined;
-
-			expect(data).toNotExist().toNotExist();
 		});
 	});
 

@@ -3,15 +3,9 @@ import expect from '../../src/index';
 
 describe('expect(Object)', () => {
 	describe('toExist', () => {
-		it('does not throw when assertion passes', () => {
+		it('does not throw', () => {
 			expect({ id: 1 }).toExist();
 			expect({}).toExist();
-		});
-
-		it('throws when assertion fails', () => {
-			let data: Object | undefined;
-
-			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -20,21 +14,9 @@ describe('expect(Object)', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('does not throw when assertion passes', () => {
-			let data: Object | undefined;
-
-			expect(data).toNotExist();
-		});
-
-		it('throws when assertion fails', () => {
+		it('throws', () => {
 			checkThrows(() => expect({ id: 1 }).toNotExist());
 			checkThrows(() => expect({}).toNotExist());
-		});
-
-		it('is chainable', () => {
-			let data: Object | undefined;
-
-			expect(data).toNotExist().toNotExist();
 		});
 	});
 

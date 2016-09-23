@@ -3,14 +3,8 @@ import expect from '../../src/index';
 
 describe('expect(Function)', () => {
 	describe('toExist', () => {
-		it('does not throw when assertion passes', () => {
+		it('does not throw', () => {
 			expect(Math.random).toExist();
-		});
-
-		it('throws when assertion fails', () => {
-			let data: Function | undefined;
-
-			checkThrows(() => expect(data).toExist());
 		});
 
 		it('is chainable', () => {
@@ -19,20 +13,8 @@ describe('expect(Function)', () => {
 	});
 
 	describe('toNotExist', () => {
-		it('does not throw when assertion passes', () => {
-			let data: Function | undefined;
-
-			expect(data).toNotExist();
-		});
-
-		it('throws when assertion fails', () => {
+		it('throws', () => {
 			checkThrows(() => expect(Math.random).toNotExist());
-		});
-
-		it('is chainable', () => {
-			let data: Function | undefined;
-
-			expect(data).toNotExist().toNotExist();
 		});
 	});
 
