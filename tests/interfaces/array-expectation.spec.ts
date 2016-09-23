@@ -7,9 +7,6 @@ describe('expect(array)', () => {
 		it('does not throw when assertion passes', () => {
 			expect([1, 2, 3]).toExist();
 			expect([]).toExist();
-
-			const data: any[] | null = null;
-			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -31,9 +28,6 @@ describe('expect(array)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect([1, 2, 3]).toNotExist());
 			checkThrows(() => expect([]).toNotExist());
-
-			const data: any[] | null = null;
-			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {

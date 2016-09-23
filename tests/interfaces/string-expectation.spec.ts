@@ -6,9 +6,6 @@ describe('expect(string)', () => {
 		it('does not throw when assertion passes', () => {
 			expect('string').toExist();
 			expect('').toExist();
-
-			const data: string | null = null;
-			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -32,9 +29,6 @@ describe('expect(string)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect('string').toNotExist());
 			checkThrows(() => expect('').toNotExist());
-
-			const data: string | null = null;
-			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {

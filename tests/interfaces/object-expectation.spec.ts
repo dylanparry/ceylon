@@ -6,9 +6,6 @@ describe('expect(Object)', () => {
 		it('does not throw when assertion passes', () => {
 			expect({ id: 1 }).toExist();
 			expect({}).toExist();
-
-			const data: Object | null = null;
-			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -32,9 +29,6 @@ describe('expect(Object)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect({ id: 1 }).toNotExist());
 			checkThrows(() => expect({}).toNotExist());
-
-			const data: Object | null = null;
-			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {

@@ -6,9 +6,6 @@ describe('expect(boolean)', () => {
 		it('does not throw when assertion passes', () => {
 			expect(true).toExist();
 			expect(false).toExist();
-
-			const data: boolean | null = null;
-			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -32,9 +29,6 @@ describe('expect(boolean)', () => {
 		it('throws when assertion fails', () => {
 			checkThrows(() => expect(true).toNotExist());
 			checkThrows(() => expect(false).toNotExist());
-
-			const data: boolean | null = null;
-			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {

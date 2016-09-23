@@ -8,9 +8,6 @@ describe('expect(number)', () => {
 			expect(-100).toExist();
 			expect(0).toExist();
 			expect(0.5).toExist();
-
-			const data: number | null = null;
-			expect(data).toExist();
 		});
 
 		it('throws when assertion fails', () => {
@@ -36,9 +33,6 @@ describe('expect(number)', () => {
 			checkThrows(() => expect(-100).toNotExist());
 			checkThrows(() => expect(0).toNotExist());
 			checkThrows(() => expect(0.5).toNotExist());
-
-			const data: number | null = null;
-			checkThrows(() => expect(data).toNotExist());
 		});
 
 		it('is chainable', () => {
