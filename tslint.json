@@ -22,7 +22,7 @@
     "max-line-length": [ false ],
     "member-access": [ true, "check-accessor", "check-constructor" ],
     "member-ordering": [ true, "public-before-private", "static-before-instance", "variables-before-functions" ],
-    "no-any": true,
+    "no-any": false,
     "no-arg": true,
     "no-bitwise": false,
     "no-conditional-assignment": true,
