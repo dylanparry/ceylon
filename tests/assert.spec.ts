@@ -24,7 +24,7 @@ describe('Assert', () => {
 				message: 'This should throw',
 			});
 		}
-		catch(e) {
+		catch (e) {
 			checkEqual(e.message, 'This should throw');
 		}
 	});
@@ -36,7 +36,7 @@ describe('Assert', () => {
 				message: 'This should throw',
 			});
 		}
-		catch(e) {
+		catch (e) {
 			checkEqual(e['showDiff'], false);
 		}
 	});
@@ -50,7 +50,7 @@ describe('Assert', () => {
 				message: 'This should throw',
 			});
 		}
-		catch(e) {
+		catch (e) {
 			checkEqual(e['actual'], 1);
 			checkEqual(e['expected'], 2);
 			checkEqual(e['showDiff'], true);
