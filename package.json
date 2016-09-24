@@ -4,6 +4,7 @@
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "main": "lib/index.js",
+	"jsnext:main": "lib/es6/index.js",
   "typings": "lib/index",
   "files": [
     "lib/"
@@ -38,10 +39,12 @@
     "typescript": "^2.0.3"
   },
   "scripts": {
-    "pretest": "rimraf ./temp && tsc --target ES5 --outDir ./temp",
+    "pretest": "rimraf ./temp && tsc --outDir ./temp",
     "test": "mocha --reporter dot ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js && tslint  --project ./tsconfig.json",
     "posttest": "rimraf ./temp",
-    "prepublish": "npm test && tsc --target ES5 --outDir ./lib --declaration ./src/index.ts",
+		"build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
+		"build:es2015": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
+    "prepublish": "npm test && npm run build:es5 && npm run build:es2015",
     "postpublish": "rimraf ./lib",
     "pre-commit-message": "echo Testing and Linting Code"
   },
