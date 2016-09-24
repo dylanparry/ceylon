@@ -57,10 +57,6 @@
     "pre-commit-message",
     "test"
   ],
-  "engines": {
-    "node": ">=0.10.46",
-    "iojs": "3.3.1"
-  },
   "dependencies": {
     "deep-equal": "^1.0.1"
   }
