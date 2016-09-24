@@ -4,7 +4,7 @@
   "description": "An assertion library for Unit Testing written in Typescript",
   "license": "MIT",
   "main": "lib/index.js",
-	"jsnext:main": "lib/es6/index.js",
+  "jsnext:main": "lib/es6/index.js",
   "typings": "lib/index",
   "files": [
     "lib/"
@@ -35,6 +35,9 @@
     "mocha": "^3.0.2",
     "pre-commit": "^1.1.3",
     "rimraf": "^2.5.4",
+    "rollup": "^0.36.0",
+    "rollup-plugin-commonjs": "^5.0.4",
+    "rollup-plugin-node-resolve": "^2.0.0",
     "tslint": "^3.15.1",
     "typescript": "^2.0.3"
   },
@@ -42,9 +45,10 @@
     "pretest": "rimraf ./temp && tsc --outDir ./temp",
     "test": "mocha --reporter dot ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js && tslint  --project ./tsconfig.json",
     "posttest": "rimraf ./temp",
-		"build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
-		"build:es2015": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
-    "prepublish": "npm test && npm run build:es5 && npm run build:es2015",
+    "build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
+    "build:es2015": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
+    "build:umd": "rollup -c",
+    "prepublish": "npm test && npm run build:es5 && npm run build:es2015 && npm run build:umd",
     "postpublish": "rimraf ./lib",
     "pre-commit-message": "echo Testing and Linting Code"
   },
