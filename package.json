@@ -46,11 +46,13 @@
     "pretest": "rimraf ./temp && tsc --outDir ./temp",
     "test": "mocha --reporter dot ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js && tslint  --project ./tsconfig.json",
     "posttest": "rimraf ./temp",
-    "build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
-    "build:es2015": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
-    "build:umd": "rollup -c && rollup -c ./rollup.min.config.js",
-    "prepublish": "npm test && npm run build:es5 && npm run build:es2015 && npm run build:umd",
+
+		"prebuild": "rimraf ./lib",
+		"build": "node ./scripts/build.js",
+
+    "prepublish": "npm test && npm run build",
     "postpublish": "rimraf ./lib",
+
     "pre-commit-message": "echo Testing and Linting Code"
   },
   "pre-commit": [
