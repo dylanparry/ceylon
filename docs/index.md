@@ -1,3 +1,0 @@
-# Ceylon
-
-Coming soon…
