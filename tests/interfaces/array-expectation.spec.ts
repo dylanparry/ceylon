@@ -280,4 +280,40 @@ describe('expect(array)', () => {
 			expect([1, 2, 3]).toNotContainKeys([3, 4]).toNotContainKeys([3, 4]);
 		});
 	});
+
+	describe('toHaveLength', () => {
+		it('does not throw when assertion passes', () => {
+			expect([1, 2, 3]).toHaveLength(3);
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect([1, 2, 3]).toHaveLength(2));
+		});
+
+		it('throws when called on a non-array', () => {
+			checkThrows(() => expect(undefined)['toHaveLength'](2));
+		});
+
+		it('is chainable', () => {
+			expect([1, 2, 3]).toHaveLength(3).toHaveLength(3);
+		});
+	});
+
+	describe('toNotHaveLength', () => {
+		it('does not throw when assertion passes', () => {
+			expect([1, 2, 3]).toNotHaveLength(2);
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect([1, 2, 3]).toNotHaveLength(3));
+		});
+
+		it('throws when called on a non-array', () => {
+			checkThrows(() => expect(undefined)['toNotHaveLength'](2));
+		});
+
+		it('is chainable', () => {
+			expect([1, 2, 3]).toNotHaveLength(2).toNotHaveLength(2);
+		});
+	});
 });

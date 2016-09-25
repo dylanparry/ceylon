@@ -627,4 +627,50 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 	public toNotContainKeys(keys: any[], message?: string): this {
 		return this.toExcludeKeys(keys, message);
 	}
+
+	public toHaveLength(value: number, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'string' || Array.isArray(this.actual),
+			message: `Item being tested should be a string or an array`,
+		});
+
+		if (typeof this.actual === 'string') {
+			assert({
+				assertion: (this.actual as string).length === value,
+				message: `Expected string to have length ${value}`,
+			});
+		}
+
+		if (Array.isArray(this.actual)) {
+			assert({
+				assertion: (this.actual).length === value,
+				message: `Expected array to have length ${value}`,
+			});
+		}
+
+		return this;
+	}
+
+	public toNotHaveLength(value: number, message?: string): this {
+		assert({
+			assertion: typeof this.actual === 'string' || Array.isArray(this.actual),
+			message: `Item being tested should be a string or an array`,
+		});
+
+		if (typeof this.actual === 'string') {
+			assert({
+				assertion: (this.actual as string).length !== value,
+				message: `Expected string to not have length ${value}`,
+			});
+		}
+
+		if (Array.isArray(this.actual)) {
+			assert({
+				assertion: (this.actual).length !== value,
+				message: `Expected array to not have length ${value}`,
+			});
+		}
+
+		return this;
+	}
 }

@@ -21,6 +21,9 @@ interface IArrayExpectation<T> extends IExpectation<T[]> {
 	toExcludeKeys(keys: number[], message?: string): this;
 	toNotIncludeKeys(keys: number[], message?: string): this;
 	toNotContainKeys(keys: number[], message?: string): this;
+
+	toHaveLength(value: number, message?: string): this;
+	toNotHaveLength(value: number, message?: string): this;
 }
 
 export default IArrayExpectation;

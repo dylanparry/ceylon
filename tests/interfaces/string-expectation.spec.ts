@@ -188,4 +188,40 @@ describe('expect(string)', () => {
 			expect('I am a string').toNotContain('number').toNotContain('number');
 		});
 	});
+
+	describe('toHaveLength', () => {
+		it('does not throw when assertion passes', () => {
+			expect('string').toHaveLength(6);
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect('string').toHaveLength(2));
+		});
+
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toHaveLength'](6));
+		});
+
+		it('is chainable', () => {
+			expect('string').toHaveLength(6).toHaveLength(6);
+		});
+	});
+
+	describe('toNotHaveLength', () => {
+		it('does not throw when assertion passes', () => {
+			expect('string').toNotHaveLength(3);
+		});
+
+		it('throws when assertion fails', () => {
+			checkThrows(() => expect('string').toNotHaveLength(6));
+		});
+
+		it('throws when called on a non-string', () => {
+			checkThrows(() => expect(undefined)['toNotHaveLength'](6));
+		});
+
+		it('is chainable', () => {
+			expect('string').toNotHaveLength(3).toNotHaveLength(3);
+		});
+	});
 });
