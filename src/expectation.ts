@@ -637,14 +637,14 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).length === value,
-				message: `Expected string to have length ${value}`,
+				message: message || `Expected string to have length ${value}`,
 			});
 		}
 
 		if (Array.isArray(this.actual)) {
 			assert({
 				assertion: (this.actual).length === value,
-				message: `Expected array to have length ${value}`,
+				message: message || `Expected array to have length ${value}`,
 			});
 		}
 
@@ -660,14 +660,14 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 		if (typeof this.actual === 'string') {
 			assert({
 				assertion: (this.actual as string).length !== value,
-				message: `Expected string to not have length ${value}`,
+				message: message || `Expected string to not have length ${value}`,
 			});
 		}
 
 		if (Array.isArray(this.actual)) {
 			assert({
 				assertion: (this.actual).length !== value,
-				message: `Expected array to not have length ${value}`,
+				message: message || `Expected array to not have length ${value}`,
 			});
 		}
 
