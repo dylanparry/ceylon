@@ -21,10 +21,10 @@ import expect from 'ceylon';
 
 expect(100)
     .toExist()
-	.toBeA('number')
-	.toBeLessThan(200)
-	.toBeGreaterThan(5)
-	.toNotBe(90);
+    .toBeA('number')
+    .toBeLessThan(200)
+    .toBeGreaterThan(5)
+    .toNotBe(90);
 ```
 
 For a complete reference visit the [Ceylon Wiki](https://github.com/dylanparry/ceylon/wiki).

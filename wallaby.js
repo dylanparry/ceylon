@@ -1,30 +1,30 @@
 ﻿module.exports = function (wallaby) {
-	var typescriptOptions = {
-		module: 'commonjs',
-		target: 'es5',
-		transpileOnly: true,
-	};
+    var typescriptOptions = {
+        module: 'commonjs',
+        target: 'es5',
+        transpileOnly: true,
+    };
 
-	return {
-		files: [
-			{ pattern: 'src/**/*.ts', load: false },
-			{ pattern: 'tests/**/*.ts', load: false, instrument: false },
-			{ pattern: 'tests/**/*.spec.ts', ignore: true },
-		],
+    return {
+        files: [
+            { pattern: 'src/**/*.ts', load: false },
+            { pattern: 'tests/**/*.ts', load: false, instrument: false },
+            { pattern: 'tests/**/*.spec.ts', ignore: true },
+        ],
 
-		tests: [
-			{ pattern: 'tests/**/*.spec.ts' },
-		],
+        tests: [
+            { pattern: 'tests/**/*.spec.ts' },
+        ],
 
-		compilers: {
-			'**/*.ts': wallaby.compilers.typeScript(typescriptOptions),
-		},
+        compilers: {
+            '**/*.ts': wallaby.compilers.typeScript(typescriptOptions),
+        },
 
-		testFramework: 'mocha',
+        testFramework: 'mocha',
 
-		env: {
-			type: 'node',
-			runner: 'node',
-		},
-	};
+        env: {
+            type: 'node',
+            runner: 'node',
+        },
+    };
 };

@@ -3,12 +3,12 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-		"lib": [
-			"es2015"
-		],
+    "lib": [
+      "es2015"
+    ],
     "sourceMap": true,
     "moduleResolution": "node",
-		"strictNullChecks": true
+    "strictNullChecks": true
   },
   "exclude": [
     "node_modules"
