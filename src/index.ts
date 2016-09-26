@@ -6,7 +6,10 @@ const expect: IExpect = <T>(actual: T): Expectation<T> => {
     return new Expectation(actual);
 };
 
-export {
-    expect as default,
-    assert,
-};
+/*
+ * Export non-default objects here so they are exposed on the API,
+ * but kept hidden from the UMD build
+ */
+export { assert };
+
+export default expect;

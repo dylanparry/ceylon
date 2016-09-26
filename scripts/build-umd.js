@@ -14,7 +14,6 @@ rollup.rollup({
         commonjs(),
     ],
 }).then((bundle) => {
-    console.log(bundle);
     bundle.write({
         format: 'umd',
         dest: './lib/umd/ceylon.js',
