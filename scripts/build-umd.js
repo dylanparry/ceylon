@@ -9,16 +9,20 @@ rollup.rollup({
     plugins: [
         nodeResolve({
             jsnext: true,
-            main:true,
+            main: true,
         }),
         commonjs(),
     ],
 }).then((bundle) => {
+    console.log(bundle);
     bundle.write({
         format: 'umd',
         dest: './lib/umd/ceylon.js',
         moduleName: 'expect',
     });
+}).catch((error) => {
+    console.error(error);
+    process.exit(1);
 });
 
 // Create a minified UMD bundle
@@ -27,7 +31,7 @@ rollup.rollup({
     plugins: [
         nodeResolve({
             jsnext: true,
-            main:true,
+            main: true,
         }),
         commonjs(),
         uglify(),
@@ -38,4 +42,7 @@ rollup.rollup({
         dest: './lib/umd/ceylon.min.js',
         moduleName: 'expect',
     });
+}).catch((error) => {
+    console.error(error);
+    process.exit(1);
 });
