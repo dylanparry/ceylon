@@ -8,11 +8,11 @@
 
 ![Ceylon](https://github.com/dylanparry/ceylon/blob/master/logo.png)
 
-Ceylon is an assertion library for unit testing written in Typescript. It can be used in Typescript or in plain old JavaScript.
+Ceylon is an assertion library for unit testing written in TypeScript. It can be used in TypeScript or in plain old JavaScript.
 
-It is based upon the API for [expect](https://github.com/mjackson/expect/), with the added bonus of full Typescript definitions, meaning there's no need to go looking for a d.ts file.
+It is based upon the API for [expect](https://github.com/mjackson/expect/), with the added bonus of full TypeScript definitions, meaning there's no need to go looking for a d.ts file.
 
-Ceylon aims to simplify unit testing in Typescript by making it easy to write assertions.
+Ceylon aims to simplify unit testing in TypeScript by making it easy to write assertions.
 
 ## Example Usage
 
