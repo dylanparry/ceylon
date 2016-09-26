@@ -1,6 +1,6 @@
 {
   "name": "ceylon",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "An assertion library for TypeScript and JavaScript",
   "license": "MIT",
   "main": "lib/index.js",
@@ -46,16 +46,13 @@
     "pretest": "rimraf ./temp && tsc --outDir ./temp",
     "test": "mocha --reporter dot ./temp/tests/*.spec.js ./temp/tests/**/*.spec.js && tslint  --project ./tsconfig.json",
     "posttest": "rimraf ./temp",
-
-		"prebuild": "rimraf ./lib",
-		"build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
-		"build:es6": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
-		"build:umd": "node ./scripts/build-umd.js",
-		"build": "npm run build:es5 && npm run build:es6 && npm run build:umd",
-
+    "prebuild": "rimraf ./lib",
+    "build:es5": "tsc --outDir ./lib --declaration ./src/index.ts",
+    "build:es6": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
+    "build:umd": "node ./scripts/build-umd.js",
+    "build": "npm run build:es5 && npm run build:es6 && npm run build:umd",
     "prepublish": "npm test && npm run build",
     "postpublish": "rimraf ./lib",
-
     "pre-commit-message": "echo Testing and Linting Code"
   },
   "pre-commit": [
