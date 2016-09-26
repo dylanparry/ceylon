@@ -4,10 +4,10 @@ import expect from '../src/index';
 import Expectation from '../src/expectation';
 
 describe('expect', () => {
-	it('creates a new Expectation object', () => {
-		const sut = expect(true);
+    it('creates a new Expectation object', () => {
+        const sut = expect(true);
 
-		checkExists(sut);
-		checkType(sut, Expectation);
-	});
+        checkExists(sut);
+        checkType(sut, Expectation);
+    });
 });
