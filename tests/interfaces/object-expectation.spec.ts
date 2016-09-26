@@ -289,4 +289,40 @@ describe('expect(Object)', () => {
             expect(new TypeError()).toNotBeAn('number').toNotBeAn('number');
         });
     });
+
+    describe('toBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect({}).toBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect({ name: 'Object' }).toBeEmpty());
+        });
+
+        it('throws when called on a non-object', () => {
+            checkThrows(() => expect(undefined)['toBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect({}).toBeEmpty().toBeEmpty();
+        });
+    });
+
+    describe('toNotBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect({ name: 'Object' }).toNotBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect({}).toNotBeEmpty());
+        });
+
+        it('throws when called on a non-object', () => {
+            checkThrows(() => expect(undefined)['toNotBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect({ name: 'Object' }).toNotBeEmpty().toNotBeEmpty();
+        });
+    });
 });

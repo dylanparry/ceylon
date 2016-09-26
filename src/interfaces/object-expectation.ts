@@ -31,6 +31,10 @@ interface IObjectExpectation<T> extends IExpectation<T> {
     toExcludeKeys(keys: string[], message?: string): this;
     toNotIncludeKeys(keys: string[], message?: string): this;
     toNotContainKeys(keys: string[], message?: string): this;
+
+    toBeEmpty(message?: string): this;
+
+    toNotBeEmpty(message?: string): this;
 }
 
 export default IObjectExpectation;

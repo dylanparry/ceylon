@@ -13,7 +13,12 @@ interface IStringExpectation extends IExpectation<string> {
     toNotContain(value: string, message?: string): this;
 
     toHaveLength(value: number, message?: string): this;
+
     toNotHaveLength(value: number, message?: string): this;
+
+    toBeEmpty(message?: string): this;
+
+    toNotBeEmpty(message?: string): this;
 }
 
 export default IStringExpectation;

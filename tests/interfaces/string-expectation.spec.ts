@@ -224,4 +224,40 @@ describe('expect(string)', () => {
             expect('string').toNotHaveLength(3).toNotHaveLength(3);
         });
     });
+
+    describe('toBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect('').toBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect('string').toBeEmpty());
+        });
+
+        it('throws when called on a non-string', () => {
+            checkThrows(() => expect(undefined)['toBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect('').toBeEmpty().toBeEmpty();
+        });
+    });
+
+    describe('toNotBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect('string').toNotBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect('').toNotBeEmpty());
+        });
+
+        it('throws when called on a non-string', () => {
+            checkThrows(() => expect(undefined)['toNotBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect('string').toNotBeEmpty().toNotBeEmpty();
+        });
+    });
 });

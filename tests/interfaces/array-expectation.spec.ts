@@ -316,4 +316,40 @@ describe('expect(array)', () => {
             expect([1, 2, 3]).toNotHaveLength(2).toNotHaveLength(2);
         });
     });
+
+    describe('toBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect([]).toBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect([1, 2, 3]).toBeEmpty());
+        });
+
+        it('throws when called on a non-array', () => {
+            checkThrows(() => expect(undefined)['toBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect([]).toBeEmpty().toBeEmpty();
+        });
+    });
+
+    describe('toNotBeEmpty', () => {
+        it('does not throw when assertion passes', () => {
+            expect([1, 2, 3]).toNotBeEmpty();
+        });
+
+        it('throws when assertion fails', () => {
+            checkThrows(() => expect([]).toNotBeEmpty());
+        });
+
+        it('throws when called on a non-array', () => {
+            checkThrows(() => expect(undefined)['toNotBeEmpty']());
+        });
+
+        it('is chainable', () => {
+            expect([1, 2, 3]).toNotBeEmpty().toNotBeEmpty();
+        });
+    });
 });

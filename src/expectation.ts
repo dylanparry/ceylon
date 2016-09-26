@@ -673,4 +673,60 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         return this;
     }
+
+    public toBeEmpty(message?: string): this {
+        assert({
+            assertion: typeof this.actual === 'string' || Array.isArray(this.actual) || typeof this.actual === 'object',
+            message: 'Item being tested should be a string, array, or object',
+        });
+
+        if (typeof this.actual === 'string') {
+            assert({
+                assertion: (this.actual as string).length === 0,
+                message: 'Expected string to be empty',
+            });
+        }
+        else if (Array.isArray(this.actual)) {
+            assert({
+                assertion: this.actual.length === 0,
+                message: 'Expected array to be empty',
+            });
+        }
+        else if (typeof this.actual === 'object') {
+            assert({
+                assertion: Object.getOwnPropertyNames(this.actual).length === 0,
+                message: 'Expected object to be empty',
+            });
+        }
+
+        return this;
+    }
+
+    public toNotBeEmpty(message?: string): this {
+        assert({
+            assertion: typeof this.actual === 'string' || Array.isArray(this.actual) || typeof this.actual === 'object',
+            message: 'Item being tested should be a string, array, or object',
+        });
+
+        if (typeof this.actual === 'string') {
+            assert({
+                assertion: (this.actual as string).length !== 0,
+                message: 'Expected string to not be empty',
+            });
+        }
+        else if (Array.isArray(this.actual)) {
+            assert({
+                assertion: this.actual.length !== 0,
+                message: 'Expected array to not be empty',
+            });
+        }
+        else if (typeof this.actual === 'object') {
+            assert({
+                assertion: Object.getOwnPropertyNames(this.actual).length !== 0,
+                message: 'Expected object to not be empty',
+            });
+        }
+
+        return this;
+    }
 }
