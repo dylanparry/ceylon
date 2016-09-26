@@ -6,7 +6,7 @@
 [npm-badge]: https://img.shields.io/npm/v/ceylon.svg?style=flat-square
 [npm]: https://www.npmjs.org/package/ceylon
 
-![Ceylon](https://github.com/dylanparry/ceylon/blob/master/logo.png)
+![Ceylon](https://raw.githubusercontent.com/dylanparry/ceylon/master/logo.png)
 
 Ceylon is an assertion library for unit testing written in TypeScript. It can be used in TypeScript or in plain old JavaScript.
 
