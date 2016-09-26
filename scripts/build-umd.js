@@ -5,7 +5,7 @@ const uglify = require('rollup-plugin-uglify');
 
 // Create a UMD bundle
 rollup.rollup({
-	entry: './lib/index.js',
+	entry: './lib/umd.js',
 	plugins: [
 		nodeResolve({
 			jsnext: true,
@@ -23,7 +23,7 @@ rollup.rollup({
 
 // Create a minified UMD bundle
 rollup.rollup({
-	entry: './lib/index.js',
+	entry: './lib/umd.js',
 	plugins: [
 		nodeResolve({
 			jsnext: true,
