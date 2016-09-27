@@ -8,7 +8,7 @@ export interface IAssertOptions {
 }
 
 /**
- * Creates an assertion, which throws an AssertionError when the condition specified in the assertion parameter equates to false
+ * Creates an Assertion, which throws an AssertionError when the condition specified in the assertion parameter equates to false
  *
  * @param {IAssertOptions} { assertion, message, actual, expected }
  */
