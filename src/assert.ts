@@ -7,6 +7,11 @@ export interface IAssertOptions {
     expected?: any;
 }
 
+/**
+ * Creates an assertion, which throws an AssertionError when the condition specified in the assertion parameter equates to false
+ *
+ * @param {IAssertOptions} { assertion, message, actual, expected }
+ */
 const assert = ({ assertion, message, actual, expected }: IAssertOptions): void => {
     if (!assertion) {
         const error = AssertionError({
