@@ -144,4 +144,20 @@ describe('expect(boolean)', () => {
             expect(false).toBeFalse().toBeFalse();
         });
     });
+
+    describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect(true).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect(true).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect(true).toNotBeNull().toNotBeNull();
+        });
+    });
 });
