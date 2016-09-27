@@ -10,7 +10,7 @@ import IFunctionExpectatation from './interfaces/function-expectation';
 import IObjectExpectation from './interfaces/object-expectation';
 
 export default class Expectation<T> implements IExpectation<T>, IBooleanExpectation, INumberExpectation, IStringExpectation, IFunctionExpectatation, IArrayExpectation<T>, IObjectExpectation<T> {
-    private actual: T;
+    private actual: boolean | number | string | Function | Array<T> | Object | T;
 
     public constructor(actual: T) {
         this.actual = actual;
@@ -229,16 +229,17 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
         });
 
         if (typeof this.actual !== 'number') {
-            throw assert({
+            assert({
                 assertion: false,
                 message: 'Item being tested should be a number',
             });
         }
-
-        assert({
-            assertion: this.actual as number < value,
-            message: message || `Expected ${this.actual} to be less than ${value}`,
-        });
+        else {
+            assert({
+                assertion: this.actual < value,
+                message: message || `Expected ${this.actual} to be less than ${value}`,
+            });
+        }
 
         return this;
     }
@@ -498,7 +499,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).indexOf(value) >= 0,
+                assertion: this.actual.indexOf(value) >= 0,
                 message: message || `Expected ${this.actual} to contain ${value}`,
             });
         }
@@ -531,7 +532,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
             // Loop through the properties in the value
             for (let i = 0; i < valueProperties.length; i++) {
                 // Check if this.actual has this property
-                if (!((this.actual as Object).hasOwnProperty(valueProperties[i]))) {
+                if (!(this.actual.hasOwnProperty(valueProperties[i]))) {
                     included = false;
                     break; // Break the loop early as we've found a property that doesn't exist
                 }
@@ -591,7 +592,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).indexOf(value) === -1,
+                assertion: this.actual.indexOf(value) === -1,
                 message: message || `Expected ${this.actual} to not contain ${value}`,
             });
         }
@@ -620,7 +621,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
             // Loop through the properties in the value
             for (let i = 0; i < valueProperties.length; i++) {
                 // Check if this.actual has this property
-                if ((this.actual as Object).hasOwnProperty(valueProperties[i])) {
+                if (this.actual.hasOwnProperty(valueProperties[i])) {
                     // Now check if the property is the same in value
                     if (deepEqual(this.actual[valueProperties[i]], value[valueProperties[i]])) {
                         included = true;
@@ -845,7 +846,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
      * @memberOf Expectation
      */
     public toBeAn(constructor: any, message?: string): this {
-        return this.toBeA(constructor as any, message);
+        return this.toBeA(constructor, message);
     }
 
     public toNotBeA(constructor: Function, message?: string): this;
@@ -930,19 +931,19 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'function') {
             assert({
-                assertion: (this.actual as Function).hasOwnProperty(key),
+                assertion: this.actual.hasOwnProperty(key),
                 message: message || `Expected function to have key ${key}`,
             });
         }
         else if (Array.isArray(this.actual)) {
             assert({
-                assertion: (this.actual as any[]).hasOwnProperty(key),
+                assertion: this.actual.hasOwnProperty(key),
                 message: message || `Expected array to have key ${key}`,
             });
         }
         else if (typeof this.actual === 'object') {
             assert({
-                assertion: (this.actual as Object).hasOwnProperty(key),
+                assertion: this.actual.hasOwnProperty(key),
                 message: message || `Expected object to have key ${key}`,
             });
         }
@@ -1045,19 +1046,19 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'function') {
             assert({
-                assertion: !((this.actual as Function).hasOwnProperty(key)),
+                assertion: !(this.actual.hasOwnProperty(key)),
                 message: message || `Expected function to not have key ${key}`,
             });
         }
         else if (Array.isArray(this.actual)) {
             assert({
-                assertion: !((this.actual as any[]).hasOwnProperty(key)),
+                assertion: !(this.actual.hasOwnProperty(key)),
                 message: message || `Expected array to not have key ${key}`,
             });
         }
         else if (typeof this.actual === 'object') {
             assert({
-                assertion: !((this.actual as Object).hasOwnProperty(key)),
+                assertion: !(this.actual.hasOwnProperty(key)),
                 message: message || `Expected object to not have key ${key}`,
             });
         }
@@ -1190,14 +1191,14 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).length === value,
+                assertion: this.actual.length === value,
                 message: message || `Expected string to have length ${value}`,
             });
         }
 
         if (Array.isArray(this.actual)) {
             assert({
-                assertion: (this.actual).length === value,
+                assertion: this.actual.length === value,
                 message: message || `Expected array to have length ${value}`,
             });
         }
@@ -1232,14 +1233,14 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).length !== value,
+                assertion: this.actual.length !== value,
                 message: message || `Expected string to not have length ${value}`,
             });
         }
 
         if (Array.isArray(this.actual)) {
             assert({
-                assertion: (this.actual).length !== value,
+                assertion: this.actual.length !== value,
                 message: message || `Expected array to not have length ${value}`,
             });
         }
@@ -1268,7 +1269,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).length === 0,
+                assertion: this.actual.length === 0,
                 message: 'Expected string to be empty',
             });
         }
@@ -1309,7 +1310,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         if (typeof this.actual === 'string') {
             assert({
-                assertion: (this.actual as string).length !== 0,
+                assertion: this.actual.length !== 0,
                 message: 'Expected string to not be empty',
             });
         }
