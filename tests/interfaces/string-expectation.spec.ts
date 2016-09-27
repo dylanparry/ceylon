@@ -260,4 +260,20 @@ describe('expect(string)', () => {
             expect('string').toNotBeEmpty().toNotBeEmpty();
         });
     });
+
+     describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect('string').toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect('string').toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect('string').toNotBeNull().toNotBeNull();
+        });
+    });
 });

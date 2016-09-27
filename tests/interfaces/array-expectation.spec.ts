@@ -352,4 +352,20 @@ describe('expect(array)', () => {
             expect([1, 2, 3]).toNotBeEmpty().toNotBeEmpty();
         });
     });
+
+    describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect([1, 2, 3]).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect([1, 2, 3]).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect([1, 2, 3]).toNotBeNull().toNotBeNull();
+        });
+    });
 });

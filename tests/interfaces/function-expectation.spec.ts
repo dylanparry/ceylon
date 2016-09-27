@@ -242,4 +242,20 @@ describe('expect(Function)', () => {
             expect(Math.random).toNotContainKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
         });
     });
+
+     describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect(Math.random).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect(Math.random).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect(Math.random).toNotBeNull().toNotBeNull();
+        });
+    });
 });

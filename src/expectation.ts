@@ -729,4 +729,22 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
 
         return this;
     }
+
+    public toBeNull(message?: string): this {
+        assert({
+            assertion: this.actual === null,
+            message: 'Expected item to be null',
+        });
+
+        return this;
+    }
+
+    public toNotBeNull(message?: string): this {
+        assert({
+            assertion: this.actual !== null,
+            message: 'Expected item to not be null',
+        });
+
+        return this;
+    }
 }

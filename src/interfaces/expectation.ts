@@ -16,6 +16,10 @@ interface IExpectation<T> {
 
     toNotBeA(contructor: string, message?: string): this;
     toNotBeAn(constructor: string, message?: string): this;
+
+    toBeNull(message?: string): this;
+
+    toNotBeNull(message?: string): this;
 }
 
 export default IExpectation;

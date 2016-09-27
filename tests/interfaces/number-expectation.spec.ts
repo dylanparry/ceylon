@@ -205,4 +205,20 @@ describe('expect(number)', () => {
             expect(200).toBeMoreThanOrEqualTo(100).toBeMoreThanOrEqualTo(100);
         });
     });
+
+     describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect(100).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect(100).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect(100).toNotBeNull().toNotBeNull();
+        });
+    });
 });

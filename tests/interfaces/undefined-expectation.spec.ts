@@ -73,4 +73,20 @@ describe('expect(undefined)', () => {
             expect(undefined).toNotEqual(1 as any).toNotEqual(1 as any);
         });
     });
+
+     describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect(undefined).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect(undefined).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect(undefined).toNotBeNull().toNotBeNull();
+        });
+    });
 });

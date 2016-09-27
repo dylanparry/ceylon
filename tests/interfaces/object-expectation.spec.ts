@@ -325,4 +325,20 @@ describe('expect(Object)', () => {
             expect({ name: 'Object' }).toNotBeEmpty().toNotBeEmpty();
         });
     });
+
+     describe('toBeNull', () => {
+        it('throws', () => {
+            checkThrows(() => expect({ name: 'Object' }).toBeNull());
+        });
+    });
+
+    describe('toNotBeNull', () => {
+        it('does not throw', () => {
+            expect({ name: 'Object' }).toNotBeNull();
+        });
+
+        it('is chainable', () => {
+            expect({ name: 'Object' }).toNotBeNull().toNotBeNull();
+        });
+    });
 });
