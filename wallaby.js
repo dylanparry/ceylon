@@ -8,7 +8,6 @@
     return {
         files: [
             { pattern: 'src/**/*.ts', load: false },
-            { pattern: 'tests/**/*.ts', load: false, instrument: false },
             { pattern: 'tests/**/*.spec.ts', ignore: true },
         ],
 

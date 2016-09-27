@@ -1,5 +1,4 @@
-﻿import { checkThrows } from '../helpers';
-import expect from '../../src/index';
+﻿import expect from '../../src/index';
 
 describe('expect(boolean)', () => {
     describe('toExist', () => {
@@ -9,7 +8,7 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toExist(null as any));
+            expect(() => expect(true).toExist(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -19,8 +18,8 @@ describe('expect(boolean)', () => {
 
     describe('toNotExist', () => {
         it('throws', () => {
-            checkThrows(() => expect(true).toNotExist());
-            checkThrows(() => expect(false).toNotExist());
+            expect(() => expect(true).toNotExist()).toThrow();
+            expect(() => expect(false).toNotExist()).toThrow();
         });
     });
 
@@ -31,11 +30,11 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toBe(false));
+            expect(() => expect(true).toBe(false)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toBe(true, null as any));
+            expect(() => expect(true).toBe(true, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -49,11 +48,11 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() =>  expect(true).toNotBe(true));
+            expect(() =>  expect(true).toNotBe(true)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toNotBe(false, null as any));
+            expect(() => expect(true).toNotBe(false, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -67,11 +66,11 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toEqual(false));
+            expect(() => expect(true).toEqual(false)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toEqual(true, null as any));
+            expect(() => expect(true).toEqual(true, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -85,11 +84,11 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toNotEqual(true));
+            expect(() => expect(true).toNotEqual(true)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toNotEqual(false, null as any));
+            expect(() => expect(true).toNotEqual(false, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -104,16 +103,16 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toBeA('number'));
-            checkThrows(() => expect(true).toBeAn('number'));
+            expect(() => expect(true).toBeA('number')).toThrow();
+            expect(() => expect(true).toBeAn('number')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toBeA(null as any));
-            checkThrows(() => expect(true).toBeAn(null as any));
+            expect(() => expect(true).toBeA(null as any)).toThrow();
+            expect(() => expect(true).toBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(true).toBeA('boolean', null as any));
-            checkThrows(() => expect(true).toBeAn('boolean', null as any));
+            expect(() => expect(true).toBeA('boolean', null as any)).toThrow();
+            expect(() => expect(true).toBeAn('boolean', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -128,16 +127,16 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toNotBeA('boolean'));
-            checkThrows(() => expect(true).toNotBeAn('boolean'));
+            expect(() => expect(true).toNotBeA('boolean')).toThrow();
+            expect(() => expect(true).toNotBeAn('boolean')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toNotBeA(null as any));
-            checkThrows(() => expect(true).toNotBeAn(null as any));
+            expect(() => expect(true).toNotBeA(null as any)).toThrow();
+            expect(() => expect(true).toNotBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(true).toNotBeA('number', null as any));
-            checkThrows(() => expect(true).toNotBeAn('number', null as any));
+            expect(() => expect(true).toNotBeA('number', null as any)).toThrow();
+            expect(() => expect(true).toNotBeAn('number', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -151,15 +150,15 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(false).toBeTrue());
+            expect(() => expect(false).toBeTrue()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toBeTrue(null as any));
+            expect(() => expect(true).toBeTrue(null as any)).toThrow();
         });
 
         it('throws when called on a non-boolean', () => {
-            checkThrows(() => expect(undefined)['toBeTrue']());
+            expect(() => expect(undefined)['toBeTrue']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -173,15 +172,15 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(true).toBeFalse());
+            expect(() => expect(true).toBeFalse()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toBeFalse(null as any));
+            expect(() => expect(true).toBeFalse(null as any)).toThrow();
         });
 
         it('throws when called on a non-boolean', () => {
-            checkThrows(() => expect(undefined)['toBeFalse']());
+            expect(() => expect(undefined)['toBeFalse']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -191,7 +190,7 @@ describe('expect(boolean)', () => {
 
     describe('toBeNull', () => {
         it('throws', () => {
-            checkThrows(() => expect(true).toBeNull());
+            expect(() => expect(true).toBeNull()).toThrow();
         });
     });
 
@@ -201,7 +200,7 @@ describe('expect(boolean)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(true).toNotBeNull(null as any));
+            expect(() => expect(true).toNotBeNull(null as any)).toThrow();
         });
 
         it('is chainable', () => {

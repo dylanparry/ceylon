@@ -1,6 +1,4 @@
-﻿import { checkThrows } from '../helpers';
-
-import expect from '../../src/index';
+﻿import expect from '../../src/index';
 
 describe('expect(array)', () => {
     describe('toExist', () => {
@@ -10,7 +8,7 @@ describe('expect(array)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toExist(null as any));
+            expect(() => expect([1, 2, 3]).toExist(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -20,8 +18,8 @@ describe('expect(array)', () => {
 
     describe('toNotExist', () => {
         it('throws', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotExist());
-            checkThrows(() => expect([]).toNotExist());
+            expect(() => expect([1, 2, 3]).toNotExist()).toThrow();
+            expect(() => expect([]).toNotExist()).toThrow();
         });
     });
 
@@ -33,13 +31,13 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toBe([1, 2, 3]));
+            expect(() => expect([1, 2, 3]).toBe([1, 2, 3])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
             const data = [1, 2, 3];
 
-            checkThrows(() => expect(data).toBe(data, null as any));
+            expect(() => expect(data).toBe(data, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -57,11 +55,11 @@ describe('expect(array)', () => {
         it('throws when assertion fails', () => {
             const data = [1, 2, 3];
 
-            checkThrows(() =>  expect(data).toNotBe(data));
+            expect(() =>  expect(data).toNotBe(data)).toThrow();
         });
 
          it('throws when called with invalid arguments', () => {
-             checkThrows(() => expect([1, 2, 3]).toBe([1, 2, 3], null as any));
+             expect(() => expect([1, 2, 3]).toBe([1, 2, 3], null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -75,11 +73,11 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toEqual([1, 2]));
+            expect(() => expect([1, 2, 3]).toEqual([1, 2])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toEqual([1, 2, 3], null as any));
+            expect(() => expect([1, 2, 3]).toEqual([1, 2, 3], null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -93,11 +91,11 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotEqual([1, 2, 3]));
+            expect(() => expect([1, 2, 3]).toNotEqual([1, 2, 3])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotEqual([1, 2, 3, 4], null as any));
+            expect(() => expect([1, 2, 3]).toNotEqual([1, 2, 3, 4], null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -112,16 +110,16 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toBeA('number'));
-            checkThrows(() => expect([1, 2, 3]).toBeAn('number'));
+            expect(() => expect([1, 2, 3]).toBeA('number')).toThrow();
+            expect(() => expect([1, 2, 3]).toBeAn('number')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toBeA(null as any));
-            checkThrows(() => expect([1, 2, 3]).toBeAn(null as any));
+            expect(() => expect([1, 2, 3]).toBeA(null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toBeA('object', null as any));
-            checkThrows(() => expect([1, 2, 3]).toBeAn('object', null as any));
+            expect(() => expect([1, 2, 3]).toBeA('object', null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toBeAn('object', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -136,16 +134,16 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotBeA('object'));
-            checkThrows(() => expect([1, 2, 3]).toNotBeAn('object'));
+            expect(() => expect([1, 2, 3]).toNotBeA('object')).toThrow();
+            expect(() => expect([1, 2, 3]).toNotBeAn('object')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotBeA(null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotBeAn(null as any));
+            expect(() => expect([1, 2, 3]).toNotBeA(null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toNotBeA('number', null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotBeAn('number', null as any));
+            expect(() => expect([1, 2, 3]).toNotBeA('number', null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotBeAn('number', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -172,28 +170,28 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toInclude(4));
-            checkThrows(() => expect([1, 2, 3]).toContain(4));
+            expect(() => expect([1, 2, 3]).toInclude(4)).toThrow();
+            expect(() => expect([1, 2, 3]).toContain(4)).toThrow();
 
-            checkThrows(() => expect([
+            expect(() => expect([
                 [4, 5, 5],
                 [7, 8, 9],
-            ]).toInclude([1, 2, 3]));
+            ]).toInclude([1, 2, 3])).toThrow();
 
-            checkThrows(() => expect([
+            expect(() => expect([
                 [4, 5, 5],
                 [7, 8, 9],
-            ]).toContain([1, 2, 3]));
+            ]).toContain([1, 2, 3])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toInclude(1, null as any));
-            checkThrows(() => expect([1, 2, 3]).toContain(1, null as any));
+            expect(() => expect([1, 2, 3]).toInclude(1, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toContain(1, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toInclude'](1));
-            checkThrows(() => expect(undefined)['toContain'](1));
+            expect(() => expect(undefined)['toInclude'](1)).toThrow();
+            expect(() => expect(undefined)['toContain'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -210,21 +208,21 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toExclude(2));
-            checkThrows(() => expect([1, 2, 3]).toNotInclude(2));
-            checkThrows(() => expect([1, 2, 3]).toNotContain(2));
+            expect(() => expect([1, 2, 3]).toExclude(2)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotInclude(2)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContain(2)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toExclude(4, null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotInclude(4, null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotContain(4, null as any));
+            expect(() => expect([1, 2, 3]).toExclude(4, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotInclude(4, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContain(4, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toExclude'](1));
-            checkThrows(() => expect(undefined)['toNotInclude'](1));
-            checkThrows(() => expect(undefined)['toNotContain'](1));
+            expect(() => expect(undefined)['toExclude'](1)).toThrow();
+            expect(() => expect(undefined)['toNotInclude'](1)).toThrow();
+            expect(() => expect(undefined)['toNotContain'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -241,18 +239,18 @@ describe('expect(array)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toIncludeKey(3));
-            checkThrows(() => expect([1, 2, 3]).toContainKey(3));
+            expect(() => expect([1, 2, 3]).toIncludeKey(3)).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKey(3)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toIncludeKey(1, null as any));
-            checkThrows(() => expect([1, 2, 3]).toContainKey(1, null as any));
+            expect(() => expect([1, 2, 3]).toIncludeKey(1, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKey(1, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toIncludeKey'](1));
-            checkThrows(() => expect(undefined)['toContainKey'](1));
+            expect(() => expect(undefined)['toIncludeKey'](1)).toThrow();
+            expect(() => expect(undefined)['toContainKey'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -269,21 +267,21 @@ describe('expect(array)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toExcludeKey(0));
-            checkThrows(() => expect([1, 2, 3]).toNotIncludeKey(0));
-            checkThrows(() => expect([1, 2, 3]).toNotContainKey(0));
+            expect(() => expect([1, 2, 3]).toExcludeKey(0)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotIncludeKey(0)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContainKey(0)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toExcludeKey(4, null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotIncludeKey(4, null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotContainKey(4, null as any));
+            expect(() => expect([1, 2, 3]).toExcludeKey(4, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotIncludeKey(4, null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContainKey(4, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toExcludeKey'](1));
-            checkThrows(() => expect(undefined)['toNotIncludeKey'](1));
-            checkThrows(() => expect(undefined)['toNotContainKey'](1));
+            expect(() => expect(undefined)['toExcludeKey'](1)).toThrow();
+            expect(() => expect(undefined)['toNotIncludeKey'](1)).toThrow();
+            expect(() => expect(undefined)['toNotContainKey'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -300,21 +298,21 @@ describe('expect(array)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toIncludeKeys([3, 4]));
-            checkThrows(() => expect([1, 2, 3]).toContainKeys([3, 4]));
+            expect(() => expect([1, 2, 3]).toIncludeKeys([3, 4])).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKeys([3, 4])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toIncludeKeys(null as any));
-            checkThrows(() => expect([1, 2, 3]).toContainKeys(null as any));
+            expect(() => expect([1, 2, 3]).toIncludeKeys(null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKeys(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toIncludeKeys([0, 1], null as any));
-            checkThrows(() => expect([1, 2, 3]).toContainKeys([0, 1], null as any));
+            expect(() => expect([1, 2, 3]).toIncludeKeys([0, 1], null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKeys([0, 1], null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toIncludeKeys'](1));
-            checkThrows(() => expect(undefined)['toContainKeys'](1));
+            expect(() => expect(undefined)['toIncludeKeys'](1)).toThrow();
+            expect(() => expect(undefined)['toContainKeys'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -331,25 +329,25 @@ describe('expect(array)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toExcludeKeys([0, 1]));
-            checkThrows(() => expect([1, 2, 3]).toNotIncludeKeys([0, 1]));
-            checkThrows(() => expect([1, 2, 3]).toNotContainKeys([0, 1]));
+            expect(() => expect([1, 2, 3]).toExcludeKeys([0, 1])).toThrow();
+            expect(() => expect([1, 2, 3]).toNotIncludeKeys([0, 1])).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContainKeys([0, 1])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toExcludeKeys(null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotIncludeKeys(null as any));
-            checkThrows(() => expect([1, 2, 3]).toNotContainKeys(null as any));
+            expect(() => expect([1, 2, 3]).toExcludeKeys(null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotIncludeKeys(null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toNotContainKeys(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toExcludeKeys([3, 4], null as any));
-            checkThrows(() => expect([1, 2, 3]).toIncludeKeys([3, 4], null as any));
-            checkThrows(() => expect([1, 2, 3]).toContainKeys([3, 4], null as any));
+            expect(() => expect([1, 2, 3]).toExcludeKeys([3, 4], null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toIncludeKeys([3, 4], null as any)).toThrow();
+            expect(() => expect([1, 2, 3]).toContainKeys([3, 4], null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toExcludeKeys'](1));
-            checkThrows(() => expect(undefined)['toNotIncludeKeys'](1));
-            checkThrows(() => expect(undefined)['toNotContainKeys'](1));
+            expect(() => expect(undefined)['toExcludeKeys'](1)).toThrow();
+            expect(() => expect(undefined)['toNotIncludeKeys'](1)).toThrow();
+            expect(() => expect(undefined)['toNotContainKeys'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -365,17 +363,17 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toHaveLength(2));
+            expect(() => expect([1, 2, 3]).toHaveLength(2)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toHaveLength(null as any));
+            expect(() => expect([1, 2, 3]).toHaveLength(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toHaveLength(3, null as any));
+            expect(() => expect([1, 2, 3]).toHaveLength(3, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toHaveLength'](2));
+            expect(() => expect(undefined)['toHaveLength'](2)).toThrow();
         });
 
         it('is chainable', () => {
@@ -389,17 +387,17 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotHaveLength(3));
+            expect(() => expect([1, 2, 3]).toNotHaveLength(3)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotHaveLength(null as any));
+            expect(() => expect([1, 2, 3]).toNotHaveLength(null as any)).toThrow();
 
-            checkThrows(() => expect([1, 2, 3]).toNotHaveLength(2, null as any));
+            expect(() => expect([1, 2, 3]).toNotHaveLength(2, null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toNotHaveLength'](2));
+            expect(() => expect(undefined)['toNotHaveLength'](2)).toThrow();
         });
 
         it('is chainable', () => {
@@ -413,15 +411,15 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([1, 2, 3]).toBeEmpty());
+            expect(() => expect([1, 2, 3]).toBeEmpty()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([]).toBeEmpty(null as any));
+            expect(() => expect([]).toBeEmpty(null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toBeEmpty']());
+            expect(() => expect(undefined)['toBeEmpty']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -435,15 +433,15 @@ describe('expect(array)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect([]).toNotBeEmpty());
+            expect(() => expect([]).toNotBeEmpty()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotBeEmpty(null as any));
+            expect(() => expect([1, 2, 3]).toNotBeEmpty(null as any)).toThrow();
         });
 
         it('throws when called on a non-array', () => {
-            checkThrows(() => expect(undefined)['toNotBeEmpty']());
+            expect(() => expect(undefined)['toNotBeEmpty']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -453,7 +451,7 @@ describe('expect(array)', () => {
 
     describe('toBeNull', () => {
         it('throws', () => {
-            checkThrows(() => expect([1, 2, 3]).toBeNull());
+            expect(() => expect([1, 2, 3]).toBeNull()).toThrow();
         });
     });
 
@@ -463,7 +461,7 @@ describe('expect(array)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect([1, 2, 3]).toNotBeNull(null as any));
+            expect(() => expect([1, 2, 3]).toNotBeNull(null as any)).toThrow();
         });
 
         it('is chainable', () => {

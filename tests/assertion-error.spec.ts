@@ -1,6 +1,5 @@
-import { checkExists, checkType, checkEqual } from './helpers';
-
 import AssertionError from '../src/assertion-error';
+import expect from '../src/index';
 
 describe('AssertionError', () => {
     it('returns an Error object', () => {
@@ -8,8 +7,7 @@ describe('AssertionError', () => {
             message: 'Error message',
         });
 
-        checkExists(error);
-        checkType(error, Error);
+        expect(error).toBeAn(Error);
     });
 
     it('sets the error.message property', () => {
@@ -17,7 +15,7 @@ describe('AssertionError', () => {
             message: 'Error message',
         });
 
-        checkEqual(error.message, 'Error message');
+        expect(error.message).toBe('Error message');
     });
 
     it('sets does not set the actual, expected, or showDiff properties when unspecified', () => {
@@ -25,9 +23,9 @@ describe('AssertionError', () => {
             message: 'Error message',
         });
 
-        checkEqual(error['actual'], undefined);
-        checkEqual(error['expected'], undefined);
-        checkEqual(error['showDiff'], undefined);
+        expect(error['actual']).toNotExist();
+        expect(error['expected']).toNotExist();
+        expect(error['showDiff']).toNotExist();
     });
 
     it('sets the actual, expected, and showDiff properties when specified', () => {
@@ -38,8 +36,8 @@ describe('AssertionError', () => {
             showDiff: true,
         });
 
-        checkEqual(error['actual'], 'I ate an apple');
-        checkEqual(error['expected'], 'I ate an orange');
-        checkEqual(error['showDiff'], true);
+        expect(error['actual']).toBe('I ate an apple');
+        expect(error['expected']).toBe('I ate an orange');
+        expect(error['showDiff'] as boolean).toBeTrue();
     });
 });

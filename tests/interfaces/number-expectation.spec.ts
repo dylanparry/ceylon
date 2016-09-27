@@ -1,5 +1,4 @@
-﻿import { checkThrows } from '../helpers';
-import expect from '../../src/index';
+﻿import expect from '../../src/index';
 
 describe('expect(number)', () => {
     describe('toExist', () => {
@@ -11,7 +10,7 @@ describe('expect(number)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toExist(null as any));
+            expect(() => expect(100).toExist(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -21,10 +20,10 @@ describe('expect(number)', () => {
 
     describe('toNotExist', () => {
         it('throws', () => {
-            checkThrows(() => expect(100).toNotExist());
-            checkThrows(() => expect(-100).toNotExist());
-            checkThrows(() => expect(0).toNotExist());
-            checkThrows(() => expect(0.5).toNotExist());
+            expect(() => expect(100).toNotExist()).toThrow();
+            expect(() => expect(-100).toNotExist()).toThrow();
+            expect(() => expect(0).toNotExist()).toThrow();
+            expect(() => expect(0.5).toNotExist()).toThrow();
         });
     });
 
@@ -34,11 +33,11 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBe(50));
+            expect(() => expect(100).toBe(50)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBe(100, null as any));
+            expect(() => expect(100).toBe(100, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -52,11 +51,11 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toNotBe(100));
+            expect(() => expect(100).toNotBe(100)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toNotBe(90, null as any));
+            expect(() => expect(100).toNotBe(90, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -70,11 +69,11 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toEqual(50));
+            expect(() => expect(100).toEqual(50)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toEqual(100, null as any));
+            expect(() => expect(100).toEqual(100, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -88,11 +87,11 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toNotEqual(100));
+            expect(() => expect(100).toNotEqual(100)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toNotEqual(50, null as any));
+            expect(() => expect(100).toNotEqual(50, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -107,16 +106,16 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBeA('boolean'));
-            checkThrows(() => expect(100).toBeAn('boolean'));
+            expect(() => expect(100).toBeA('boolean')).toThrow();
+            expect(() => expect(100).toBeAn('boolean')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBeA(null as any));
-            checkThrows(() => expect(100).toBeAn(null as any));
+            expect(() => expect(100).toBeA(null as any)).toThrow();
+            expect(() => expect(100).toBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toBeA('number', null as any));
-            checkThrows(() => expect(100).toBeAn('number', null as any));
+            expect(() => expect(100).toBeA('number', null as any)).toThrow();
+            expect(() => expect(100).toBeAn('number', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -131,16 +130,16 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toNotBeA('number'));
-            checkThrows(() => expect(100).toNotBeAn('number'));
+            expect(() => expect(100).toNotBeA('number')).toThrow();
+            expect(() => expect(100).toNotBeAn('number')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toNotBeA(null as any));
-            checkThrows(() => expect(100).toNotBeAn(null as any));
+            expect(() => expect(100).toNotBeA(null as any)).toThrow();
+            expect(() => expect(100).toNotBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toNotBeA('string', null as any));
-            checkThrows(() => expect(100).toNotBeAn('string', null as any));
+            expect(() => expect(100).toNotBeA('string', null as any)).toThrow();
+            expect(() => expect(100).toNotBeAn('string', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -155,23 +154,23 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBeLessThan(50));
-            checkThrows(() => expect(100).toBeLessThan(100));
-            checkThrows(() => expect(100).toBeFewerThan(50));
-            checkThrows(() => expect(100).toBeFewerThan(100));
+            expect(() => expect(100).toBeLessThan(50)).toThrow();
+            expect(() => expect(100).toBeLessThan(100)).toThrow();
+            expect(() => expect(100).toBeFewerThan(50)).toThrow();
+            expect(() => expect(100).toBeFewerThan(100)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBeLessThan(null as any));
-            checkThrows(() => expect(100).toBeFewerThan(null as any));
+            expect(() => expect(100).toBeLessThan(null as any)).toThrow();
+            expect(() => expect(100).toBeFewerThan(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toBeLessThan(200, null as any));
-            checkThrows(() => expect(100).toBeFewerThan(200, null as any));
+            expect(() => expect(100).toBeLessThan(200, null as any)).toThrow();
+            expect(() => expect(100).toBeFewerThan(200, null as any)).toThrow();
         });
 
         it('throws when called on a non-number', () => {
-            checkThrows(() => expect(undefined)['toBeLessThan'](1));
-            checkThrows(() => expect(undefined)['toBeFewerThan'](1));
+            expect(() => expect(undefined)['toBeLessThan'](1)).toThrow();
+            expect(() => expect(undefined)['toBeFewerThan'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -189,21 +188,21 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBeLessThanOrEqualTo(50));
-            checkThrows(() => expect(100).toBeFewerThanOrEqualTo(50));
+            expect(() => expect(100).toBeLessThanOrEqualTo(50)).toThrow();
+            expect(() => expect(100).toBeFewerThanOrEqualTo(50)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBeLessThanOrEqualTo(null as any));
-            checkThrows(() => expect(100).toBeLessThanOrEqualTo(null as any));
+            expect(() => expect(100).toBeLessThanOrEqualTo(null as any)).toThrow();
+            expect(() => expect(100).toBeLessThanOrEqualTo(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toBeLessThanOrEqualTo(200, null as any));
-            checkThrows(() => expect(100).toBeLessThanOrEqualTo(200, null as any));
+            expect(() => expect(100).toBeLessThanOrEqualTo(200, null as any)).toThrow();
+            expect(() => expect(100).toBeLessThanOrEqualTo(200, null as any)).toThrow();
         });
 
         it('throws when called on a non-number', () => {
-            checkThrows(() => expect(undefined)['toBeLessThanOrEqualTo'](1));
-            checkThrows(() => expect(undefined)['toBeFewerThanOrEqualTo'](1));
+            expect(() => expect(undefined)['toBeLessThanOrEqualTo'](1)).toThrow();
+            expect(() => expect(undefined)['toBeFewerThanOrEqualTo'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -219,23 +218,23 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBeGreaterThan(200));
-            checkThrows(() => expect(100).toBeGreaterThan(100));
-            checkThrows(() => expect(100).toBeMoreThan(200));
-            checkThrows(() => expect(100).toBeMoreThan(100));
+            expect(() => expect(100).toBeGreaterThan(200)).toThrow();
+            expect(() => expect(100).toBeGreaterThan(100)).toThrow();
+            expect(() => expect(100).toBeMoreThan(200)).toThrow();
+            expect(() => expect(100).toBeMoreThan(100)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBeGreaterThan(null as any));
-            checkThrows(() => expect(100).toBeGreaterThan(null as any));
+            expect(() => expect(100).toBeGreaterThan(null as any)).toThrow();
+            expect(() => expect(100).toBeGreaterThan(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toBeGreaterThan(50, null as any));
-            checkThrows(() => expect(100).toBeGreaterThan(50, null as any));
+            expect(() => expect(100).toBeGreaterThan(50, null as any)).toThrow();
+            expect(() => expect(100).toBeGreaterThan(50, null as any)).toThrow();
         });
 
         it('throws when called on a non-number', () => {
-            checkThrows(() => expect(undefined)['toBeGreaterThan'](1));
-            checkThrows(() => expect(undefined)['toBeMoreThan'](1));
+            expect(() => expect(undefined)['toBeGreaterThan'](1)).toThrow();
+            expect(() => expect(undefined)['toBeMoreThan'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -251,21 +250,21 @@ describe('expect(number)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(200));
-            checkThrows(() => expect(100).toBeMoreThanOrEqualTo(200));
+            expect(() => expect(100).toBeGreaterThanOrEqualTo(200)).toThrow();
+            expect(() => expect(100).toBeMoreThanOrEqualTo(200)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(null as any));
-            checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(null as any));
+            expect(() => expect(100).toBeGreaterThanOrEqualTo(null as any)).toThrow();
+            expect(() => expect(100).toBeGreaterThanOrEqualTo(null as any)).toThrow();
 
-            checkThrows(() => expect(100).toBeGreaterThan(50, null as any));
-            checkThrows(() => expect(100).toBeGreaterThanOrEqualTo(50, null as any));
+            expect(() => expect(100).toBeGreaterThan(50, null as any)).toThrow();
+            expect(() => expect(100).toBeGreaterThanOrEqualTo(50, null as any)).toThrow();
         });
 
         it('throws when called on a non-number', () => {
-            checkThrows(() => expect(undefined)['toBeGreaterThanOrEqualTo'](1));
-            checkThrows(() => expect(undefined)['toBeMoreThanOrEqualTo'](1));
+            expect(() => expect(undefined)['toBeGreaterThanOrEqualTo'](1)).toThrow();
+            expect(() => expect(undefined)['toBeMoreThanOrEqualTo'](1)).toThrow();
         });
 
         it('is chainable', () => {
@@ -276,7 +275,7 @@ describe('expect(number)', () => {
 
     describe('toBeNull', () => {
         it('throws', () => {
-            checkThrows(() => expect(100).toBeNull());
+            expect(() => expect(100).toBeNull()).toThrow();
         });
     });
 
@@ -286,7 +285,7 @@ describe('expect(number)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(100).toNotBeNull(null as any));
+            expect(() => expect(100).toNotBeNull(null as any)).toThrow();
         });
 
         it('is chainable', () => {

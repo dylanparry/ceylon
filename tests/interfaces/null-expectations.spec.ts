@@ -1,5 +1,3 @@
-import { checkThrows } from '../helpers';
-
 import expect from '../../src/index';
 
 describe('expect(null)', () => {
@@ -9,7 +7,7 @@ describe('expect(null)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toExist(null as any));
+            expect(() => expect(null).toExist(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -19,7 +17,7 @@ describe('expect(null)', () => {
 
     describe('toNotExist', () => {
         it('throws', () => {
-            checkThrows(() => expect(null).toNotExist());
+            expect(() => expect(null).toNotExist()).toThrow();
         });
     });
 
@@ -29,11 +27,11 @@ describe('expect(null)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(null).toBe(1 as any));
+            expect(() => expect(null).toBe(1 as any)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toBe(null, null as any));
+            expect(() => expect(null).toBe(null, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -47,11 +45,11 @@ describe('expect(null)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(null).toNotBe(null));
+            expect(() => expect(null).toNotBe(null)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toNotBe(1 as any, null as any));
+            expect(() => expect(null).toNotBe(1 as any, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -65,11 +63,11 @@ describe('expect(null)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(null).toEqual(1 as any));
+            expect(() => expect(null).toEqual(1 as any)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toEqual(null, null as any));
+            expect(() => expect(null).toEqual(null, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -83,11 +81,11 @@ describe('expect(null)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(null).toNotEqual(null));
+            expect(() => expect(null).toNotEqual(null)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toNotEqual(1 as any, null as any));
+            expect(() => expect(null).toNotEqual(1 as any, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -101,7 +99,7 @@ describe('expect(null)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(null).toBeNull(null as any));
+            expect(() => expect(null).toBeNull(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -111,7 +109,7 @@ describe('expect(null)', () => {
 
     describe('toNotBeNull', () => {
         it('throws', () => {
-            checkThrows(() => expect(null).toNotBeNull());
+            expect(() => expect(null).toNotBeNull()).toThrow();
         });
     });
 });

@@ -1,5 +1,4 @@
-﻿import { checkThrows } from '../helpers';
-import expect from '../../src/index';
+﻿import expect from '../../src/index';
 
 describe('expect(Object)', () => {
     describe('toExist', () => {
@@ -9,7 +8,7 @@ describe('expect(Object)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toExist(null as any));
+            expect(() => expect({ name: 'Object' }).toExist(null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -19,8 +18,8 @@ describe('expect(Object)', () => {
 
     describe('toNotExist', () => {
         it('throws', () => {
-            checkThrows(() => expect({ id: 1 }).toNotExist());
-            checkThrows(() => expect({}).toNotExist());
+            expect(() => expect({ id: 1 }).toNotExist()).toThrow();
+            expect(() => expect({}).toNotExist()).toThrow();
         });
     });
 
@@ -32,13 +31,13 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ id: 1 }).toBe({ id: 1 }));
+            expect(() => expect({ id: 1 }).toBe({ id: 1 })).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
             const data = { id: 1 };
 
-            checkThrows(() => expect(data).toBe(data, null as any));
+            expect(() => expect(data).toBe(data, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -56,11 +55,11 @@ describe('expect(Object)', () => {
         it('throws when assertion fails', () => {
             const data = { id: 1 };
 
-            checkThrows(() =>  expect(data).toNotBe(data));
+            expect(() =>  expect(data).toNotBe(data)).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toNotBe({ name: 'Object' }, null as any));
+            expect(() => expect({ name: 'Object' }).toNotBe({ name: 'Object' }, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -74,11 +73,11 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ id: 1 }).toEqual({ id: 2 }));
+            expect(() => expect({ id: 1 }).toEqual({ id: 2 })).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toEqual({ name: 'Object' }, null as any));
+            expect(() => expect({ name: 'Object' }).toEqual({ name: 'Object' }, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -92,11 +91,11 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ id: 1 }).toNotEqual({ id: 1 }));
+            expect(() => expect({ id: 1 }).toNotEqual({ id: 1 })).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toNotEqual({ name: 'Object 2' }, null as any));
+            expect(() => expect({ name: 'Object' }).toNotEqual({ name: 'Object 2' }, null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -113,22 +112,22 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ id: 1 }).toInclude({ name: 'Object' }));
-            checkThrows(() => expect({ id: 1 }).toContain({ name: 'Object' }));
-            checkThrows(() => expect({ id: 1 }).toInclude({ id: 2 }));
-            checkThrows(() => expect({ id: 1 }).toContain({ id: 2 }));
-            checkThrows(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toInclude({ sub: 1 }));
-            checkThrows(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toContain({ sub: 1 }));
+            expect(() => expect({ id: 1 }).toInclude({ name: 'Object' })).toThrow();
+            expect(() => expect({ id: 1 }).toContain({ name: 'Object' })).toThrow();
+            expect(() => expect({ id: 1 }).toInclude({ id: 2 })).toThrow();
+            expect(() => expect({ id: 1 }).toContain({ id: 2 })).toThrow();
+            expect(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toInclude({ sub: 1 })).toThrow();
+            expect(() => expect({ complex: { sub: 1 }, id: 1, name: 'Object' }).toContain({ sub: 1 })).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toInclude({ name: 'Object' }, null as any));
-            checkThrows(() => expect({ name: 'Object' }).toContain({ name: 'Object' }, null as any));
+            expect(() => expect({ name: 'Object' }).toInclude({ name: 'Object' }, null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toContain({ name: 'Object' }, null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toInclude']({ id: 1 }));
-            checkThrows(() => expect(undefined)['toContain']({ id: 1 }));
+            expect(() => expect(undefined)['toInclude']({ id: 1 })).toThrow();
+            expect(() => expect(undefined)['toContain']({ id: 1 })).toThrow();
         });
 
         it('is chainable', () => {
@@ -153,25 +152,25 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ id: 1 }).toExclude({ id: 1 }));
-            checkThrows(() => expect({ id: 1 }).toNotInclude({ id: 1 }));
-            checkThrows(() => expect({ id: 1 }).toNotContain({ id: 1 }));
+            expect(() => expect({ id: 1 }).toExclude({ id: 1 })).toThrow();
+            expect(() => expect({ id: 1 }).toNotInclude({ id: 1 })).toThrow();
+            expect(() => expect({ id: 1 }).toNotContain({ id: 1 })).toThrow();
 
-            checkThrows(() => expect({complex: { sub: 1 }, id: 1 }).toExclude({ complex: { sub: 1 } }));
-            checkThrows(() => expect({ complex: { sub: 1 }, id: 1 }).toNotInclude({ complex: { sub: 1 } }));
-            checkThrows(() => expect({ complex: { sub: 1 }, id: 1 }).toNotContain({ complex: { sub: 1 } }));
+            expect(() => expect({complex: { sub: 1 }, id: 1 }).toExclude({ complex: { sub: 1 } })).toThrow();
+            expect(() => expect({ complex: { sub: 1 }, id: 1 }).toNotInclude({ complex: { sub: 1 } })).toThrow();
+            expect(() => expect({ complex: { sub: 1 }, id: 1 }).toNotContain({ complex: { sub: 1 } })).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toExclude({ name: 'Object 2' }, null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotInclude({ name: 'Object 2' }, null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotContain({ name: 'Object 2' }, null as any));
+            expect(() => expect({ name: 'Object' }).toExclude({ name: 'Object 2' }, null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotInclude({ name: 'Object 2' }, null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotContain({ name: 'Object 2' }, null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toExclude']({ id: 1 }));
-            checkThrows(() => expect(undefined)['toNotInclude']({ id: 1 }));
-            checkThrows(() => expect(undefined)['toNotContain']({ id: 1 }));
+            expect(() => expect(undefined)['toExclude']({ id: 1 })).toThrow();
+            expect(() => expect(undefined)['toNotInclude']({ id: 1 })).toThrow();
+            expect(() => expect(undefined)['toNotContain']({ id: 1 })).toThrow();
         });
 
         it('is chainable', () => {
@@ -188,21 +187,21 @@ describe('expect(Object)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKey('value'));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKey('value'));
+            expect(() => expect({ id: 1, name: 'Object' }).toIncludeKey('value')).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toContainKey('value')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toIncludeKey(null as any));
-            checkThrows(() => expect({ name: 'Object' }).toContainKey(null as any));
+            expect(() => expect({ name: 'Object' }).toIncludeKey(null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toContainKey(null as any)).toThrow();
 
-            checkThrows(() => expect({ name: 'Object' }).toIncludeKey('name', null as any));
-            checkThrows(() => expect({ name: 'Object' }).toContainKey('name', null as any));
+            expect(() => expect({ name: 'Object' }).toIncludeKey('name', null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toContainKey('name', null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toIncludeKey']('name'));
-            checkThrows(() => expect(undefined)['toContainKey']('name'));
+            expect(() => expect(undefined)['toIncludeKey']('name')).toThrow();
+            expect(() => expect(undefined)['toContainKey']('name')).toThrow();
         });
 
         it('is chainable', () => {
@@ -219,25 +218,25 @@ describe('expect(Object)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toExcludeKey('name'));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toNotIncludeKey('name'));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toNotContainKey('name'));
+            expect(() => expect({ id: 1, name: 'Object' }).toExcludeKey('name')).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toNotIncludeKey('name')).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toNotContainKey('name')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toExcludeKey(null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotIncludeKey(null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotContainKey(null as any));
+            expect(() => expect({ name: 'Object' }).toExcludeKey(null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotIncludeKey(null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotContainKey(null as any)).toThrow();
 
-            checkThrows(() => expect({ name: 'Object' }).toExcludeKey('foo', null as any));
-            checkThrows(() => expect({ name: 'Object' }).toIncludeKey('foo', null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotContainKey('foo', null as any));
+            expect(() => expect({ name: 'Object' }).toExcludeKey('foo', null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toIncludeKey('foo', null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotContainKey('foo', null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toExcludeKey']('name'));
-            checkThrows(() => expect(undefined)['toNotIncludeKey']('name'));
-            checkThrows(() => expect(undefined)['toNotContainKey']('name'));
+            expect(() => expect(undefined)['toExcludeKey']('name')).toThrow();
+            expect(() => expect(undefined)['toNotIncludeKey']('name')).toThrow();
+            expect(() => expect(undefined)['toNotContainKey']('name')).toThrow();
         });
 
         it('is chainable', () => {
@@ -254,21 +253,21 @@ describe('expect(Object)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(['value', 'location']));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKeys(['value', 'location']));
+            expect(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(['value', 'location'])).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toContainKeys(['value', 'location'])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(null as any));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKeys(null as any));
+            expect(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(null as any)).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toContainKeys(null as any)).toThrow();
 
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(['name', 'id'], null as any));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toContainKeys(['name', 'id'], null as any));
+            expect(() => expect({ id: 1, name: 'Object' }).toIncludeKeys(['name', 'id'], null as any)).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toContainKeys(['name', 'id'], null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toIncludeKeys'](['name', 'age']));
-            checkThrows(() => expect(undefined)['toContainKeys'](['name', 'age']));
+            expect(() => expect(undefined)['toIncludeKeys'](['name', 'age'])).toThrow();
+            expect(() => expect(undefined)['toContainKeys'](['name', 'age'])).toThrow();
         });
 
         it('is chainable', () => {
@@ -285,25 +284,25 @@ describe('expect(Object)', () => {
         });
 
         it('throws error when assertion fails', () => {
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toExcludeKeys(['id', 'name']));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toNotIncludeKeys(['id', 'name']));
-            checkThrows(() => expect({ id: 1, name: 'Object' }).toNotContainKeys(['id', 'name']));
+            expect(() => expect({ id: 1, name: 'Object' }).toExcludeKeys(['id', 'name'])).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toNotIncludeKeys(['id', 'name'])).toThrow();
+            expect(() => expect({ id: 1, name: 'Object' }).toNotContainKeys(['id', 'name'])).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toExcludeKeys(null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotIncludeKeys(null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotContainKeys(null as any));
+            expect(() => expect({ name: 'Object' }).toExcludeKeys(null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotIncludeKeys(null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotContainKeys(null as any)).toThrow();
 
-            checkThrows(() => expect({ name: 'Object' }).toExcludeKeys(['foo', 'bar'], null as any));
-            checkThrows(() => expect({ name: 'Object' }).toIncludeKeys(['foo', 'bar'], null as any));
-            checkThrows(() => expect({ name: 'Object' }).toNotContainKeys(['foo', 'bar'], null as any));
+            expect(() => expect({ name: 'Object' }).toExcludeKeys(['foo', 'bar'], null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toIncludeKeys(['foo', 'bar'], null as any)).toThrow();
+            expect(() => expect({ name: 'Object' }).toNotContainKeys(['foo', 'bar'], null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toExcludeKeys'](['name', 'age']));
-            checkThrows(() => expect(undefined)['toNotIncludeKeys'](['name', 'age']));
-            checkThrows(() => expect(undefined)['toNotContainKeys'](['name', 'age']));
+            expect(() => expect(undefined)['toExcludeKeys'](['name', 'age'])).toThrow();
+            expect(() => expect(undefined)['toNotIncludeKeys'](['name', 'age'])).toThrow();
+            expect(() => expect(undefined)['toNotContainKeys'](['name', 'age'])).toThrow();
         });
 
         it('is chainable', () => {
@@ -322,20 +321,20 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(new EvalError()).toBeA(TypeError));
-            checkThrows(() => expect(new TypeError()).toBeAn(EvalError));
-            checkThrows(() => expect(new TypeError()).toBeA('number'));
-            checkThrows(() => expect(new TypeError()).toBeAn('number'));
+            expect(() => expect(new EvalError()).toBeA(TypeError)).toThrow();
+            expect(() => expect(new TypeError()).toBeAn(EvalError)).toThrow();
+            expect(() => expect(new TypeError()).toBeA('number')).toThrow();
+            expect(() => expect(new TypeError()).toBeAn('number')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(new TypeError()).toBeA(null as any));
-            checkThrows(() => expect(new TypeError()).toBeAn(null as any));
+            expect(() => expect(new TypeError()).toBeA(null as any)).toThrow();
+            expect(() => expect(new TypeError()).toBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(new TypeError()).toBeA(TypeError, null as any));
-            checkThrows(() => expect(new EvalError()).toBeAn(EvalError, null as any));
-            checkThrows(() => expect(new TypeError()).toBeA('object', null as any));
-            checkThrows(() => expect(new TypeError()).toBeAn('object', null as any));
+            expect(() => expect(new TypeError()).toBeA(TypeError, null as any)).toThrow();
+            expect(() => expect(new EvalError()).toBeAn(EvalError, null as any)).toThrow();
+            expect(() => expect(new TypeError()).toBeA('object', null as any)).toThrow();
+            expect(() => expect(new TypeError()).toBeAn('object', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -355,20 +354,20 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect(new TypeError()).toNotBeA(TypeError));
-            checkThrows(() => expect(new EvalError()).toNotBeAn(EvalError));
-            checkThrows(() => expect(new TypeError()).toNotBeA('object'));
-            checkThrows(() => expect(new TypeError()).toNotBeAn('object'));
+            expect(() => expect(new TypeError()).toNotBeA(TypeError)).toThrow();
+            expect(() => expect(new EvalError()).toNotBeAn(EvalError)).toThrow();
+            expect(() => expect(new TypeError()).toNotBeA('object')).toThrow();
+            expect(() => expect(new TypeError()).toNotBeAn('object')).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect(new TypeError()).toNotBeA(null as any));
-            checkThrows(() => expect(new TypeError()).toNotBeAn(null as any));
+            expect(() => expect(new TypeError()).toNotBeA(null as any)).toThrow();
+            expect(() => expect(new TypeError()).toNotBeAn(null as any)).toThrow();
 
-            checkThrows(() => expect(new TypeError()).toNotBeA(EvalError, null as any));
-            checkThrows(() => expect(new EvalError()).toNotBeAn(TypeError, null as any));
-            checkThrows(() => expect(new TypeError()).toNotBeA('number', null as any));
-            checkThrows(() => expect(new TypeError()).toNotBeAn('number', null as any));
+            expect(() => expect(new TypeError()).toNotBeA(EvalError, null as any)).toThrow();
+            expect(() => expect(new EvalError()).toNotBeAn(TypeError, null as any)).toThrow();
+            expect(() => expect(new TypeError()).toNotBeA('number', null as any)).toThrow();
+            expect(() => expect(new TypeError()).toNotBeAn('number', null as any)).toThrow();
         });
 
         it('is chainable', () => {
@@ -385,15 +384,15 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({ name: 'Object' }).toBeEmpty());
+            expect(() => expect({ name: 'Object' }).toBeEmpty()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({}).toBeEmpty(null as any));
+            expect(() => expect({}).toBeEmpty(null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toBeEmpty']());
+            expect(() => expect(undefined)['toBeEmpty']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -407,15 +406,15 @@ describe('expect(Object)', () => {
         });
 
         it('throws when assertion fails', () => {
-            checkThrows(() => expect({}).toNotBeEmpty());
+            expect(() => expect({}).toNotBeEmpty()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toNotBeEmpty(null as any));
+            expect(() => expect({ name: 'Object' }).toNotBeEmpty(null as any)).toThrow();
         });
 
         it('throws when called on a non-object', () => {
-            checkThrows(() => expect(undefined)['toNotBeEmpty']());
+            expect(() => expect(undefined)['toNotBeEmpty']()).toThrow();
         });
 
         it('is chainable', () => {
@@ -425,7 +424,7 @@ describe('expect(Object)', () => {
 
      describe('toBeNull', () => {
         it('throws', () => {
-            checkThrows(() => expect({ name: 'Object' }).toBeNull());
+            expect(() => expect({ name: 'Object' }).toBeNull()).toThrow();
         });
     });
 
@@ -435,7 +434,7 @@ describe('expect(Object)', () => {
         });
 
         it('throws when called with invalid arguments', () => {
-            checkThrows(() => expect({ name: 'Object' }).toNotBeNull(null as any));
+            expect(() => expect({ name: 'Object' }).toNotBeNull(null as any)).toThrow();
         });
 
         it('is chainable', () => {

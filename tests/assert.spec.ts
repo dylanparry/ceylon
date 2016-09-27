@@ -1,6 +1,5 @@
-import { checkThrows, checkEqual }  from './helpers';
-
 import assert from '../src/assert';
+import expect from '../src/index';
 
 describe('Assert', () => {
     it('does not throw when assertion passes', () => {
@@ -11,22 +10,17 @@ describe('Assert', () => {
     });
 
     it('throws when the assertion fails', () => {
-        checkThrows(() => assert({
+        expect(() => assert({
             assertion: false,
             message: 'This should throw',
-        }));
+        })).toThrow();
     });
 
     it('throws error with correct message property', () => {
-        try {
-            assert({
-                assertion: false,
-                message: 'This should throw',
-            });
-        }
-        catch (e) {
-            checkEqual(e.message, 'This should throw');
-        }
+        expect(() => assert({
+            assertion: false,
+            message: 'This should throw',
+        })).toThrow('This should throw');
     });
 
     it('throws error with showDiff set to false', () => {
@@ -37,7 +31,7 @@ describe('Assert', () => {
             });
         }
         catch (e) {
-            checkEqual(e['showDiff'], false);
+            expect(e['showDiff'] as boolean).toBeFalse();
         }
     });
 
@@ -51,9 +45,9 @@ describe('Assert', () => {
             });
         }
         catch (e) {
-            checkEqual(e['actual'], 1);
-            checkEqual(e['expected'], 2);
-            checkEqual(e['showDiff'], true);
+            expect(e['actual']).toBe(1);
+            expect(e['expected']).toBe(2);
+            expect(e['showDiff'] as boolean).toBeTrue();
         }
     });
 });
