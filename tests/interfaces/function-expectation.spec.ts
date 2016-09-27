@@ -7,6 +7,10 @@ describe('expect(Function)', () => {
             expect(Math.random).toExist();
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toExist(null as any));
+        });
+
         it('is chainable', () => {
             expect(Math.random).toExist().toExist();
         });
@@ -27,6 +31,10 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(Math.random).toBe(Math.floor));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toBe(Math.random, null as any));
+        });
+
         it('is chainable', () => {
             expect(Math.random).toBe(Math.random).toBe(Math.random);
         });
@@ -39,6 +47,10 @@ describe('expect(Function)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() =>  expect(Math.random).toNotBe(Math.random));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toNotBe(Math.floor, null as any));
         });
 
         it('is chainable', () => {
@@ -55,6 +67,10 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(Math.random).toEqual(Math.floor));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toEqual(Math.random, null as any));
+        });
+
         it('is chainable', () => {
             expect(Math.random).toEqual(Math.random).toEqual(Math.random);
         });
@@ -67,6 +83,10 @@ describe('expect(Function)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect(Math.random).toNotEqual(Math.random));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toNotEqual(Math.floor, null as any));
         });
 
         it('is chainable', () => {
@@ -85,6 +105,14 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(Math.random).toBeAn('number'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toBeA(null as any));
+            checkThrows(() => expect(Math.random).toBeAn(null as any));
+
+            checkThrows(() => expect(Math.random).toBeA('function', null as any));
+            checkThrows(() => expect(Math.random).toBeAn('function', null as any));
+        });
+
         it('is chainable', () => {
             expect(Math.random).toBeA('function').toBeA('function');
         });
@@ -99,6 +127,14 @@ describe('expect(Function)', () => {
         it('throws when assertion fails', () => {
             checkThrows(() => expect(Math.random).toNotBeA('function'));
             checkThrows(() => expect(Math.random).toNotBeAn('function'));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toNotBeA(null as any));
+            checkThrows(() => expect(Math.random).toNotBeAn(null as any));
+
+            checkThrows(() => expect(Math.random).toNotBeA('number', null as any));
+            checkThrows(() => expect(Math.random).toNotBeAn('numer', null as any));
         });
 
         it('is chainable', () => {
@@ -121,6 +157,13 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(() => { throw new TypeError(); }).toThrow(SyntaxError));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toThrow(null as any));
+            checkThrows(() => expect(Math.random).toThrow('Error Name', null as any));
+            checkThrows(() => expect(Math.random).toThrow(/Error Name/, null as any));
+            checkThrows(() => expect(Math.random).toThrow(TypeError, null as any));
+        });
+
         it('throws when called on a non-function', () => {
             checkThrows(() => expect(undefined)['toThrow']());
         });
@@ -137,6 +180,10 @@ describe('expect(Function)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect(() => { throw new Error(); }).toNotThrow());
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toNotThrow(null as any));
         });
 
         it('throws when called on a non-function', () => {
@@ -156,6 +203,14 @@ describe('expect(Function)', () => {
         it('throws error when assertion fails', () => {
             checkThrows(() => expect(Math.random).toIncludeKey('value'));
             checkThrows(() => expect(Math.random).toContainKey('value'));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toIncludeKey(null as any));
+            checkThrows(() => expect(Math.random).toContainKey(null as any));
+
+            checkThrows(() => expect(Math.random).toIncludeKey('name', null as any));
+            checkThrows(() => expect(Math.random).toContainKey('name', null as any));
         });
 
         it('throws when called on a non-function', () => {
@@ -182,6 +237,16 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(Math.random).toNotContainKey('name'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toExcludeKey(null as any));
+            checkThrows(() => expect(Math.random).toNotIncludeKey(null as any));
+            checkThrows(() => expect(Math.random).toNotContainKey(null as any));
+
+            checkThrows(() => expect(Math.random).toExcludeKey('foo', null as any));
+            checkThrows(() => expect(Math.random).toNotIncludeKey('foo', null as any));
+            checkThrows(() => expect(Math.random).toNotContainKey('foo', null as any));
+        });
+
         it('throws when called on a non-function', () => {
             checkThrows(() => expect(undefined)['toExcludeKey']('name'));
             checkThrows(() => expect(undefined)['toNotIncludeKey']('name'));
@@ -204,6 +269,14 @@ describe('expect(Function)', () => {
         it('throws error when assertion fails', () => {
             checkThrows(() => expect(Math.random).toIncludeKeys(['value', 'location']));
             checkThrows(() => expect(Math.random).toContainKeys(['value', 'location']));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toIncludeKeys(null as any));
+            checkThrows(() => expect(Math.random).toContainKeys(null as any));
+
+            checkThrows(() => expect(Math.random).toIncludeKeys(['name', 'length'], null as any));
+            checkThrows(() => expect(Math.random).toContainKeys(['name', 'length'], null as any));
         });
 
         it('throws when called on a non-function', () => {
@@ -230,6 +303,16 @@ describe('expect(Function)', () => {
             checkThrows(() => expect(Math.random).toNotContainKeys(['name', 'id']));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toExcludeKeys(null as any));
+            checkThrows(() => expect(Math.random).toNotIncludeKeys(null as any));
+            checkThrows(() => expect(Math.random).toNotContainKeys(null as any));
+
+            checkThrows(() => expect(Math.random).toExcludeKeys(['foo', 'bar'], null as any));
+            checkThrows(() => expect(Math.random).toNotIncludeKeys(['foo', 'bar'], null as any));
+            checkThrows(() => expect(Math.random).toNotContainKeys(['foo', 'bar'], null as any));
+        });
+
         it('throws when called on a non-function', () => {
             checkThrows(() => expect(undefined)['toExcludeKey'](['name', 'length']));
             checkThrows(() => expect(undefined)['toNotIncludeKeys'](['name', 'length']));
@@ -252,6 +335,10 @@ describe('expect(Function)', () => {
     describe('toNotBeNull', () => {
         it('does not throw', () => {
             expect(Math.random).toNotBeNull();
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect(Math.random).toNotBeNull(null as any));
         });
 
         it('is chainable', () => {

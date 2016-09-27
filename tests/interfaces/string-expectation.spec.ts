@@ -8,6 +8,10 @@ describe('expect(string)', () => {
             expect('').toExist();
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toExist(null as any));
+        });
+
         it('is chainable', () => {
             expect('string').toExist().toExist();
         });
@@ -29,6 +33,10 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toBe('different'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toBe('string', null as any));
+        });
+
         it('is chainable', () => {
             expect('string').toBe('string').toBe('string');
         });
@@ -41,6 +49,10 @@ describe('expect(string)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() =>  expect('string').toNotBe('string'));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotBe('different', null as any));
         });
 
         it('is chainable', () => {
@@ -57,6 +69,10 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toEqual('different'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toEqual('string', null as any));
+        });
+
         it('is chainable', () => {
             expect('string').toEqual('string').toEqual('string');
         });
@@ -69,6 +85,10 @@ describe('expect(string)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect('string').toNotEqual('string'));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotEqual('different', null as any));
         });
 
         it('is chainable', () => {
@@ -87,6 +107,14 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toBeAn('number'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toBeA(null as any));
+            checkThrows(() => expect('string').toBeAn(null as any));
+
+            checkThrows(() => expect('string').toBeA('string', null as any));
+            checkThrows(() => expect('string').toBeAn('string', null as any));
+        });
+
         it('is chainable', () => {
             expect('string').toBeA('string').toBeA('string');
         });
@@ -103,6 +131,14 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toNotBeAn('string'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotBeA(null as any));
+            checkThrows(() => expect('string').toNotBeAn(null as any));
+
+            checkThrows(() => expect('string').toNotBeA('number', null as any));
+            checkThrows(() => expect('string').toNotBeAn('number', null as any));
+        });
+
         it('is chainable', () => {
             expect('string').toNotBeA('number').toNotBeA('number');
         });
@@ -115,6 +151,12 @@ describe('expect(string)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect('I am a string').toMatch(/^.*number$/));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toMatch(null as any));
+
+            checkThrows(() => expect('I am a string').toMatch(/^.*string$/, null as any));
         });
 
         it('throws when called on a non-string', () => {
@@ -135,6 +177,12 @@ describe('expect(string)', () => {
             checkThrows(() => expect('I am a string').toNotMatch(/^.*string$/));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotMatch(null as any));
+
+            checkThrows(() => expect('I am a string').toNotMatch(/^.*number$/, null as any));
+        });
+
         it('throws when called on a non-string', () => {
             checkThrows(() => expect(undefined)['toNotMatch'](/^test$/));
         });
@@ -153,6 +201,14 @@ describe('expect(string)', () => {
         it('throws when assertion fails', () => {
             checkThrows(() => expect('I am a string').toInclude('number'));
             checkThrows(() => expect('I am a string').toContain('number'));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toInclude(null as any));
+            checkThrows(() => expect('string').toContain(null as any));
+
+            checkThrows(() => expect('string').toInclude('str', null as any));
+            checkThrows(() => expect('string').toContain('str', null as any));
         });
 
         it('throws when called on a non-string', () => {
@@ -177,6 +233,12 @@ describe('expect(string)', () => {
             checkThrows(() => expect('I am a string').toNotContain('string'));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toExclude('num', null as any));
+            checkThrows(() => expect('string').toNotInclude('num', null as any));
+            checkThrows(() => expect('string').toNotContain('num', null as any));
+        });
+
         it('throws when called on a non-string', () => {
             checkThrows(() => expect(undefined)['toExclude']('test'));
             checkThrows(() => expect(undefined)['toNotInclude']('test'));
@@ -198,6 +260,12 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toHaveLength(2));
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toHaveLength(null as any));
+
+            checkThrows(() => expect('string').toHaveLength(6, null as any));
+        });
+
         it('throws when called on a non-string', () => {
             checkThrows(() => expect(undefined)['toHaveLength'](6));
         });
@@ -214,6 +282,12 @@ describe('expect(string)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect('string').toNotHaveLength(6));
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotHaveLength(null as any));
+
+            checkThrows(() => expect('string').toNotHaveLength(2, null as any));
         });
 
         it('throws when called on a non-string', () => {
@@ -234,6 +308,10 @@ describe('expect(string)', () => {
             checkThrows(() => expect('string').toBeEmpty());
         });
 
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('').toBeEmpty(null as any));
+        });
+
         it('throws when called on a non-string', () => {
             checkThrows(() => expect(undefined)['toBeEmpty']());
         });
@@ -250,6 +328,10 @@ describe('expect(string)', () => {
 
         it('throws when assertion fails', () => {
             checkThrows(() => expect('').toNotBeEmpty());
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotBeEmpty(null as any));
         });
 
         it('throws when called on a non-string', () => {
@@ -270,6 +352,10 @@ describe('expect(string)', () => {
     describe('toNotBeNull', () => {
         it('does not throw', () => {
             expect('string').toNotBeNull();
+        });
+
+        it('throws when called with invalid arguments', () => {
+            checkThrows(() => expect('string').toNotBeNull(null as any));
         });
 
         it('is chainable', () => {
