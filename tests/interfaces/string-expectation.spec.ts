@@ -4,7 +4,10 @@ describe('expect(string)', () => {
     describe('toExist', () => {
         it('does not throw', () => {
             expect('string').toExist();
-            expect('').toExist();
+        });
+
+        it('throws for empty string', () => {
+            expect(() => expect('').toExist()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
@@ -19,7 +22,14 @@ describe('expect(string)', () => {
     describe('toNotExist', () => {
         it('throws', () => {
             expect(() => expect('string').toNotExist()).toThrow();
-            expect(() => expect('').toNotExist()).toThrow();
+        });
+
+        it('does not throw for empty string', () => {
+            expect('').toNotExist();
+        });
+
+        it('is chainable', () => {
+            expect('').toNotExist().toNotExist();
         });
     });
 

@@ -1,23 +1,13 @@
 interface IExpectation<T> {
     /**
-     * Asserts that the item exists (is not null undefined)
+     * Asserts that the item exists (is not null, undefined, or empty string)
      */
     toExist(message?: string): this;
-    /**
-     * Asserts that the item exists (is not null undefined)
-     * (Alias for toExist)
-     */
-    toNotBeNullOrUndefined(message?: string): this;
 
     /**
-     * Asserts that the item does not exist (is null or undefined)
+     * Asserts that the item does not exist (is null, undefined, or empty string)
      */
     toNotExist(message?: string): this;
-    /**
-     * Asserts that the item does not exist (is null or undefined)
-     * (Alias for toNotExist)
-     */
-    toBeNullOrUndefined(message?: string): this;
 
     /**
      * Asserts that the item is strictly equal to [value]

@@ -17,7 +17,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
     }
 
     /**
-     * Asserts that the tested item exists (is not null or undefined)
+     * Asserts that the tested item exists (is not null, undefined, or empty string)
      *
      * @param {string} [message]
      * @returns {this}
@@ -31,7 +31,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
         });
 
         assert({
-            assertion: typeof this.actual !== 'undefined' && this.actual !== null,
+            assertion: typeof this.actual !== 'undefined' && this.actual !== null && this.actual !== '',
             message: message || 'Expected item to exist',
         });
 
@@ -39,20 +39,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
     }
 
     /**
-     * Asserts that the tested item exists (is not null or undefined)
-     * Alias for toExist
-     *
-     * @param {string} [message]
-     * @returns {this}
-     *
-     * @memberOf Expectation
-     */
-    public toNotBeNullOrUndefined(message?: string): this {
-        return this.toExist(message);
-    }
-
-    /**
-     * Asserts that the tested item does not exist (is null or undefined)
+     * Asserts that the tested item does not exist (is null, undefined, or empty string)
      *
      * @param {string} [message]
      * @returns {this}
@@ -66,24 +53,11 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
         });
 
         assert({
-            assertion: typeof this.actual === 'undefined' || this.actual === null,
+            assertion: typeof this.actual === 'undefined' || this.actual === null || this.actual === '',
             message: message || 'Expected item to not exist',
         });
 
         return this;
-    }
-
-    /**
-     * Asserts that the tested item does not exist (is null or undefined)
-     * Alias for toNotExist
-     *
-     * @param {string} [message]
-     * @returns {this}
-     *
-     * @memberOf Expectation
-     */
-    public toBeNullOrUndefined(message?: string): this {
-        return this.toNotExist(message);
     }
 
     public toBe(value: boolean, message?: string): this;

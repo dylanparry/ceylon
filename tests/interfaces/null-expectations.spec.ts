@@ -15,6 +15,10 @@ describe('expect(null)', () => {
         it('does not throw', () => {
             expect(null).toNotExist();
         });
+
+        it('is chainable', () => {
+            expect(null).toNotExist().toNotExist();
+        });
     });
 
     describe('toBe', () => {
