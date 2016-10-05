@@ -187,24 +187,4 @@ describe('expect(boolean)', () => {
             expect(false).toBeFalse().toBeFalse();
         });
     });
-
-    describe('toBeNull', () => {
-        it('throws', () => {
-            expect(() => expect(true).toBeNull()).toThrow();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('does not throw', () => {
-            expect(true).toNotBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect(true).toNotBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect(true).toNotBeNull().toNotBeNull();
-        });
-    });
 });

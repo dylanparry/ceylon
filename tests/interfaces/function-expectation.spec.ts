@@ -324,24 +324,4 @@ describe('expect(Function)', () => {
             expect(Math.random).toNotContainKeys(['value', 'location']).toNotContainKeys(['value', 'location']);
         });
     });
-
-     describe('toBeNull', () => {
-        it('throws', () => {
-            expect(() => expect(Math.random).toBeNull()).toThrow();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('does not throw', () => {
-            expect(Math.random).toNotBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect(Math.random).toNotBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect(Math.random).toNotBeNull().toNotBeNull();
-        });
-    });
 });

@@ -448,24 +448,4 @@ describe('expect(array)', () => {
             expect([1, 2, 3]).toNotBeEmpty().toNotBeEmpty();
         });
     });
-
-    describe('toBeNull', () => {
-        it('throws', () => {
-            expect(() => expect([1, 2, 3]).toBeNull()).toThrow();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('does not throw', () => {
-            expect([1, 2, 3]).toNotBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect([1, 2, 3]).toNotBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect([1, 2, 3]).toNotBeNull().toNotBeNull();
-        });
-    });
 });

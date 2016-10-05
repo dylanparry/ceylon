@@ -92,24 +92,4 @@ describe('expect(undefined)', () => {
             expect(undefined).toNotEqual(1 as any).toNotEqual(1 as any);
         });
     });
-
-     describe('toBeNull', () => {
-        it('throws', () => {
-            expect(() => expect(undefined).toBeNull()).toThrow();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('does not throw', () => {
-            expect(undefined).toNotBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect(undefined).toNotBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect(undefined).toNotBeNull().toNotBeNull();
-        });
-    });
 });

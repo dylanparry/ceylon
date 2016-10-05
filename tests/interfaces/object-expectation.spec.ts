@@ -421,24 +421,4 @@ describe('expect(Object)', () => {
             expect({ name: 'Object' }).toNotBeEmpty().toNotBeEmpty();
         });
     });
-
-     describe('toBeNull', () => {
-        it('throws', () => {
-            expect(() => expect({ name: 'Object' }).toBeNull()).toThrow();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('does not throw', () => {
-            expect({ name: 'Object' }).toNotBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect({ name: 'Object' }).toNotBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect({ name: 'Object' }).toNotBeNull().toNotBeNull();
-        });
-    });
 });

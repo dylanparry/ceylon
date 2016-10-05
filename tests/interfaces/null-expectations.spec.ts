@@ -92,24 +92,4 @@ describe('expect(null)', () => {
             expect(null).toNotEqual(1 as any).toNotEqual(1 as any);
         });
     });
-
-    describe('toBeNull', () => {
-        it('does not throw', () => {
-            expect(null).toBeNull();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect(null).toBeNull(null as any)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect(null).toBeNull().toBeNull();
-        });
-    });
-
-    describe('toNotBeNull', () => {
-        it('throws', () => {
-            expect(() => expect(null).toNotBeNull()).toThrow();
-        });
-    });
 });
