@@ -2,22 +2,18 @@ import expect from '../../src/index';
 
 describe('expect(null)', () => {
     describe('toExist', () => {
-        it('does not throw', () => {
-            expect(null).toExist();
+        it('throws', () => {
+            expect(() => expect(null).toExist()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
             expect(() => expect(null).toExist(null as any)).toThrow();
         });
-
-        it('is chainable', () => {
-            expect(null).toExist().toExist();
-        });
     });
 
     describe('toNotExist', () => {
-        it('throws', () => {
-            expect(() => expect(null).toNotExist()).toThrow();
+        it('does not throw', () => {
+            expect(null).toNotExist();
         });
     });
 
