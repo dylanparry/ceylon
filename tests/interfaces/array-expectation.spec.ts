@@ -390,28 +390,4 @@ describe('expect(array)', () => {
             expect([1, 2, 3]).toHaveLength(3).toHaveLength(3);
         });
     });
-
-    describe('toNotHaveLength', () => {
-        it('does not throw when assertion passes', () => {
-            expect([1, 2, 3]).toNotHaveLength(2);
-        });
-
-        it('throws when assertion fails', () => {
-            expect(() => expect([1, 2, 3]).toNotHaveLength(3)).toThrow();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect([1, 2, 3]).toNotHaveLength(null as any)).toThrow();
-
-            expect(() => expect([1, 2, 3]).toNotHaveLength(2, null as any)).toThrow();
-        });
-
-        it('throws when called on a non-array', () => {
-            expect(() => expect(undefined)['toNotHaveLength'](2)).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect([1, 2, 3]).toNotHaveLength(2).toNotHaveLength(2);
-        });
-    });
 });

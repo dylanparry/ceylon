@@ -83,6 +83,7 @@ interface IArrayExpectation<T> extends IExpectation<T[]> {
 
     /**
      * Asserts that the array does not have a length of value
+     * @deprecated since 0.7
      */
     toNotHaveLength(value: number, message?: string): this;
 
