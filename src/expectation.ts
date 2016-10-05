@@ -17,7 +17,7 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
     }
 
     /**
-     * Asserts that the tested item exists (is not null, undefined, or empty string)
+     * Asserts that the tested item exists (is not null, undefined, or empty)
      *
      * @param {string} [message]
      * @returns {this}
@@ -30,16 +30,32 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
             message: '[message] argument should be a string',
         });
 
-        assert({
-            assertion: typeof this.actual !== 'undefined' && this.actual !== null && this.actual !== '',
-            message: message || 'Expected item to exist',
-        });
+        if (Array.isArray(this.actual)) {
+            assert({
+                assertion:  this.actual.length !== 0,
+                message: message || 'Expected array to exist',
+            });
+        }
+
+        else if (typeof this.actual === 'object' && this.actual !== null) {
+            assert({
+                assertion: Object.getOwnPropertyNames(this.actual).length !== 0,
+                message: message || 'Expected object to exist',
+            });
+        }
+
+        else {
+            assert({
+                assertion: typeof this.actual !== 'undefined' && this.actual !== null && this.actual !== '',
+                message: message || 'Expected item to exist',
+            });
+        }
 
         return this;
     }
 
     /**
-     * Asserts that the tested item does not exist (is null, undefined, or empty string)
+     * Asserts that the tested item does not exist (is null, undefined, or empty)
      *
      * @param {string} [message]
      * @returns {this}
@@ -52,10 +68,26 @@ export default class Expectation<T> implements IExpectation<T>, IBooleanExpectat
             message: '[message] argument should be a string',
         });
 
-        assert({
-            assertion: typeof this.actual === 'undefined' || this.actual === null || this.actual === '',
-            message: message || 'Expected item to not exist',
-        });
+        if (Array.isArray(this.actual)) {
+            assert({
+                assertion: this.actual.length === 0,
+                message: message || 'Expected array to not exist',
+            });
+        }
+
+        else if (typeof this.actual === 'object' && this.actual !== null) {
+            assert({
+                assertion: Object.getOwnPropertyNames(this.actual).length === 0,
+                message: message || 'Expected object to not exist',
+            });
+        }
+
+        else {
+            assert({
+                assertion: typeof this.actual === 'undefined' || this.actual === null || this.actual === '',
+                message: message || 'Expected item to not exist',
+            });
+        }
 
         return this;
     }

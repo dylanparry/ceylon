@@ -4,7 +4,10 @@ describe('expect(array)', () => {
     describe('toExist', () => {
         it('does not throw', () => {
             expect([1, 2, 3]).toExist();
-            expect([]).toExist();
+        });
+
+        it('throws with empty array', () => {
+            expect(() => expect([]).toExist()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
@@ -19,7 +22,14 @@ describe('expect(array)', () => {
     describe('toNotExist', () => {
         it('throws', () => {
             expect(() => expect([1, 2, 3]).toNotExist()).toThrow();
-            expect(() => expect([]).toNotExist()).toThrow();
+        });
+
+        it('does not throw with empty array', () => {
+           expect([]).toNotExist();
+        });
+
+        it('is chainable', () => {
+            expect([]).toNotExist().toNotExist();
         });
     });
 
@@ -402,50 +412,6 @@ describe('expect(array)', () => {
 
         it('is chainable', () => {
             expect([1, 2, 3]).toNotHaveLength(2).toNotHaveLength(2);
-        });
-    });
-
-    describe('toBeEmpty', () => {
-        it('does not throw when assertion passes', () => {
-            expect([]).toBeEmpty();
-        });
-
-        it('throws when assertion fails', () => {
-            expect(() => expect([1, 2, 3]).toBeEmpty()).toThrow();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect([]).toBeEmpty(null as any)).toThrow();
-        });
-
-        it('throws when called on a non-array', () => {
-            expect(() => expect(undefined)['toBeEmpty']()).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect([]).toBeEmpty().toBeEmpty();
-        });
-    });
-
-    describe('toNotBeEmpty', () => {
-        it('does not throw when assertion passes', () => {
-            expect([1, 2, 3]).toNotBeEmpty();
-        });
-
-        it('throws when assertion fails', () => {
-            expect(() => expect([]).toNotBeEmpty()).toThrow();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect([1, 2, 3]).toNotBeEmpty(null as any)).toThrow();
-        });
-
-        it('throws when called on a non-array', () => {
-            expect(() => expect(undefined)['toNotBeEmpty']()).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect([1, 2, 3]).toNotBeEmpty().toNotBeEmpty();
         });
     });
 });

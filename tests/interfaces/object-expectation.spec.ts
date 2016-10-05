@@ -4,7 +4,10 @@ describe('expect(Object)', () => {
     describe('toExist', () => {
         it('does not throw', () => {
             expect({ id: 1 }).toExist();
-            expect({}).toExist();
+        });
+
+        it('throws with empty object', () => {
+            expect(() => expect({}).toExist()).toThrow();
         });
 
         it('throws when called with invalid arguments', () => {
@@ -19,7 +22,14 @@ describe('expect(Object)', () => {
     describe('toNotExist', () => {
         it('throws', () => {
             expect(() => expect({ id: 1 }).toNotExist()).toThrow();
-            expect(() => expect({}).toNotExist()).toThrow();
+        });
+
+        it('does not throw with empty object', () => {
+            expect({}).toNotExist();
+        });
+
+        it('is chainable', () => {
+            expect({}).toNotExist().toNotExist();
         });
     });
 
@@ -375,50 +385,6 @@ describe('expect(Object)', () => {
             expect(new TypeError()).toNotBeAn(EvalError).toNotBeAn(EvalError);
             expect(new TypeError()).toNotBeA('number').toNotBeA('number');
             expect(new TypeError()).toNotBeAn('number').toNotBeAn('number');
-        });
-    });
-
-    describe('toBeEmpty', () => {
-        it('does not throw when assertion passes', () => {
-            expect({}).toBeEmpty();
-        });
-
-        it('throws when assertion fails', () => {
-            expect(() => expect({ name: 'Object' }).toBeEmpty()).toThrow();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect({}).toBeEmpty(null as any)).toThrow();
-        });
-
-        it('throws when called on a non-object', () => {
-            expect(() => expect(undefined)['toBeEmpty']()).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect({}).toBeEmpty().toBeEmpty();
-        });
-    });
-
-    describe('toNotBeEmpty', () => {
-        it('does not throw when assertion passes', () => {
-            expect({ name: 'Object' }).toNotBeEmpty();
-        });
-
-        it('throws when assertion fails', () => {
-            expect(() => expect({}).toNotBeEmpty()).toThrow();
-        });
-
-        it('throws when called with invalid arguments', () => {
-            expect(() => expect({ name: 'Object' }).toNotBeEmpty(null as any)).toThrow();
-        });
-
-        it('throws when called on a non-object', () => {
-            expect(() => expect(undefined)['toNotBeEmpty']()).toThrow();
-        });
-
-        it('is chainable', () => {
-            expect({ name: 'Object' }).toNotBeEmpty().toNotBeEmpty();
         });
     });
 });
