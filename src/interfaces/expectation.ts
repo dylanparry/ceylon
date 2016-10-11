@@ -48,18 +48,6 @@ interface IExpectation<T> {
      * (Alias for toNotBeA)
      */
     toNotBeAn(constructor: string, message?: string): this;
-
-    /**
-     * Asserts that the item is null
-     * @deprecated since 0.7, use .toNotExist() or .toBe(null) instead
-     */
-    toBeNull(message?: string): this;
-
-    /**
-     * Asserts that the item is not null
-     * @deprecated since 0.7, use .toExist() or .toNotBe(null) instead
-     */
-    toNotBeNull(message?: string): this;
 }
 
 export default IExpectation;

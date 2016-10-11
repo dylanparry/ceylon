@@ -113,18 +113,6 @@ interface IObjectExpectation<T> extends IExpectation<T> {
      * (Alias )
      */
     toNotContainKeys(keys: string[], message?: string): this;
-
-    /**
-     * Asserts that the object does not have any properties
-     * @deprecated since 0.7, use toNotExist() or toEqual({}) instead
-     */
-    toBeEmpty(message?: string): this;
-
-    /**
-     * Asserts that the object has properties
-     * @deprecated since 0.7, use toExist() or toNotEqual({}) instead
-     */
-    toNotBeEmpty(message?: string): this;
 }
 
 export default IObjectExpectation;

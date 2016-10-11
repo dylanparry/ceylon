@@ -80,24 +80,6 @@ interface IArrayExpectation<T> extends IExpectation<T[]> {
      * Asserts that the array has a length of value
      */
     toHaveLength(value: number, message?: string): this;
-
-    /**
-     * Asserts that the array does not have a length of value
-     * @deprecated since 0.7
-     */
-    toNotHaveLength(value: number, message?: string): this;
-
-    /**
-     * Asserts that the array contains no items
-     * @deprecated since 0.7, use toNotExist() or toEqual([]) instead
-     */
-    toBeEmpty(message?: string): this;
-
-    /**
-     * Asserts that the array contains items
-     * @deprecated since 0.7, use toExist() or toNotEqual([]) instead
-     */
-    toNotBeEmpty(message?: string): this;
 }
 
 export default IArrayExpectation;

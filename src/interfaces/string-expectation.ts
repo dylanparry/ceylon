@@ -40,24 +40,6 @@ interface IStringExpectation extends IExpectation<string> {
      * Asserts that the string has length of [value]
      */
     toHaveLength(value: number, message?: string): this;
-
-    /**
-     * Asserts that the string does not have length of [value]
-     * @deprecated since 0.7
-     */
-    toNotHaveLength(value: number, message?: string): this;
-
-    /**
-     * Asserts that the string is empty
-     * @deprecated since 0.7, use .toNotExist() or .toBe('') instead
-     */
-    toBeEmpty(message?: string): this;
-
-    /**
-     * Asserts that the string is not empty
-     * @deprecated since 0.7, use .toExist() or .toNotBe('') instead
-     */
-    toNotBeEmpty(message?: string): this;
 }
 
 export default IStringExpectation;
