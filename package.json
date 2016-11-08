@@ -50,8 +50,8 @@
     "build:es5": "tsc --outDir ./lib --declaration ./src/index.ts ./src/umd.ts",
     "build:es6": "tsc --target es5 --module es2015 --moduleResolution node --outDir ./lib/es6 ./src/index.ts",
     "build:umd": "node ./scripts/build-umd.js",
-    "build": "npm run build:es5 && npm run build:es6 && npm run build:umd",
-    "prepublish": "npm test && npm run build",
+    "build": "yarn run build:es5 && yarn run build:es6 && yarn run build:umd",
+    "prepublish": "yarn test && yarn run build",
     "postpublish": "rimraf ./lib",
     "pre-commit-message": "echo Testing and Linting Code"
   },
