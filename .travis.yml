@@ -5,7 +5,7 @@ node_js:
   - "4.4"
 matrix:
   fast_finish: true
-sudo: false
+sudo: required
 notifications:
   email:
     on_success: change
