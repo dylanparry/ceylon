@@ -24,3 +24,5 @@ cache:
   - $HOME/.yarn-cache
 install:
   - yarn
+script:
+  - yarn test
