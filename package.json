@@ -1,6 +1,6 @@
 {
   "name": "ceylon",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "An assertion library for TypeScript and JavaScript",
   "license": "MIT",
   "main": "lib/index.js",
